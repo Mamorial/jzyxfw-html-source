@@ -1,0 +1,365 @@
+<style>
+	.userInfoModule .userTip{font-size: 14px;}
+	.userInfoModule .userTip img{float:left; width:80px; height:80px; margin-right:15px;}
+	.userInfoModule .userName{color:#b48046; font-size:18px; margin-top: 8px;}
+	.userInfoModule .sl{width:100px; text-align:right; margin-right:5px;}
+	.userInfoModule .panel-heading{background:transparent; border:none; height:32px; line-height:32px;}
+	.userInfoModule .panel-title{font-size:18px; font-weight:bold; color:#5e8baa; text-align:center;}
+	.userInfoModule .table>thead>tr>th{color:#00000c; font-size:12px; border:none; background:#e5f1ff; text-align:center;}
+	.userInfoModule .table>tbody>tr>td{border-top:none; text-align:center;}
+	.lineDetail label{font-size:16px; color:#73aae2;}
+	.lineDetail span{font-weight:bold; margin-right:5px;}
+	.userInfoModule .commonPanel{position:relative;}
+	.userInfoModule .slide{width:52px; height:39px; cursor:pointer; position:absolute; bottom:-28px; left:50%; margin-left:-26px; background:url(src/images/elements.png) no-repeat -152px -63px;}
+	.userInfoModule .slide.active{background-position:-204px -63px;}
+	.userInfoModule .col-sm-12{border-top:1px dashed #eee; margin-top:15px; padding:15px 0 0;}
+	.userInfoModule .col-sm-4{border-left:1px dashed #eee;}
+	.userInfoModule .col-sm-4:first-child{border-left:none;}
+	.nine-detail{width:100%; height:230px;}
+	.nine-title{font-size:20px; font-weight:bold; padding-left:10px; border-left:4px solid #3497db;}
+	.nine-icon1{width:120px; height:120px; background:url(src/images/elements.png) no-repeat 0 -87px; float:left; margin:15px 20px 0 0; font-size:18px; font-weight:bold; text-align:center; line-height:120px; color:#fff;}
+	.nine-sms1,.nine-sms2{width:57px; height:56px; background:url(src/images/elements.png) no-repeat -120px -102px; float:left; margin:10px 30px 0 20px;}
+	.nine-sms2{background-position:-177px -102px;}
+	.nine-smsD{float:left; margin-top: 30px;}
+	.nine-terminal{width:60px; height:90px; background:url(src/images/elements.png) no-repeat -82px -259px; float:left; margin:20px 50px 0 30px;}
+	.nine-package{width:82px; height:81px; background:url(src/images/elements.png) no-repeat 0 -207px; float:left; margin:20px 20px 0 20px;}
+	.nine-position{width:87px; height:101px; background:url(src/images/elements.png) no-repeat -120px -158px; float:left; margin:20px 20px 0 20px;}
+	#nine-radar{height:190px;}
+	#userInfo-dayList{margin:0; padding-left:0; list-style:none; overflow:hidden; height:68px; width:9999999px;}
+	#userInfo-dayList li{cursor:pointer; float:left; padding:16px 20px; border-left:1px solid #eff0f5;}
+	#userInfo-dayList li p{margin:0; font-size:13px; color:#5cbaff; text-align:center;}
+	#userInfo-dayList li.active{background:#e9effd;}
+	#userInfo-prev,#userInfo-next{float:left; width:30px; height:300px; font-size:30px; font-weight:bold; cursor:pointer; line-height:300px; margin:0; color:#5cbaff;}
+	#userInfo-prev{margin-right:10px;}
+	#userInfo-next{float:right; margin-left:10px;}
+	#userInfo-dayLine{height:300px; overflow:hidden;}
+</style>
+<div class="userInfoModule">
+	<div class="commonTitleArea">
+		<div class="commonTitleArea-left" style="width: 40%"><span></span><b></b></div>
+		<div class="commonTitleArea-right" style="width: 40%"><span></span><b></b></div>
+		<p>用户信息</p>
+	</div>
+
+	<div class="panel panel-default commonPanel">
+		<div class="panel-body" bindonce="user" style="padding:15px 0;">
+			<div class="col-sm-4 userTip">
+				<img bo-src="user.icon" class="img-rounded">
+				<p class="userName">我叫什么名字</p>
+				<p>用户级别：<span>白金会员</span></p>
+			</div>
+			<div class="col-sm-4">
+				<p>
+					<label class="sl">行业类型：</label>
+					<span>金融POS</span>
+				</p>
+				<p>
+					<label class="sl">证件类型：</label>
+					<span>营业执照</span>
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<p>
+					<label class="sl">接入地市：</label>
+					<span>江西省南昌市</span>
+				</p>
+				<p>
+					<label class="sl">客户状态：</label>
+					<span>在网</span>
+				</p>
+			</div>
+
+			<div class="slide" ng-click="slide(1)" ng-class="{active: active1}"></div>
+			<div class="col-sm-12" collapse="isCollapsed1">
+				<div class="col-sm-4">
+					<p>
+						<label class="sl">客户战略分群：</label>
+						<span>1654621</span>
+					</p>
+					<p>
+						<label class="sl">证件号码：</label>
+						<span>16546512165451</span>
+					</p>
+				</div>
+				<div class="col-sm-4">
+					<div>
+						<label class="sl">信用等级：</label>
+						<div lx-star="userStar-active" current-level="level1" max="5"></div>
+					</div>
+					<p>
+						<label class="sl">会员级别：</label>
+						<span>白金</span>
+					</p>
+				</div>
+				<div class="col-sm-4">
+					<div>
+						<label class="sl">客户服务等级：</label>
+						<div lx-star="userStar-active" current-level="level2" max="5"></div>
+					</div>
+				</div>
+			</div>
+			
+			
+		</div>
+	</div>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="commonTitleArea">
+		<div class="commonTitleArea-left" style="width: 40%"><span></span><b></b></div>
+		<div class="commonTitleArea-right" style="width: 40%"><span></span><b></b></div>
+		<p>物联网信息</p>
+	</div>
+
+	<div class="panel panel-default commonPanel">
+		<div class="panel-body">
+			<div class="col-sm-4">
+				<p>
+					<label class="sl">产品名称：</label>
+					<span>我是产品</span>
+				</p>
+				<p>
+					<label class="sl">发展渠道：</label>
+					<span>发展渠道1</span>
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<p>
+					<label class="sl">接入号码：</label>
+					<span>12312312312</span>
+				</p>
+				<p>
+					<label class="sl">发展人标识：</label>
+					<span>发展人标识内容</span>
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<p>
+					<label class="sl">付费模式：</label>
+					<span>后付费</span>
+				</p>
+				<p>
+					<label class="sl">受理人：</label>
+					<span>某某</span>
+				</p>
+			</div>
+			<div class="slide" ng-click="slide(2)"  ng-class="{active: active2}"></div>
+			<div class="col-sm-12" collapse="isCollapsed2">
+				<div class="col-sm-4">
+					<p>
+						<label class="sl">套餐名称：</label>
+						<span>套餐名称一</span>
+					</p>
+					<p>
+						<label class="sl">发展人标识：</label>
+						<span>发展人标识内容</span>
+					</p>
+				</div>
+				<div class="col-sm-4">
+					<p>
+						<label class="sl">是否公免：</label>
+						<span>否</span>
+					</p>
+					<p>
+						<label class="sl">产品状态：</label>
+						<span>再用</span>
+					</p>
+				</div>
+				<div class="col-sm-4">
+					<p>
+						<label class="sl">城乡标识：</label>
+						<span>城市</span>
+					</p>
+					<p>
+						<label class="sl">开通日期：</label>
+						<span>2016.21.5</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="commonTitleArea">
+		<div class="commonTitleArea-left" style="width: 40%"><span></span><b></b></div>
+		<div class="commonTitleArea-right" style="width: 40%"><span></span><b></b></div>
+		<p>行为特征</p>
+	</div>
+
+
+	<div class="panel panel-default commonPanel">
+		<div class="panel-body" style="padding:15px 0;">
+			<div class="col-sm-4" ng-click="test1()">
+				<div class="nine-detail">
+					<p class="nine-title">流量</p>
+					<p class="nine-icon1">60%</p>
+					<p style="margin-top:60px;">可用流量：126451M</p>
+					<p>实际使用流量：123M</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="nine-detail">
+					<p class="nine-title">话务</p>
+					<div id="nine-radar" lx-charts conf="conf2"></div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="nine-detail">
+					<p class="nine-title">短信</p>
+					<div class="clearfix">
+						<p class="nine-sms1"></p>
+						<span class="nine-smsD">上行短信：17800条</span>
+					</div>
+					<div class="clearfix" style="margin-top:10px;">
+						<p class="nine-sms2"></p>
+						<span class="nine-smsD">下行短信：17800条</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="nine-detail">
+					<p class="nine-title">终端</p>
+					<p class="nine-terminal"></p>
+					<p style="margin-top:50px;">机型：PROG_008</p>
+					<p>注册时间：2017-03-08</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="nine-detail">
+					<p class="nine-title">套餐</p>
+					<p class="nine-package"></p>
+					<p style="margin-top:33px;">当月套餐：</p>
+					<p>乐享4G201703 178员-主套餐</p>
+					<p>当前费用：108员</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="nine-detail">
+					<p class="nine-title">位置</p>
+					<p class="nine-position"></p>
+					<p style="margin-top:50px;">XT_BC2963仙剑县省庄基站——城开学院售楼中心__[7__51]最活跃</p>
+				</div>
+			</div>
+			<div class="slide" ng-click="slide(3)"  ng-class="{active: active3}"></div>
+			<div class="col-sm-12" collapse="isCollapsed3">
+				<div class="col-sm-4">
+					<div class="nine-detail">九宫图7占位</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="nine-detail">九宫图8占位</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="nine-detail">九宫图9占位</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default commonPanel" style="margin-top:70px;">
+		<div class="panel-heading">
+			<h3 class="panel-title">上网清单详情</h3>
+		</div>
+		<div class="panel-body nine-area" bindonce="user" style="padding:15px 5px;">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>省份标识</th>
+						<th>本地网标识</th>
+						<th>手机上网次数</th>
+						<th>手机上网时长</th>
+						<th>手机上网流量</th>
+						<th>1X数据流量</th>
+						<th>1X计费时长</th>
+						<th>EVDO流量</th>
+						<th>EVDO次数</th>
+						<th>4G流量</th>
+						<th>WLAN上网次数</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+					</tr>
+					<tr>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+					</tr>
+					<tr>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="commonTitleArea">
+		<div class="commonTitleArea-left" style="width: 40%"><span></span><b></b></div>
+		<div class="commonTitleArea-right" style="width: 40%"><span></span><b></b></div>
+		<p>活动轨迹</p>
+	</div>
+
+	<div class="panel panel-default commonPanel">
+		<div class="panel-body" style="position:relative;">
+			<p class="lineDetail">
+				<label>活跃地点TOP5：</label>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+			</p>
+			<p class="lineDetail">
+				<label>流量使用TOP5：</label>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+			</p>
+			<div style="height:68px; overflow:hidden; margin:20px 0;">
+				<ul id="userInfo-dayList">
+					<li ng-repeat="line in dayList" bindonce>
+						<p bo-text="line.date"></p>
+						<p bo-text="line.day"></p>
+					</li>
+				</ul>
+			</div>
+			<p id="userInfo-next">&gt;</p>
+			<p id="userInfo-prev">&lt;</p>
+			<div id="userInfo-dayLine" lx-charts conf="conf1"></div>
+		</div>
+	</div>
+	</body>
+</html>
+
+</div>

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--引用样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<!--自定义样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		<!--引用js-->
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../../resources/echarts/js/echarts.js"></script>
+		<!--自定义js-->
+		<style>
+		body{font-size: 13px;}
+			* {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			
+			ul li,
+			span {
+				display: block;
+			}
+			
+			
+			.Menu{width:100%;height:100px;border: 0px solid red;padding-bottom:30px;margin-top:-10px;margin-top:5px;}
+			.Menu table{width:100%;height:100%;background: #E3EEFF;padding:5px}
+			.Menu table tr td{text-align: center;color:#999999;padding-bottom: 5px;}
+			.Menu table tr td:nth-child(odd){width:60px;}
+			.Menu table tr td span{display:block;width: 90%;height:2px;background: #8D95CE;}
+			html{overflow-x:hidden;}
+		</style>
+	</head>
+
+	<body style="padding-bottom: 50px;">
+					<div class="theme">
+						<!-- theme按钮  营销指南针 进厅-->
+						<div class="container-fluid" style="background: #fff;">
+							<div class="tab-pane">
+								<div class="row yw_head">
+
+									<div class="col-lg-8 col-md-8 yw_headCon">
+										<div class="yw_headConLeft"></div>
+										筛选条件
+									</div>
+									<div class="col-lg-1 col-md-1 yw_headConxinj" style="border: 0px solid red;">
+										<a href="../NewactStep/NewactType.html" style="text-decoration: none;"><div style="border-radius: 5px;background: #0060AF;width: 100%;height: 100%;border: 0px solid red;color: #fff;"><img src="../../../images/xinjian-.png" width="20px" height="20px" />新建活动</div></a>
+									</div>
+									<div class="col-sm-3" style="padding-left:50px">
+										<div class="yw_headConsearch"><input type="text" placeholder="关键字搜索" style="border: none;outline: none;width: 65%;margin-right: 30px;" /><img src="../../../images/search.png" width="20" height="20" style="cursor: pointer;" />
+										</div>
+									</div>
+
+								</div>
+								<!--筛选条件下方内容-->
+								<div class="row huodCon">
+									<div style="width: 101%;height: 5px;background: #747BDD;"></div>
+									<div class="huodConCen col-lg-12 col-md-12 col-xs-12">
+										<div class="col-lg-7 col-md-7 col-xs-10" style="border: 0px solid red;padding: 0;">
+											<ul id="showUl1">
+											<li>业务类型：</li>
+											<li class="ywlx_li ywlx_li1" style="background: #757BDE;color: #fff">全部</li>
+											<li class="ywlx_li ywlx_li1">移动</li>
+											<li class="ywlx_li ywlx_li1">宽带</li>
+											<li class="ywlx_li ywlx_li1">流量</li>
+											<li class="ywlx_li ywlx_li1">ITV</li>
+											
+											<li class="ywlx_li ywlx_li1" style="margin-left: 130px;">流量</li>
+											<li class="ywlx_li ywlx_li1">ITV</li>
+											<li class="ywlx_li ywlx_li1">ITV</li>
+											<li class="ywlx_li ywlx_li1">ITV</li>
+											<li class="ywlx_li ywlx_li1">ITV</li>
+										</ul>
+										</div>
+										<div class="col-lg-1 col-md-1 col-xs-2" style="border: 0px solid blue;position: relative;height: 30px;padding: 0;">
+											<div style="border:0px solid green;width: 100%;height: 100%;">
+												<div class="liZd" style="width: 100%;height: 100%;border: 0px solid red;position: absolute;line-height: 30px;background: #fff;cursor: pointer;">
+			    	 								<!--<b><i class="icon-chevron-up liZd" style="cursor: pointer;display: none;position: absolute;"></i>
+			    	 							<i class="icon-chevron-down liZk" style="position: absolute;cursor: pointer;"></i>
+			    	 						</b>--><<收起
+			    	 							</div>
+			    	 							<div class="liZk" style="width: 100%;height: 100%;border: 0px solid red;position: absolute;line-height: 30px;display: none;background: #fff;cursor: pointer;">>>更多</div>
+											</div>
+										</div>
+										<div class="col-lg-7 col-md-7 col-xs-10" style="border: 0px solid red;padding: 0;">
+										<ul id="showUl2">
+											<li>场景类型：</li>
+											<li class="ywlx_li ywlx_li2" style="background: #757BDE;color: #fff">全部</li>
+											<li class="ywlx_li ywlx_li2">实时营销</li>
+											<li class="ywlx_li ywlx_li2">存量营销</li>
+											
+
+										</ul>
+										</div>
+										<div class="col-lg-1 col-md-1 col-xs-2" style="border: 0px solid blue;position: relative;height: 30px;padding: 0;">
+											<div style="border:0px solid green;width: 100%;height: 100%;">
+												<div class="liZd" style="width: 100%;height: 100%;border: 0px solid red;position: absolute;line-height: 30px;background: #fff;cursor: pointer;">
+			    	 								<!--<b><i class="icon-chevron-up liZd" style="cursor: pointer;display: none;position: absolute;"></i>
+			    	 							<i class="icon-chevron-down liZk" style="position: absolute;cursor: pointer;"></i>
+			    	 						</b>--><<收起
+			    	 							</div>
+			    	 							<div class="liZk" style="width: 100%;height: 100%;border: 0px solid red;position: absolute;line-height: 30px;display: none;background: #fff;cursor: pointer;">>>更多</div>
+											</div>
+										</div>
+										<div class="col-lg-7 col-md-7 col-xs-2" style="border: 0px solid red;padding: 0;">
+										<ul id="showUl3">
+											<li>推送方式：</li>
+											<li class="ywlx_li ywlx_li3" style="background: #757BDE;color: #fff">全部</li>
+											<li class="ywlx_li ywlx_li3">短信</li>
+											<li class="ywlx_li ywlx_li3">微信</li>
+											<li class="ywlx_li ywlx_li3">DNS</li>
+											<li class="ywlx_li ywlx_li3">Toolbar</li>
+											<li class="ywlx_li ywlx_li3" style="margin-left: 130px;">派单</li>
+											
+										</ul>
+										</div>
+										<div class="col-lg-1 col-md-1 col-xs-2" style="border: 0px solid blue;position: relative;height: 30px;padding: 0;">
+											<div style="border:0px solid green;width: 100%;height: 100%;">
+												<div class="liZd" style="width: 100%;height: 100%;border: 0px solid red;position: absolute;line-height: 30px;background: #fff;cursor: pointer;">
+			    	 								<!--<b><i class="icon-chevron-up liZd" style="cursor: pointer;display: none;position: absolute;"></i>
+			    	 							<i class="icon-chevron-down liZk" style="position: absolute;cursor: pointer;"></i>
+			    	 						</b>--><<收起
+			    	 							</div>
+			    	 							<div class="liZk" style="width: 100%;height: 100%;border: 0px solid red;position: absolute;line-height: 30px;display: none;background: #fff;cursor: pointer;">>>更多</div>
+											</div>
+										</div>
+										<div class="col-lg-7 col-md-7 col-xs-2" style="border: 0px solid red;padding: 0;">
+										<ul id="showUl4">
+											<li>活动状态：</li>
+											<li class="ywlx_li ywlx_li4" style="background: #757BDE;color: #fff">全部</li>
+											<li class="ywlx_li ywlx_li4">未发布</li>
+											<li class="ywlx_li ywlx_li4">已发布</li>
+											<li class="ywlx_li ywlx_li4">已下线</li>
+											
+
+										</ul>
+										</div>
+										<div class="col-lg-1 col-md-1 col-xs-2" style="border: 0px solid blue;position: relative;height: 30px;padding: 0;">
+											<div style="border:0px solid green;width: 100%;height: 100%;">
+												<div class="liZd" style="width: 100%;height: 100%;border: 0px solid red;position: absolute;line-height: 30px;background: #fff;cursor: pointer;">
+			    	 								<!--<b><i class="icon-chevron-up liZd" style="cursor: pointer;display: none;position: absolute;"></i>
+			    	 							<i class="icon-chevron-down liZk" style="position: absolute;cursor: pointer;"></i>
+			    	 						</b>--><<收起
+			    	 							</div>
+			    	 							<div class="liZk" style="width: 100%;height: 100%;border: 0px solid red;position: absolute;line-height: 30px;display: none;background: #fff;cursor: pointer;">>>更多</div>
+											</div>
+										</div>
+										<div class="col-lg-7 col-md-7 col-xs-2" style="border: 0px solid red;padding: 0;">
+										<ul id="showUl5">
+											<li>创建时间：</li>
+											<li class="ywlx_li ywlx_li5" style="background: #757BDE;color: #fff">全部</li>
+											<li class="ywlx_li ywlx_li5">最近一周</li>
+											<li class="ywlx_li ywlx_li5">最近半月</li>
+											<li class="ywlx_li ywlx_li5">最近一月</li>
+											<li class="ywlx_li ywlx_li5">最近两月</li>
+											<li class="ywlx_li ywlx_li5" style="margin-left: 130px;">最近两月</li>
+											<li class="ywlx_li ywlx_li5">最近两月</li>
+											<li class="ywlx_li ywlx_li5">最近两月</li>
+											
+										</ul>
+										</div>
+										<div class="col-lg-1 col-md-1 col-xs-2" style="border: 0px solid blue;position: relative;height: 30px;padding: 0;">
+											<div style="border:0px solid green;width: 100%;height: 100%;">
+												<div class="liZd" style="width: 100%;height: 100%;border: 0px solid red;position: absolute;line-height: 30px;background: #fff;cursor: pointer;">
+			    	 								<!--<b><i class="icon-chevron-up liZd" style="cursor: pointer;display: none;position: absolute;"></i>
+			    	 							<i class="icon-chevron-down liZk" style="position: absolute;cursor: pointer;"></i>
+			    	 						</b>--><<收起
+			    	 							</div>
+			    	 							<div class="liZk" style="width: 100%;height: 100%;border: 0px solid red;position: absolute;line-height: 30px;display: none;background: #fff;cursor: pointer;">>>更多</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--活动名称及状态-->
+								<div class="row huodZt">
+									<table class="table" style="padding:20px;">
+										<tbody>
+											<tr>
+												<th style="padding:20px 10px;color: #757DDD;border:none" colspan="5">活动名称1</th>
+												<th style="padding:23px 0 20px 3%;color: #f00;border: none;" align="right">已发布</th>
+											</tr>
+											<tr>
+												<td>活动编号：010266</td>
+												<td>归属业务：移动</td>
+												<td>归属场景：存量营销</td>
+												<td>目标用户数：2341</td>
+												<td>波次：一日2次</td>
+												<td>
+													<a href="../NewactStep/NewactStepHDpg.html" style="text-decoration: none;"><div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #51BB56;color: #fff;border-radius: 5px;cursor: pointer;">查看</div></a>
+												</td>
+											</tr>
+
+											<tr>
+												<td colspan="1" style="border: none;">创建时间：2016-12-26</td>
+												<td colspan="4" style="border: none;">策划人：张三</td>
+												<td style="border: none;">
+													<a href="../NewactStep/NewActStepActlx.html" style="text-decoration: none;"><div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #53C0E0;color: #fff;border-radius: 5px;cursor: pointer;">复制</div></a>
+												</td>
+											</tr>
+
+										</tbody>
+									</table>
+									<table class="table" style="padding:20px;">
+										<tbody>
+											<tr>
+												<th style="padding:20px 10px;color: #757DDD;" colspan="5">活动名称2</th>
+												<th style="padding:23px 0 20px 3%;color: #000;" align="right">已下线</th>
+											</tr>
+											<tr>
+												<td>活动编号：010266</td>
+												<td>归属业务：移动</td>
+												<td>归属场景：存量营销</td>
+												<td>目标用户数：2341</td>
+												<td>波次：一日2次</td>
+												<td>
+													<div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #51BB56;color: #fff;border-radius: 5px;cursor: pointer;">查看</div>
+												</td>
+											</tr>
+
+											<tr>
+												<td colspan="1" style="border: none;">创建时间：2016-12-26</td>
+												<td colspan="4" style="border: none;">策划人：张三</td>
+												<td style="border: none;">
+													<div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #53C0E0;color: #fff;border-radius: 5px;cursor: pointer;">复制</div>
+												</td>
+											</tr>
+
+										</tbody>
+									</table>
+									<table class="table" style="padding:20px;">
+										<tbody>
+											<tr>
+												<th style="padding:20px 10px;color: #757DDD;" colspan="5">活动名称3</th>
+												<th style="padding:23px 0 20px 3%;color: #51BA54;" align="right">未发布</th>
+											</tr>
+											<tr>
+												<td>活动编号：010266</td>
+												<td>归属业务：移动</td>
+												<td>归属场景：存量营销</td>
+												<td>目标用户数：2341</td>
+												<td>波次：一日2次</td>
+												<td>
+													<div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #51BB56;color: #fff;border-radius: 5px;cursor: pointer;">查看</div>
+												</td>
+											</tr>
+
+											<tr>
+												<td colspan="1" style="border: none;">创建时间：2016-12-26</td>
+												<td colspan="4" style="border: none;">策划人：张三</td>
+												<td style="border: none;">
+													<div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #DE524B;color: #fff;border-radius: 5px;cursor: pointer;">删除</div>
+												</td>
+											</tr>
+
+										</tbody>
+									</table>
+									<table class="table" style="padding:20px;">
+										<tbody>
+											<tr>
+												<th style="padding:20px 10px;color: #757DDD;" colspan="5">模板1</th>
+												<th style="padding:23px 0 20px 3%;color: #0060B0;" align="right">★省级模板</th>
+											</tr>
+											<tr>
+												<td>活动编号：010266</td>
+												<td>归属业务：移动</td>
+												<td>归属场景：存量营销</td>
+												<td>目标用户数：2341</td>
+												<td>波次：一日2次</td>
+												<td>
+													<div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #51BB56;color: #fff;border-radius: 5px;cursor: pointer;">引用</div>
+												</td>
+											</tr>
+
+											<tr>
+												<td colspan="6" style="border: none;">创建时间：2016-12-26</td>
+
+											</tr>
+
+										</tbody>
+									</table>
+									<table class="table" style="padding:20px;">
+										<tbody>
+											<tr>
+												<th style="padding:20px 10px;color: #757DDD;" colspan="5">活动名称4</th>
+												<th style="padding:23px 0 20px 3%;color: #FF3A3A;" align="right">已发布</th>
+											</tr>
+											<tr>
+												<td>活动编号：010266</td>
+												<td>归属业务：移动</td>
+												<td>归属场景：存量营销</td>
+												<td>目标用户数：2341</td>
+												<td>波次：一日2次</td>
+												<td>
+													<div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #51BB56;color: #fff;border-radius: 5px;cursor: pointer;">查看</div>
+												</td>
+											</tr>
+
+											<tr>
+												<td colspan="1" style="border: none;">创建时间：2016-12-26</td>
+												<td colspan="4" style="border: none;">策划人：张三</td>
+												<td style="border: none;">
+													<div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #53C0E0;color: #fff;border-radius: 5px;cursor: pointer;">复制</div>
+												</td>
+											</tr>
+
+										</tbody>
+									</table>
+									<table class="table" style="padding:20px;">
+										<tbody>
+											<tr>
+												<th style="padding:20px 10px;color: #757DDD;" colspan="5">活动名称5</th>
+												<th style="padding:23px 0 20px 3%;color: #000;" align="right">已下线</th>
+											</tr>
+											<tr>
+												<td>活动编号：010266</td>
+												<td>归属业务：移动</td>
+												<td>归属场景：存量营销</td>
+												<td>目标用户数：2341</td>
+												<td>波次：一日2次</td>
+												<td>
+													<div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #51BB56;color: #fff;border-radius: 5px;cursor: pointer;">查看</div>
+												</td>
+											</tr>
+
+											<tr>
+												<td colspan="1" style="border: none;">创建时间：2016-12-26</td>
+												<td colspan="4" style="border: none;">策划人：张三</td>
+												<td style="border: none;">
+													<div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #53C0E0;color: #fff;border-radius: 5px;cursor: pointer;">复制</div>
+												</td>
+											</tr>
+
+										</tbody>
+									</table>
+									<!--<table border="0" cellpadding="0" cellspacing="0">
+	    	 	    		<tr>
+	    	 	    			<td colspan="5">活动名称1</td>
+	    	 	    			<td>已发布</td>
+	    	 	    		</tr>
+	    	 	    		<tr>
+	    	 	    			<td>活动编号：010266</td>
+	    	 	    			<td>归属业务：移动</td>
+	    	 	    			<td>归属场景：存量营销</td>
+	    	 	    			<td>目标用户数：2341</td>
+	    	 	    			<td>波次：一日2次</td>
+	    	 	    			<td><div style="cursor: pointer;width: 100%;height: 100%;background:#54B958;color: #fff;">查看</div></td>
+	    	 	    		</tr>
+	    	 	    		<tr>
+	    	 	    			<td colspan="1">创建时间：2016-12-26</td>
+	    	 	    			<td colspan="4">策划人：张三</td>
+	    	 	    			<td><div style="cursor: pointer;width: 100%;height: 100%;background:#53C0E0;color: #fff;">复制</div></td>
+	    	 	    		</tr>
+	    	 	    	</table>-->
+									<!--分页-->
+									<div class="fenye">
+										<div class="fenye_left">共
+											<font color="#4489C5">21</font>条记录，1/5页</div>
+										<ul>
+											<li>1</li>
+											<li>2</li>
+											<li>3</li>
+											<li>4</li>
+											<li>5</li>
+										</ul>
+										<div class="fenye_right">
+											<div style="float: left;margin-right: 10px;white-space: auto;height: 90%;border: 0px solid red;line-height: 25px;">到第</div>&nbsp;<input type="text" style="width: 25px;height: 25px;outline: none;float: left;margin-right: 10px;text-align: center;line-height: 25px;" value="1" /> &nbsp;
+											<div style="float: left;width: 50px; height: 90%;background: #737BDE;color: #fff;text-align: center;line-height: 25px;cursor: pointer;">前往</div>
+										</div>
+									</div>
+								</div>
+
+								
+								<!-- /.modal -->
+
+
+
+
+							</div>
+
+						</div>
+
+					
+
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+	</body>
+
+</html>
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        pickerPosition: "bottom-left"
+    });
+</script> 
+<!--<script type="text/javascript">
+	$(function() {
+		$("#new_activite_modal").click(showBusModal);
+		$(".xiayb1").click(showMuBiao);
+	})
+
+	function showBusModal() {
+		$("#activite_modal").modal({
+			backdrop: 'static',
+			/*背景变暗，且关闭模态窗体后才能操作页面上的内容*/
+		});
+	}
+	function showMuBiao(){
+		$("#mubiao_modal").modal({
+			backdrop:'static',
+		});
+	}
+</script>-->
+<script>
+	$(function() {
+		kk1 = $(".ywlx_li1");
+		len = kk1.length;
+		kk1.click(function() {
+			//alert($(this).index());
+			ch1($(this).index());
+			//alert("aa");
+		});
+	});
+
+	function ch1(n) {
+		kk1.css({
+			"background": "#fff",
+			"color": "#000"
+		}).eq(n - 1).css({
+			"background": "#757BDE",
+			"color": "#fff"
+		});
+	}
+</script>
+<script>
+	$(function() {
+		kk2 = $(".ywlx_li2");
+		len = kk2.length;
+		kk2.click(function() {
+			//alert($(this).index());
+			ch2($(this).index());
+			//alert("aa");
+		});
+	});
+
+	function ch2(n) {
+		kk2.css({
+			"background": "#fff",
+			"color": "#000"
+		}).eq(n - 1).css({
+			"background": "#757BDE",
+			"color": "#fff"
+		});
+	}
+</script>
+<script>
+	$(function() {
+		kk3 = $(".ywlx_li3");
+		len = kk3.length;
+		kk3.click(function() {
+			//alert($(this).index());
+			ch3($(this).index());
+			//alert("aa");
+		});
+	});
+
+	function ch3(n) {
+		kk3.css({
+			"background": "#fff",
+			"color": "#000"
+		}).eq(n - 1).css({
+			"background": "#757BDE",
+			"color": "#fff"
+		});
+	}
+</script>
+<script>
+	$(function() {
+		kk4 = $(".ywlx_li4");
+		len = kk4.length;
+		kk4.click(function() {
+			//alert($(this).index());
+			ch4($(this).index());
+			//alert("aa");
+		});
+	});
+
+	function ch4(n) {
+		kk4.css({
+			"background": "#fff",
+			"color": "#000"
+		}).eq(n - 1).css({
+			"background": "#757BDE",
+			"color": "#fff"
+		});
+	}
+</script>
+<script>
+	$(function() {
+		kk5 = $(".ywlx_li5");
+		len = kk5.length;
+		kk5.click(function() {
+			//alert($(this).index());
+			ch5($(this).index());
+			//alert("aa");
+		});
+	});
+
+	function ch5(n) {
+		kk5.css({
+			"background": "#fff",
+			"color": "#000"
+		}).eq(n - 1).css({
+			"background": "#757BDE",
+			"color": "#fff"
+		});
+	}
+</script>
+<script type="text/javascript">
+	$(function(){
+		
+		var len1=$("#showUl1").find("li").length-1;
+		if(len1>5){
+			$("#showUl1").parent().next().find("div").css("display","block");
+		}else{$("#showUl1").parent().next().find("div").css("display","none");}
+		var len2=$("#showUl2").find("li").length-1;
+		if(len2>5){
+			$("#showUl2").parent().next().find("div").css("display","block");
+		}else{$("#showUl2").parent().next().find("div").css("display","none");}
+		var len3=$("#showUl3").find("li").length-1;
+		if(len3>5){
+			$("#showUl3").parent().next().find("div").css("display","block");
+		}else{$("#showUl3").parent().next().find("div").css("display","none");}
+		var len4=$("#showUl4").find("li").length-1;
+		if(len4>5){
+			$("#showUl4").parent().next().find("div").css("display","block");
+		}else{$("#showUl4").parent().next().find("div").css("display","none");}
+		var len5=$("#showUl5").find("li").length-1;
+		if(len5>5){
+			$("#showUl5").parent().next().find("div").css("display","block");
+		}else{$("#showUl5").parent().next().find("div").css("display","none");}
+		
+		$(".liZd").click(function(){
+			$(this).parent().parent().prev().find("ul").css("height","30px");
+			$(this).css("display","none");
+			$(this).next().css("display","block");
+		});
+		$(".liZk").click(function(){
+			
+			$(this).parent().parent().prev().find("ul").css("height","auto");
+			$(this).css("display","none");
+			$(this).prev().css("display","block");
+//			$(this).sibling("i").ccs("display","block");
+//			$(this).css("display","none");
+		})
+	});
+	
+</script>

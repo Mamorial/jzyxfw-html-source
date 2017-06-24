@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>智慧物联</title>
+
+	<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" >
+	<link rel="stylesheet" type="text/css"  href="src/style/base.css">
+	<!--[if lte IE 8]>
+    <script type="text/javascript" src="lib/other/html5.min.js"></script>
+    <script type="text/javascript" src="lib/other/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+	<!--<div id="top">
+		<div class="container">
+			<a href="index.html" id="homeLink"><span></span>首页</a>
+			<a href="about.html" id="aboutLink">关于我们</a>
+			<a href="#" id="controlLink">显示管理</a>
+		</div>
+	</div>-->
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-12 col-md-12 col-xs-12">
+				<div ui-view></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="lib/require/require.min.js" data-main="src/script/config"></script>
+</html>

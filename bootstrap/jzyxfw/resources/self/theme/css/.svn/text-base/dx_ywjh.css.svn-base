@@ -1,0 +1,114 @@
+
+body {
+    background-image: none;
+    background-color: #ffffff;
+}
+
+/* 一级菜单区域*/
+#levelOneMenu > li > a {
+    color: #FFFFFF;
+}
+
+#levelOneMenu .active:after {
+    border-bottom-color: white;
+
+}
+
+#header_menu .navbar-inverse {
+    background-color: #488FD2;
+    color: #000000;
+    border-color: #dfefff;
+}
+
+#header_menu .navbar-brand {
+    color: #ffffff;
+
+}
+
+#header_menu .navbar-brand:hover {
+    color: #ffffff;
+
+}
+
+#header_menu .navbar-inverse .navbar-nav > .active > a, #header_menu .navbar-inverse .navbar-nav > .active > a:focus, #header_menu .navbar-inverse .navbar-nav > .active > a:hover, #header_menu .navbar-inverse .navbar-nav > .open > a, #header_menu .navbar-inverse .navbar-nav > .open > a:focus, #header_menu .navbar-inverse .navbar-nav > .open > a:hover {
+    background-color: #0156A7;
+}
+
+/* 当子菜单隐藏时的按钮*/
+#menu_area_show {
+    color: rgba(0, 0, 0, 0.66);
+}
+
+#menu_area_show:hover {
+    color: rgb(255, 255, 255);
+}
+
+/* 子菜单区域*/
+#menu_area {
+    background-color: white;
+}
+
+#menu-sidebar i {
+    color: #000000;
+}
+
+#menu-sidebar:after {
+    /*border-top: 1px SOLID #FFFFFF;*/
+    border: 0;
+}
+
+/* 子菜单中的按钮*/
+#menu_buttons {
+    border-bottom: 1px solid #A0A0A0;
+}
+
+/* 子菜单中的菜单项*/
+#menu_area .list-group-item {
+    border-bottom: 1px solid #A0A0A0;
+    color: #000000;
+}
+
+#menu_area .list-group-item i {
+    color: #000;
+}
+
+#menu_area .list-group-item:hover {
+    background-color: rgba(208, 226, 255, 0.25);
+    border-left: 3px solid rgb(72, 143, 210);
+}
+
+/* 子菜单中的选中效果*/
+#menu_area .cur {
+    background-color: rgba(208, 226, 255, 0.55);
+    border-left: 3px solid #0156A7;
+}
+
+#menu_area .cur:hover {
+    background-color: rgba(208, 226, 255, 0.90);
+}
+
+#menu_area .cur .menu-content:after {
+    border-right-color: rgba(40, 37, 37, 0.75);
+}
+
+#menu_area .cur:after {
+    border-right: 2px solid rgba(40, 37, 37, 0.75);
+}
+
+/* 覆盖jquery。datatables样式*/
+
+.table tbody tr.selected {
+    background-color: rgba(92, 184, 92, 0.6);
+    color: #000000;
+}
+
+.table.hover tbody tr:hover.selected, .table.hover tbody tr.odd:hover.selected, .table.hover tbody tr.even:hover.selected, .table tbody tr:hover.selected, .table tbody tr.odd:hover.selected, .table tbody tr.even:hover.selected {
+    background-color: rgba(92, 184, 92, 0.9);
+    color: #000000;
+}
+
+.table > tbody .even:hover, .table > tbody .odd:hover {
+    background-color: rgba(92, 184, 92, 0.3);
+}
+
+

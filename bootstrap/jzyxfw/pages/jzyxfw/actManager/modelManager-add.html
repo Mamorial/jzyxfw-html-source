@@ -1,0 +1,977 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/shouye.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/style/style.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../../resources/echarts/js/echarts.js"></script>
+		<!--
+	  	<link href="../../../resources/jquery/jquery-treetable-2.3.0/doc/stylesheets/master.css" rel="stylesheet" type="text/css" />
+	  	<link href="../../../resources/jquery/jquery-treetable-2.3.0/src/stylesheets/jquery.treeTable.css" rel="stylesheet" type="text/css" />
+	  	<script type="text/javascript" src="../../../resources/jquery/jquery-treetable-2.3.0/src/javascripts/jquery.treeTable.js"></script>
+	 -->
+
+		<link href="../../../resources/jquery-treegrid-0.3.0-3/css/jquery.treegrid.css" rel="stylesheet" type="text/css" />
+		<link href="../../../resources/jquery-treegrid-0.3.0-3/css/styles.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="../../../resources/jquery-treegrid-0.3.0-3/js/jquery.treegrid.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery-treegrid-0.3.0-3/js/jquery.treegrid.bootstrap3.js"></script>
+		<!-- 系统js-->
+		<script type="text/javascript" src="../../../resources/viewJs/sys/util.js"></script>
+		<!-- 	
+	    <link href="../../../resources/jquery.dataTables/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
+	 	<script type="text/javascript" src="../../../resources/jquery.dataTables/js/dataTables.bootstrap.js"></script>
+	 	<script type="text/javascript" src="../../../resources/jquery.dataTables/js/jquery.dataTables.cn.js"></script>
+	 	 -->
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+				initPage();
+				initBusTreeGrid();
+			});
+
+			function initPage() {
+				var modalType = getQueryString("modalType");
+				var addType = getQueryString("addType");
+				if(addType == 1) {
+					$("#act_modal").hide();
+					$("#blank_modal").show();
+				} else if(addType == 2) {
+					$("#act_modal").show();
+					$("#blank_modal").hide();
+				}
+
+				initGridSelectRowStyle($('.tree'));
+			}
+
+			function initBusTreeGrid() {
+				$('.tree').treegrid({
+					initialState: 'expanded',
+					saveState: false,
+					saveStateMethod: 'cookie',
+					saveStateName: 'tree-grid-state',
+					expanderTemplate: '<span class="treegrid-expander"></span>',
+					indentTemplate: '<span class="treegrid-indent"></span>',
+					expanderExpandedClass: 'treegrid-expander-expanded',
+					expanderCollapsedClass: 'treegrid-expander-collapsed',
+					treeColumn: 0,
+					getExpander: function() {
+						return $(this).find('.treegrid-expander');
+					},
+					getNodeId: function() {
+						var template = /treegrid-([A-Za-z0-9_-]+)/;
+						if(template.test($(this).attr('class'))) {
+							return template.exec($(this).attr('class'))[1];
+						}
+						return null;
+					},
+					getParentNodeId: function() {
+						var template = /treegrid-parent-([A-Za-z0-9_-]+)/;
+						if(template.test($(this).attr('class'))) {
+							return template.exec($(this).attr('class'))[1];
+						}
+						return null;
+					},
+					getNodeById: function(id, treegridContainer) {
+						var templateClass = "treegrid-" + id;
+						return treegridContainer.find('tr.' + templateClass);
+					},
+					getChildNodes: function(id, treegridContainer) {
+						var templateClass = "treegrid-parent-" + id;
+						return treegridContainer.find('tr.' + templateClass);
+					},
+					getTreeGridContainer: function() {
+						return $(this).closest('table');
+					},
+					getRootNodes: function(treegridContainer) {
+						var result = $.grep(treegridContainer.find('tr'), function(element) {
+							var classNames = $(element).attr('class');
+							var templateClass = /treegrid-([A-Za-z0-9_-]+)/;
+							var templateParentClass = /treegrid-parent-([A-Za-z0-9_-]+)/;
+							return templateClass.test(classNames) && !templateParentClass.test(classNames);
+						});
+						return $(result);
+					},
+					getAllNodes: function(treegridContainer) {
+						var result = $.grep(treegridContainer.find('tr'), function(element) {
+							var classNames = $(element).attr('class');
+							var templateClass = /treegrid-([A-Za-z0-9_-]+)/;
+							return templateClass.test(classNames);
+						});
+						return $(result);
+					},
+					//Events
+					onCollapse: null,
+					onExpand: null,
+					onChange: null
+
+				});
+				initGridSelectRowStyle($('.tree'));
+				//$('.tree').treegrid('collapseAll');
+			}
+
+			function blank_next_step() {
+				$("#modal_blank_step1").hide();
+				$("#modal_blank_step2").show();
+
+				$("#blank_save").show();
+				$("#blank_next_step").hide();
+			}
+
+			function blank_pre_step() {
+				$("#modal_blank_step1").show();
+				$("#modal_blank_step2").hide();
+
+				$("#blank_save").hide();
+				$("#blank_next_step").show();
+			}
+
+			function act_save() {
+				alert("保存成功");
+			}
+		</script>
+		<style>
+			.blankButton {
+				width: 80px;
+				height: 40px;
+				margin-left: 10px;
+				margin-right: 10px;
+				text-align: "center";
+				line-height: "30px";
+			}
+			
+			.innerDIVTitle {
+				color: white;
+				float: left;
+				height: 100%;
+				width: 120px;
+				padding-left: 30px;
+				padding-top: 15px;
+				padding-right: 30px;
+				border: 0px solid red;
+			}
+			
+			.innerDIVTitle:hover {
+				background: rgba(139, 181, 191, 1);
+				cursor: pointer;
+			}
+			
+			.innerDIVTitle-active {
+				background: rgba(139, 181, 191, 1);
+			}
+			html{overflow-x:hidden;}
+		</style>
+		<!-- END Plugin Code -->
+	</head>
+
+	<body>
+		<!--新增空白模板-->
+		<div class="theme" style="background-color: white;display:none;" id="blank_modal">
+			<!-- theme按钮  营销指南针 进厅-->
+			<div class="container-fluid" style="background-color: white;">
+				<!--主题内容-->
+				<div class="row themeCon " style="background-color: white;">
+					<div class="row col-lg-12" style="border:0px solid red;background-color: white;">
+						<ul class="nav nav-tabs">
+							<li class="active">
+								<a href="#con1" data-toggle="tab" class="tjTab" style="border-top:1px solid blue;border-radius: 0;background: #F2F2E8;"><b>新增空白模板</b></a>
+							</li>
+							<!--
+	                 	<li><a href="#con2" data-toggle="tab" class="jsTab" style="border-radius: 0;"><b>申请审批</b></a></li>
+			           -->
+						</ul>
+						<div class="tab-content" style="border:0px solid #ddd;border-top:none;padding: 50px 0 0 10px;border-radius: 0 0 5px 5px;">
+							<!--业务-->
+							<div id="con1" class="tab-pane active">
+								<!--新增模板第一步-->
+								<div id=modal_blank_step1>
+									<!--筛选条件下方内容-->
+									<div class="row huodCon" style="margin-top:-10px;">
+										<table style="padding:20px;border:0px solid red;">
+											<tbody>
+												<tr height="50px">
+													<td style="text-align:center;width:40px;" valign="center" align="left">
+														<label for="business_name" style="font-size: 12px;">模板名称:</label></td>
+													<td style="text-align:center;width:300px;">
+														<input type="text" class="form-control" style="width:250px;" id="business_name" placeholder="请输入名称"></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+									<div>
+										<div class="row huodZt">
+											<table class="tree">
+												<thead>
+													<tr>
+														<td>名称</td>
+														<td>申请人</td>
+														<td>申请时间</td>
+														<td>请选择</td>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="treegrid-1">
+														<td>宽带</td>
+														<td>赵xx</td>
+														<td>2016-12-27</td>
+														<td></td>
+													</tr>
+													<tr class="treegrid-2 treegrid-parent-1">
+														<td>低零用户</td>
+														<td>赵xx</td>
+														<td>2016-12-27</td>
+														<td>
+															<input class="states" type="checkbox" name="ids" value="2" />
+														</td>
+													</tr>
+													<tr class="treegrid-3 treegrid-parent-1">
+														<td>懵懂型</td>
+														<td>赵xx</td>
+														<td>2016-12-27</td>
+														<td>
+															<input class="states" type="checkbox" name="ids" value="2" />
+														</td>
+													</tr>
+													<tr class="treegrid-4">
+														<td>流量</td>
+														<td>赵xx</td>
+														<td>2016-12-27</td>
+														<td></td>
+													</tr>
+													<tr class="treegrid-5 treegrid-parent-4">
+														<td>懵懂型</td>
+														<td>赵xx</td>
+														<td>2016-12-27</td>
+														<td>
+															<input class="states" type="checkbox" name="ids" value="2" />
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+
+									</div>
+								</div>
+								<!--新增模板第二步-->
+								<div id=modal_blank_step2 style="display:none;">
+
+									<div class="muBiaosx" style="width: 100%;height: 30px;border: 0px solid red;margin-top:10px;">
+										<ul>
+											<li>已选标签:</li>
+											<li>本地网ID<button style="margin-top:3px" class="close" data-dismiss="li">&times;</button></li>
+											<li style="width: 130px;">是否无线宽带<button style="margin-top:3px" class="close" data-dismiss="li">&times;</button></li>
+											<li>用户名ID<button style="margin-top:3px" class="close" data-dismiss="li">&times;</button></li>
+											<li style="width: 80px;">号码<button style="margin-top:3px" class="close" data-dismiss="li">&times;</button></li>
+										</ul>
+									</div>
+
+									<div class="row" style="width: 100%;margin-left: 0px;margin-top: 10px;">
+										<table class="table">
+											<tbody>
+												<tr>
+													<td height="40px" colspan="7" style="background: #8D95CE; color: #fff;">过滤条件</td>
+												</tr>
+												<tr style="background: #F5F6FA;">
+													<td>括号</td>
+													<td>条件名称</td>
+													<td>关系符</td>
+													<td>阈值</td>
+													<td>括号</td>
+													<td>关联符</td>
+													<td>删除</td>
+												</tr>
+												<tr>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>(</option>
+																	<option>((</option>
+																	<option>(((</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form class="bs-example bs-example-form" role="form" style="width: 100%;float: left;margin-top:0px;">
+
+															<div class="input-group" style="width: 100%;">
+																<input type="text" class="form-control" style="border-radius: 5px;" placeholder="用户类型(流量使用)">
+
+															</div>
+
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>小于等于</option>
+																	<option>等于</option>
+																	<option>小于</option>
+																	<option>大于</option>
+																	<option>大于等于</option>
+
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>奢侈型</option>
+																	<option>豪华型</option>
+																	<option>聚划算</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>)</option>
+																	<option>))</option>
+																	<option>)))</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>并且</option>
+																	<option>或者</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;"><img src="../../../images/deleat.png" width="35px" /></td>
+												</tr>
+												<tr>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>(</option>
+																	<option>((</option>
+																	<option>(((</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form class="bs-example bs-example-form" role="form" style="width: 100%;float: left;margin-top:0px;">
+
+															<div class="input-group" style="width: 100%;">
+																<input type="text" class="form-control" style="border-radius: 5px;" placeholder="用户类型(流量使用)">
+
+															</div>
+
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>小于等于</option>
+																	<option>等于</option>
+																	<option>小于</option>
+																	<option>大于</option>
+																	<option>大于等于</option>
+
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>奢侈型</option>
+																	<option>豪华型</option>
+																	<option>聚划算</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>)</option>
+																	<option>))</option>
+																	<option>)))</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>并且</option>
+																	<option>或者</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;"><img src="../../../images/deleat.png" width="35px" /></td>
+												</tr>
+												<tr>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>(</option>
+																	<option>((</option>
+																	<option>(((</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form class="bs-example bs-example-form" role="form" style="width: 100%;float: left;margin-top:0px;">
+
+															<div class="input-group" style="width: 100%;">
+																<input type="text" class="form-control" style="border-radius: 5px;" placeholder="用户类型(流量使用)">
+
+															</div>
+
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>小于等于</option>
+																	<option>等于</option>
+																	<option>小于</option>
+																	<option>大于</option>
+																	<option>大于等于</option>
+
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>奢侈型</option>
+																	<option>豪华型</option>
+																	<option>聚划算</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>)</option>
+																	<option>))</option>
+																	<option>)))</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;">
+														<form role="form" style="width: 95%;float: left;margin-top:0px;">
+															<div class="form-group">
+																<select class="form-control">
+																	<option>并且</option>
+																	<option>或者</option>
+																</select>
+																</select>
+															</div>
+														</form>
+													</td>
+													<td style="padding-bottom: 0;"><img src="../../../images/deleat.png" width="35px" /></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+
+									<div class="row" style="width: 100%;margin-left: 0px;margin-top: 10px;">
+										<div style="background: #8D95CE; color: #fff;width: 100%;height: 40px;line-height: 40px;padding-left: 8px;">可选择的标签</div>
+										<div style="width: 30%;height: auto;border: 0px solid red;float: left;">
+											<div style="width: 100%;">
+												<div class="panel panel-primary" style="border: none;">
+
+													<div class="panel-body" style="background: #EEEEEE;height:425px;">
+														<ul id="treeDemo" class="ztree"></ul>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="celueTab" style="width: 70%;height: auto;border: 0px solid red;float: left;">
+											<table class="table table-bordered">
+												<tbody>
+													<tr style="background: #F5F6FA;">
+														<td></td>
+														<td align="center">标签名称</td>
+														<td align="center">是否显示</td>
+														<td align="center">过滤条件</td>
+													</tr>
+													<tr>
+														<td align="center">1</td>
+														<td align="center">本地网ID</td>
+														<td align="center"><input type="radio" checked="checked" name="check1" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check1" id="no" />否</td>
+														<td align="center">
+															<div style="background:#5CB85D;color:#fff;width: 40%;height: 30px;border: 0px solid red;border-radius: 5px;cursor: pointer;line-height: 30px;"><i class="icon-plus"></i>&nbsp;<b>添加</b></div>
+														</td>
+													</tr>
+													<tr>
+														<td align="center">2</td>
+														<td align="center">营业部标签</td>
+														<td align="center"><input type="radio" checked="checked" name="check2" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check2" id="no" />否</td>
+														<td align="center">
+															<div style="background:#5CB85D;color:#fff;width: 40%;height: 30px;border: 0px solid red;border-radius: 5px;cursor: pointer;line-height: 30px;"><i class="icon-plus"></i>&nbsp;<b>添加</b></div>
+														</td>
+													</tr>
+													<tr>
+														<td align="center">3</td>
+														<td align="center">是否无线宽带</td>
+														<td align="center"><input type="radio" name="check3" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" checked="checked" name="check3" id="no" />否</td>
+														<td align="center">
+															<div style="background:#5CB85D;color:#fff;width: 40%;height: 30px;border: 0px solid red;border-radius: 5px;cursor: pointer;line-height: 30px;"><i class="icon-plus"></i>&nbsp;<b>添加</b></div>
+														</td>
+													</tr>
+													<tr>
+														<td align="center">4</td>
+														<td align="center">套餐内可用流量</td>
+														<td align="center"><input type="radio" checked="checked" name="check4" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check4" id="no" />否</td>
+														<td align="center">
+															<div style="background:#5CB85D;color:#fff;width: 40%;height: 30px;border: 0px solid red;border-radius: 5px;cursor: pointer;line-height: 30px;"><i class="icon-plus"></i>&nbsp;<b>添加</b></div>
+														</td>
+													</tr>
+													<tr>
+														<td align="center">5</td>
+														<td align="center">用户ID</td>
+														<td align="center"><input type="radio" name="check5" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check5" id="no" checked="checked" />否</td>
+														<td align="center">
+															<div style="background:#5CB85D;color:#fff;width: 40%;height: 30px;border: 0px solid red;border-radius: 5px;cursor: pointer;line-height: 30px;"><i class="icon-plus"></i>&nbsp;<b>添加</b></div>
+														</td>
+													</tr>
+													<tr>
+														<td align="center">6</td>
+														<td align="center">付费模式</td>
+														<td align="center"><input type="radio" name="check6" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check6" id="no" checked="checked" />否</td>
+														<td align="center">
+															<div style="background:#5CB85D;color:#fff;width: 40%;height: 30px;border: 0px solid red;border-radius: 5px;cursor: pointer;line-height: 30px;"><i class="icon-plus"></i>&nbsp;<b>添加</b></div>
+														</td>
+													</tr>
+													<tr>
+														<td align="center">7</td>
+														<td align="center">号码</td>
+														<td align="center"><input type="radio" name="check7" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check7" id="no" checked="checked" />否</td>
+														<td align="center">
+															<div style="background:#5CB85D;color:#fff;width: 40%;height: 30px;border: 0px solid red;border-radius: 5px;cursor: pointer;line-height: 30px;"><i class="icon-plus"></i>&nbsp;<b>添加</b></div>
+														</td>
+													</tr>
+													<tr>
+														<td align="center">8</td>
+														<td align="center">总可用流量</td>
+														<td align="center"><input type="radio" checked="checked" name="check8" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check8" id="no" />否</td>
+														<td align="center">
+															<div style="background:#5CB85D;color:#fff;width: 40%;height: 30px;border: 0px solid red;border-radius: 5px;cursor: pointer;line-height: 30px;"><i class="icon-plus"></i>&nbsp;<b>添加</b></div>
+														</td>
+													</tr>
+
+												</tbody>
+											</table>
+										</div>
+									</div>
+
+								</div>
+								
+								<!--根据业务场景显示相关的按钮操作-->
+								<div class="row yw_head">
+									<button type="button" class="btn btn-default blankButton" style="float:right;" onclick="blank_next_step();" id=blank_next_step>下一步</button>
+									<button type="button" class="btn btn-default blankButton" style="float:right;display:none;" onclick="blank_save();" id=blank_save>创    建</button>
+									<button type="button" class="btn btn-default blankButton" style="float:right;" onclick="blank_pre_step();" id=blank_pre_step>上一步</button>
+									<div style="clear:both;"></div>
+								</div>
+
+							</div>
+
+							<!--场景-->
+							<!--
+			    	 	<div id="con2" class="tab-pane">
+			    	 	</div>
+			    	 	-->
+						</div>
+
+					</div>
+				</div>
+			
+			</div>
+		</div>
+
+		<!-- 创建已有模板  -->
+
+		<div class="theme" style="background-color: white;display:block;" id="act_modal">
+			<!-- theme按钮  营销指南针 进厅-->
+			<div class="container-fluid" style="background-color: white;">
+				<!--主题内容-->
+				<div class="row themeCon " style="background-color: white;">
+					<div class="row col-lg-12" style="border:0px solid red;background-color: white;">
+						<ul class="nav nav-tabs">
+							<li class="active">
+								<a href="#con1" data-toggle="tab" class="tjTab" style="border-top:1px solid blue;border-radius: 0;background: #F2F2E8;"><b>新增已有模板</b></a>
+							</li>
+						</ul>
+						<div class="tab-content" style="border:0px solid #ddd;border-top:none;padding: 50px 0 0 10px;border-radius: 0 0 5px 5px;">
+							<!--业务-->
+							<div id="con1" class="tab-pane active">
+								<div class="row huodCon" style="margin-top:-10px;">
+									<table style="padding:20px;border:0px solid red;">
+										<tbody>
+											<tr height="50px">
+												<td style="text-align:center;width:40px;" valign="center" align="left">
+													<label for="business_name" style="font-size: 12px;">模板名称:</label></td>
+												<td style="text-align:center;width:300px;">
+													<input type="text" class="form-control" style="width:250px;" id="business_name" placeholder="请输入名称"></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+								<div class="row yw_head">
+
+									<div class="col-sm-8 yw_headCon">
+										<div class="yw_headConLeft"></div>
+										筛选条件
+									</div>
+								</div>
+								<!--筛选条件下方内容-->
+								<div class="row huodCon">
+									<div style="width: 101%;height: 5px;background: #747BDD;"></div>
+									<div class="huodConCen" id="scene_business_type_modal">
+										<ul>
+											<li>
+												<font color="#0000FF">⊙</font>业务类型：</li>
+											<span>
+				    	 					<li class="ywlx_li ywlx_li1" style="background: #757BDE;color: #fff">全部</li>
+				    	 					<li class="ywlx_li ywlx_li1" style="color: #000">移动</li>
+				    	 					<li class="ywlx_li ywlx_li1" style="color: #000">宽带</li>
+				    	 					<li class="ywlx_li ywlx_li1" style="color: #000">流量</li>
+				    	 					<li class="ywlx_li ywlx_li1" style="color: #000">ITV</li>
+			    	 					</span>
+										</ul>
+										<ul>
+											<li>
+												<font color="#0000FF">⊙</font>场景类型：</li>
+											<span>
+				    	 					<li class="ywlx_li ywlx_li1" style="background: #757BDE;color: #fff">全部</li>
+				    	 					<li class="ywlx_li ywlx_li1" style="color: #000">低零用户</li>
+				    	 					<li class="ywlx_li ywlx_li1" style="color: #000">懵懂型</li>
+				    	 					<li class="ywlx_li ywlx_li1" style="color: #000">全省包</li>
+				    	 					<li class="ywlx_li ywlx_li1" style="color: #000">优酷包</li>
+			    	 					</span>
+										</ul>
+									</div>
+								</div>
+
+								<div id=modal_blank_step1>
+									<!--筛选条件下方内容-->
+
+									<div>
+										<div class="row huodZt">
+											<table>
+												<thead>
+													<tr>
+														<td>活动名称</td>
+														<td>创建人</td>
+														<td>创建时间</td>
+														<td>总标签数</td>
+														<td>成功办理量</td>
+														<td>成功办理率</td>
+														<td>请选择</td>
+													</tr>
+												</thead>
+												<tbody>
+													<tr class="treegrid-1">
+														<td>活动一</td>
+														<td>赵xx</td>
+														<td>2016-12-27</td>
+														<td>23</td>
+														<td>2345</td>
+														<td>45%</td>
+														<td>
+															<input class="states" type="checkbox" name="ids" value="2" />
+														</td>
+													</tr>
+													<tr class="treegrid-2 treegrid-parent-1">
+														<td>活动一</td>
+														<td>赵xx</td>
+														<td>2016-12-27</td>
+														<td>23</td>
+														<td>2345</td>
+														<td>45%</td>
+														<td>
+															<input class="states" type="checkbox" name="ids" value="2" />
+														</td>
+													</tr>
+													<tr class="treegrid-3 treegrid-parent-1">
+														<td>活动一</td>
+														<td>赵xx</td>
+														<td>2016-12-27</td>
+														<td>23</td>
+														<td>2345</td>
+														<td>45%</td>
+														<td>
+															<input class="states" type="checkbox" name="ids" value="2" />
+														</td>
+													</tr>
+													<tr class="treegrid-4">
+														<td>活动一</td>
+														<td>赵xx</td>
+														<td>2016-12-27</td>
+														<td>23</td>
+														<td>2345</td>
+														<td>45%</td>
+														<td>
+															<input class="states" type="checkbox" name="ids" value="2" />
+														</td>
+													</tr>
+													<tr class="treegrid-5 treegrid-parent-4">
+														<td>活动一</td>
+														<td>赵xx</td>
+														<td>2016-12-27</td>
+														<td>23</td>
+														<td>2345</td>
+														<td>45%</td>
+														<td>
+															<input class="states" type="checkbox" name="ids" value="2" />
+														</td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+
+									</div>
+								</div>
+
+							</div>
+
+							<div class="row yw_head">
+								<button type="button" class="btn btn-default blankButton" style="float:right;" onclick="act_save();" id=blank_next_step>创建</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>
+<script type="text/javascript">
+			var setting = {
+				view: {
+					showLine: true,
+					fontCss: {
+						"text-decoration": "none"
+					},
+					
+					showIcon: false//不显示图标
+				},
+				edit: {
+					enable: true,
+					showRemoveBtn: false,
+					showRenameBtn: false,
+				},
+				data: {
+					simpleData: {
+						enable: true,
+						idKey: "id", //自己的id
+						pIdKey: "pId", //父节点id
+						rootPId: 0
+					}
+				}
+			};
+
+
+			$(document).ready(function() {
+				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+
+			});
+			//模拟用户自定义标签(树形)
+			var zNodes = [{
+				id: 1,
+				tId: 1,
+				pId: 0,
+				name: "移动",
+				open: true
+			}, {
+				id: 11,
+				tId: 11,
+				pId: 1,
+				name: "● 客户关怀",
+				open: true
+			}, {
+				id: 12,
+				tId: 12,
+				pId: 1,
+				name: "● 流失预警"
+			}, {
+				id: 13,
+				tId: 13,
+				pId: 1,
+				name: "● 价值评估"
+			}, {
+				id: 2,
+				tId: 2,
+				pId: 0,
+				name: "宽带",
+				open: true
+			}, {
+				id: 21,
+				tId: 21,
+				pId: 2,
+				name: "● 客户关怀"
+			}, {
+				id: 22,
+				tId: 22,
+				pId: 2,
+				name: "● 流失预警"
+			}, {
+				id: 3,
+				tId: 3,
+				pId: 0,
+				name: "流量",
+				open: false
+			}, {
+				id: 31,
+				tId: 31,
+				pId: 3,
+				name: "● 流量活动1"
+			}, 
+			{
+				id: 32,
+				tId: 32,
+				pId: 3,
+				name: "● 流量活动2"
+			}, {
+				id: 4,
+				tId: 4,
+				pId: 0,
+				name: "ITV",
+				open: false
+			}, {
+				id: 41,
+				tId: 41,
+				pId: 4,
+				name: "● ITV"
+			}];
+
+		</script>
+<script>
+	$("#muban_title > div > div").each(function(i, n) {
+		$(n).click(function() {
+			$(n).siblings().removeClass('innerDIVTitle-active');
+			$(n).addClass('innerDIVTitle-active');
+			if($(n).attr("hv") == '1') {
+				$("#gongyong").show();
+				$("#gongyong").siblings().hide();
+			} else if($(n).attr("hv") == '2') {
+				$("#ziyong").show();
+				$("#ziyong").siblings().hide();
+			}
+		});
+	})
+	$("#scene_business_type_modal").find("ul").eq(0).find("span li").each(function(i, n) {
+		$(n).click(function() {
+			$(n).siblings().css({
+				"background-color": "#fff",
+				color: "#000"
+			}).attr({
+				"isactive": 0
+			});
+			$(n).css({
+				"background-color": "#757BDE",
+				color: " #fff"
+			}).attr({
+				"isactive": 1
+			});
+		});
+	})
+	$("#scene_business_type_modal").find("ul").eq(1).find("span li").each(function(i, n) {
+		$(n).click(function() {
+			$(n).siblings().css({
+				"background-color": "#fff",
+				color: "#000"
+			}).attr({
+				"isactive": 0
+			});
+			$(n).css({
+				"background-color": "#757BDE",
+				color: " #fff"
+			}).attr({
+				"isactive": 1
+			});
+		});
+	})
+	$(".tjTab").click(function() {
+		$(".tjTab").css({
+			"border-top": "1px solid #0000FF",
+			"border-left": "1px solid #ddd",
+			"border-right": "1px solid #ddd",
+			"background": "#F2F2E8"
+		});
+		$(".jsTab").css({
+			"border": "none",
+			"background": "#fff"
+		});
+
+	});
+	$(".jsTab").click(function() {
+		$(".jsTab").css({
+			"border-top": "1px solid #0000FF",
+			"border-left": "1px solid #ddd",
+			"border-right": "1px solid #ddd",
+			"background": "#F2F2E8"
+		});
+		$(".tjTab").css({
+			"border": "none",
+			"background": "#fff"
+		});
+
+	});
+</script>

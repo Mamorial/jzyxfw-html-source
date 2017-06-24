@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/shouye.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+
+		<script src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+
+		<style>
+			.ztree li ul.line {
+				background: url(../../../resources/jquery.ztree/css/zTreeStyle/img/line_conn.gif) 0 0 repeat-y;
+			}
+			
+			.ztree * {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.ztree {
+				margin: 0;
+				padding: 5px;
+				color: #333
+			}
+			
+			.ztree li {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				line-height: 14px;
+				text-align: left;
+				white-space: nowrap;
+				outline: 0
+			}
+			
+			.ztree li ul {
+				margin: 0;
+				padding: 0 0 0 18px
+			}
+			
+			.ztree li ul.line {
+				background: url(../../../resources/jquery.ztree/css/zTreeStyle/img/line_conn.gif) 0 0 repeat-y;
+			}
+			
+			.ztree li span.button {
+				line-height: 0;
+				margin: 0;
+				width: 16px;
+				height: 16px;
+				display: inline-block;
+				vertical-align: middle;
+				border: 0 none;
+				cursor: pointer;
+				outline: none;
+				background-color: transparent;
+				background-repeat: no-repeat;
+				background-attachment: scroll;
+				background-image: url("../../../resources/jquery.ztree/css/zTreeStyle/img/zTreeStandard.png");
+				*background-image: url("../../../resources/jquery.ztree/css/zTreeStyle/img/zTreeStandard.gif")
+			}
+			
+			.ztree li {
+				padding: 0;
+				margin: 0;
+				list-style: none;
+				line-height: 14px;
+				text-align: left;
+				white-space: nowrap;
+				outline: 0
+			}
+			
+			.ztree li ul {
+				margin: 0;
+				padding: 0 0 0 18px
+			}
+			
+			.ztree li ul.line {
+				background: url(../../../resources/jquery.ztree/css/zTreeStyle/img/line_conn.gif) 0 0 repeat-y;
+			}
+			
+			.ztree li a {
+				padding: 1px 3px 0 0;
+				margin: 0;
+				cursor: pointer;
+				height: 17px;
+				color: #333;
+				background-color: transparent;
+				text-decoration: none;
+				vertical-align: top;
+				display: inline-block
+			}
+			
+			.ztree li a:hover {
+				text-decoration: underline
+			}
+			
+			.ztree li span.button.root_open {
+				background-position: -92px -54px
+			}
+			
+			.ztree li span.button.root_close {
+				background-position: -74px -54px
+			}
+			
+			.ztree li span.button.roots_open {
+				background-position: -92px 0
+			}
+			
+			.ztree li span.button.roots_close {
+				background-position: -74px 0
+			}
+			
+			.ztree li span.button.center_open {
+				background-position: -92px -18px
+			}
+			
+			.ztree li span.button.center_close {
+				background-position: -74px -18px
+			}
+			
+			.ztree li span.button.bottom_open {
+				background-position: -92px -36px
+			}
+			
+			.ztree li span.button.bottom_close {
+				background-position: -74px -36px
+			}
+			
+			.ztree li span.button.noline_open {
+				background-position: -92px -72px
+			}
+			
+			.ztree li span.button.noline_close {
+				background-position: -74px -72px
+			}
+			
+			.ztree li span.button.root_docu {
+				background: none;
+			}
+			
+			.ztree li span.button.roots_docu {
+				background-position: -56px 0
+			}
+			
+			.ztree li span.button.center_docu {
+				background-position: -56px -18px
+			}
+			
+			.ztree li span.button.bottom_docu {
+				background-position: -56px -36px
+			}
+			
+			.ztree li span.button.noline_docu {
+				background: none;
+			}
+			
+			.ztree li span.button.ico_open {
+				margin-right: 2px;
+				background-position: -110px -16px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.ico_close {
+				margin-right: 2px;
+				background-position: -110px 0;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.ico_docu {
+				margin-right: 2px;
+				background-position: -110px -32px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.edit {
+				margin-right: 2px;
+				background-position: -110px -48px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.remove {
+				margin-right: 2px;
+				background-position: -110px -64px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			html{overflow-x:hidden;}
+		</style>
+
+		<script type="text/javascript">
+			var setting = {
+				view: {
+					showLine: true,
+					fontCss: {
+						"text-decoration": "none"
+					},
+					//addHoverDom: addHoverDom, //鼠标停留在节点上触发的函数
+					//removeHoverDom: removeHoverDom, //节点失去焦点(鼠标移走) 触发的函数
+					showIcon: false//showIconForTree
+				},
+				edit: {
+					enable: true,
+					showRemoveBtn: true,
+					showRenameBtn: true,
+					isMove: false
+				},
+				data: {
+					simpleData: {
+						enable: true,
+						idKey: "id", //自己的id
+						pIdKey: "pId", //父节点id
+						rootPId: 0
+					}
+				},
+				callback: {
+					onClick: hidemylog,
+					beforeDrag:function(){return false;}
+				}
+			};
+
+			function showIconForTree(treeId, treeNode) {
+				return treeNode.level != 0;
+			}
+
+			function hidemylog(e, treeId, treeNode) {
+				$("#diyBtn_" + treeNode.id).unbind().remove();
+				$("#diyBtn_space_" + treeNode.id).unbind().remove();
+
+			}
+			//点击节点之前的回调函数，用于去掉哪个后面的三个图标
+			function zTreeBeforeMouseDown(treeId, treeNode) {
+				$("#diyBtn_" + treeNode.id).unbind().remove();
+				$("#diyBtn_space_" + treeNode.id).unbind().remove();
+
+			}
+
+			//节点获取鼠标焦点触发函数
+			function addHoverDom(treeId, treeNode) {
+				var aObj = $("#" + treeNode.tId + "_a");
+				if($("#diyBtn_" + treeNode.id).length > 0) return;
+				var editStr = "<span id='diyBtn_space_" + treeNode.id + "'></span>"+
+					"<sapn class='diyBtn1' id='diyBtn_" + treeNode.id + "'title='"+treeNode.name +"'>"+
+					"<span class='icon-plus' width='10px' height='10px'></span>"+
+					"<span class='icon-pencil' width='10px' height='10px'></span>"+
+					"<span class='icon-trash' width='10px' height='10px'></sapn>"+
+					"</span>";
+				aObj.append(editStr);
+
+				//根据用户自定义一个标签(在当前的节点下添加一个节点)
+				/*
+				 * 添加操作要提供标签名->用户自己输入
+				 * pId:父节点的id,
+				 * id和tId 建议两个一样
+				 */
+				var add = $(".icon-plus");
+				if(add) add.bind("click", function() {
+					alert("you click addd " + treeNode.name);
+				});
+
+				//重命名操作
+				var edit = $(".icon-pencil");
+				if(edit) edit.bind("click", function() {
+					
+					alert("you click edit " + treeNode.name);
+					
+					treeNode.name="change name";
+					
+					alert(treeNode.name);
+				});
+
+				//使用zTree自有的功能，但它不提示用户是否删除，
+				//删除节点操作
+				var cancel = $(".icon-trash");
+				if(cancel) cancel.bind("click", function() {
+
+					var flag = confirm("are you sure delete this node and childerns?: " + treeNode.name);
+					if(flag) {
+						var treeObj = $.fn.zTree.getZTreeObj("treeDemo"); //获取用户自定义标签树
+						var node = treeObj.getNodeByTId(treeNode.tId); //获取要删除的节点
+						if(treeNode.isParent) //判断是否有子节点，如果有就删除子节点
+						{
+							treeObj.removeChildNodes(node); //删除该树的子节点
+						}
+						treeObj.removeNode(node); //从树中删除节点
+					}
+				});
+			};
+			//鼠标移动(节点失去焦点)触发函数
+			function removeHoverDom(treeId, treeNode) {
+
+				$("#diyBtn_" + treeNode.id).unbind().remove();
+				$("#diyBtn_space_" + treeNode.id).unbind().remove();
+			};
+
+			$(document).ready(function() {
+				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+				$.fn.zTree.init($("#treeDemo2"), setting, zNodes2);
+				
+
+				//保存节点
+				//*******后期数据的保存->提交数据到数据库**********
+				$("#save").click(function() {
+					var user_zTree = $.fn.zTree.getZTreeObj("treeDemo"); //获取更该后的用户自定义标签(树形_json数据)
+					var user_changed_Nodes = user_zTree.getNodes();
+
+					var sys_zTree = $.fn.zTree.getZTreeObj("treeDemo2"); //获取更改后的系统标签(树形_json数据)
+					var sys_changed_Nodes = sys_zTree.getNodes();
+
+					alert("更该后的自定义树" + user_changed_Nodes);
+
+					alert("更改后的系统树" + sys_changed_Nodes);
+
+				});
+				var setting2 = {
+				view: {
+					showLine: true,
+					fontCss: {
+						"text-decoration": "none"
+					},
+					//addHoverDom: addHoverDom, //鼠标停留在节点上触发的函数
+					//removeHoverDom: removeHoverDom, //节点失去焦点(鼠标移走) 触发的函数
+					showIcon: false//showIconForTree
+				},
+				edit: {
+					enable: true,
+					showRemoveBtn: true,
+					showRenameBtn: true,
+					isMove: false
+				},
+				data: {
+					simpleData: {
+						enable: true,
+						idKey: "id", //自己的id
+						pIdKey: "pId", //父节点id
+						rootPId: 0
+					}
+				},
+				callback: {
+					onClick: hidemylog
+				}
+			};
+			
+
+				//撤销操作
+				$("#return_").click(function() {
+					$.fn.zTree.init($("#treeDemo"), setting, clonezNodes);
+					$.fn.zTree.init($("#treeDemo2"), setting2, clonezNodes2);
+				});
+			});
+			
+			//模拟用户自定义标签(树形)
+			var zNodes = [{
+				id: 1,
+				tId: 1,
+				pId: 0,
+				name: "移动",
+				open: true
+			}, {
+				id: 11,
+				tId: 11,
+				pId: 1,
+				name: "客户关怀",
+				open: true
+			}, {
+				id: 111,
+				tId: 111,
+				pId: 11,
+				name: "叶子节点1-1-1"
+			}, {
+				id: 12,
+				tId: 12,
+				pId: 1,
+				name: "流失预警"
+			}, {
+				id: 13,
+				tId: 13,
+				pId: 1,
+				name: "价值评估"
+			}, {
+				id: 2,
+				tId: 2,
+				pId: 0,
+				name: "宽带",
+				open: true
+			}, {
+				id: 21,
+				tId: 21,
+				pId: 2,
+				name: "客户关怀"
+			}, {
+				id: 22,
+				tId: 22,
+				pId: 2,
+				name: "流失预警"
+			}, {
+				id: 3,
+				tId: 3,
+				pId: 0,
+				name: "流量",
+				open: false
+			}, {
+				id: 31,
+				tId: 31,
+				pId: 3,
+				name: "叶子节点 3-1"
+			}, {
+				id: 4,
+				tId: 4,
+				pId: 0,
+				name: "ITV",
+				open: true
+			}];
+
+			//通过深复制记住原来用户自定义标签的树形数据，便于撤销操作
+			var clonezNodes = JSON.parse(JSON.stringify(zNodes));
+
+			//模拟系统标签(树形)
+			var zNodes2 = [{
+				id: 1,
+				pId: 0,
+				tId: 1, //节点唯一标识
+				name: "节点一",
+				open: true
+			}, {
+				id: 11,
+				tId: 11,
+				pId: 1,
+				name: "节点二",
+				open: true,
+				icon: "../../../images/icons/redo.png"
+			}, {
+				id: 111,
+				tId: 111,
+				pId: 11,
+				name: "节点三",
+				icon: "../../../images/icons/redo.png"
+			}, {
+				id: 2,
+				pId: 0,
+				tId: 2,
+				name: "流量",
+				open: false
+			}, {
+				id: 3,
+				pId: 0,
+				tId: 3,
+				name: "ITV",
+				open: true
+			}];
+
+			//通过深复制记住原来系统标签的树形数据，便于撤销操作
+			var clonezNodes2 = JSON.parse(JSON.stringify(zNodes2));
+		</script>
+	</head>
+
+	<body>
+		<span class="icon-send"></span>
+		<br><br>
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">自定义标签</h3>
+					</div>
+					<div class="panel-body" style="background-color: #EBEBEB;height:300px;">
+						<ul id="treeDemo" class="ztree"></ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-1">
+				<div style=" padding:150px 0;">
+					<button class="btn" id="save" data-toggle="button">保存</button>
+					<br><br>
+					<button class="btn" id="return_" data-toggle="button">撤销</button>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="panel panel-primary">
+					<div class="panel-heading">
+						<h3 class="panel-title">系统标签</h3>
+					</div>
+					<div class="panel-body" style="background-color: #EBEBEB;height:300px">
+						<ul id="treeDemo2" class="ztree"></ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

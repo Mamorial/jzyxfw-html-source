@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--引用样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<!--自定义样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		<!--引用js-->
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../../resources/echarts/js/echarts.js"></script>
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			
+			ul li,
+			span {
+				display: block;
+			}
+			html{overflow-x:hidden;}
+		</style>
+	</head>
+	<body>
+		<div class="container-fluid" style="background: #ddd;height: 600px;">
+			<div class="row">
+				<div class="MessageCon" style="width: 100%;height: 150px;padding:20px;border: 0px solid red;">
+					<ul>
+						<li>短信触点管理</li>
+						<li style="background: url(../../../images/1.png);background-size: 100% 100%;">微信触点管理</li>
+						<li>DNS触点管理</li>
+						<li>Toolbar触点管理</li>
+					</ul>
+				</div>
+			</div>
+			<div class="row" style="width: 98%;margin-left: 1%;">
+				<div style="width: 100%;height: auto;border: 0px solid blue;padding:50px 0 50px 0;background: #fff;">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td align="right" style="padding-bottom: 0;padding-top: 0;line-height: 50px;border: none;">微信字数限制</td>
+								
+								<td style="border: none;">
+									<form class="bs-example bs-example-form" role="form">
+
+		<div class="input-group" style="width: 95%;">
+			<input type="text" class="form-control" style="border-radius: 5px;">
+			
+		</div>
+
+	</form>  
+								</td>
+								<td align="right" style="padding-bottom: 0;padding-top: 0;line-height: 50px;border: none;">微信审核人</td>
+								<td style="border: none;">
+									<form class="bs-example bs-example-form" role="form">
+
+		<div class="input-group" style="width: 95%;">
+			<input type="text" class="form-control" style="border-radius: 5px;">
+			
+		</div>
+
+	</form>  
+								</td>
+							</tr>
+							<tr>
+								<td align="right" style="padding-bottom: 0;padding-top: 0;line-height: 50px;border: none;">月可发送微信条数</td>
+								
+								<td style="border: none;"
+									<form role="form" style="width: 95%;float: left;margin-top:0px;">
+									  <div class="form-group">
+									    <select class="form-control">
+									      <option>10</option>
+									      <option>50</option>
+									      <option>100</option>
+									    </select>
+									    </select>
+									  </div>
+									</form>
+								</td>
+								<td align="right" style="padding-bottom: 0;padding-top: 0;line-height: 50px;border: none;">是否启用</td>
+								<td style="padding-bottom: 0;padding-top: 0;line-height: 50px;border: none;">
+								   <input type="radio" checked="checked" name="check" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check" id="no" />否	
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="row">
+				<div style="width: 100%;height: auto;margin-top:20px;">
+					<a href="#" style="text-decoration: none;"><div style="margin-left: 48%;width: 80px;height: 40px;line-height: 40px;text-align: center;color: #fff;background: #FF5454;border-radius:5px ;">确认</div></a>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

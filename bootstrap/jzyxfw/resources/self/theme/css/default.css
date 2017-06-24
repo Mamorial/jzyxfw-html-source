@@ -1,0 +1,119 @@
+
+body {
+    background-image: url("/resources/self/images/black_twill/congruent_outline_light20.png");
+    background-color: rgb(107, 106, 106);
+    background-repeat: repeat;
+}
+
+/* 一级菜单区域*/
+#levelOneMenu > li > a {
+    color: #FFFFFF;
+}
+
+#levelOneMenu .active:after {
+    border-bottom-color: white;
+
+}
+
+#header_menu .navbar-inverse .navbar-text {
+    color: #D2D2D2;
+}
+
+#header_menu .navbar-inverse {
+    background-color: rgba(9, 71, 116, 0.75);
+    color: #000000;
+    border-color: rgb(0, 0, 0);
+}
+
+#header_menu .navbar-brand {
+    color: #ffffff;
+
+}
+
+#header_menu .navbar-brand:hover {
+    color: #ffffff;
+
+}
+
+#header_menu .navbar-inverse .navbar-nav > .active > a, #header_menu .navbar-inverse .navbar-nav > .active > a:focus, #header_menu .navbar-inverse .navbar-nav > .active > a:hover, #header_menu .navbar-inverse .navbar-nav > .open > a, #header_menu .navbar-inverse .navbar-nav > .open > a:focus, #header_menu .navbar-inverse .navbar-nav > .open > a:hover {
+    background-color: rgba(194, 194, 194, 0.2);
+}
+
+/* 当子菜单隐藏时的按钮*/
+#menu_area_show {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+#menu_area_show:hover {
+    color: rgb(255, 255, 255);
+}
+
+/* 子菜单区域*/
+#menu_area {
+    background-color: rgba(40, 37, 37, 0.45);
+}
+
+#menu-sidebar i {
+    color: white;
+}
+
+#menu-sidebar:after {
+    border-top: 1px SOLID #FFFFFF;
+}
+
+/* 子菜单中的按钮*/
+#menu_buttons {
+    border-bottom: 1px solid #A0A0A0;
+}
+
+/* 子菜单中的菜单项*/
+#menu_area .list-group-item {
+    border-bottom: 1px solid #A0A0A0;
+    color: #F3FAFD;
+}
+
+#menu_area .list-group-item i {
+    color: #95CAE0;
+}
+
+#menu_area .list-group-item:hover {
+    background-color: rgba(11, 11, 11, 0.75);
+    border-left: 3px solid rgb(236, 255, 213);
+}
+
+/* 子菜单中的选中效果*/
+#menu_area .cur {
+    background-color: rgba(93, 109, 134, 0.75)
+
+}
+
+#menu_area .cur:hover {
+    background-color: rgba(75, 88, 108, 0.75);
+}
+
+#menu_area .cur .menu-content:after {
+    border-right-color: rgba(40, 37, 37, 0.75);
+}
+
+#menu_area .cur:after {
+    border-right: 2px solid rgba(40, 37, 37, 0.75);
+}
+
+/* 覆盖jquery。datatables样式*/
+
+.table tbody tr.selected {
+    background-color: #5A5A5A;
+    color: white;
+}
+
+.table.hover tbody tr:hover.selected, .table.hover tbody tr.odd:hover.selected, .table.hover tbody tr.even:hover.selected, .table tbody tr:hover.selected, .table tbody tr.odd:hover.selected, .table tbody tr.even:hover.selected {
+    background-color: #000000;
+    color: white;
+}
+
+.table > tbody .even:hover, .table > tbody .odd:hover {
+    background-color: #CDCDCD;
+}
+
+
+

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div class="commonTitleArea">
+		<div class="commonTitleArea-left" style="width: 40%"><span></span><b></b></div>
+		<div class="commonTitleArea-right" style="width: 40%"><span></span><b></b></div>
+		<p>物联网信息</p>
+	</div>
+
+	<div class="panel panel-default commonPanel">
+		<div class="panel-body">
+			<div class="col-sm-4">
+				<p>
+					<label class="sl">产品名称：</label>
+					<span>我是产品</span>
+				</p>
+				<p>
+					<label class="sl">发展渠道：</label>
+					<span>发展渠道1</span>
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<p>
+					<label class="sl">接入号码：</label>
+					<span>12312312312</span>
+				</p>
+				<p>
+					<label class="sl">发展人标识：</label>
+					<span>发展人标识内容</span>
+				</p>
+			</div>
+			<div class="col-sm-4">
+				<p>
+					<label class="sl">付费模式：</label>
+					<span>后付费</span>
+				</p>
+				<p>
+					<label class="sl">受理人：</label>
+					<span>某某</span>
+				</p>
+			</div>
+			<div class="slide" ng-click="slide(2)"  ng-class="{active: active2}"></div>
+			<div class="col-sm-12" collapse="isCollapsed2">
+				<div class="col-sm-4">
+					<p>
+						<label class="sl">订单编号：</label>
+						<span>456324</span>
+					</p>
+					<p>
+						<label class="sl">发展人标识：</label>
+						<span>发展人标识内容</span>
+					</p>
+				</div>
+				<div class="col-sm-4">
+					<p>
+						<label class="sl">是否公免：</label>
+						<span>否</span>
+					</p>
+					<p>
+						<label class="sl">产品状态：</label>
+						<span>再用</span>
+					</p>
+				</div>
+				<div class="col-sm-4">
+					<p>
+						<label class="sl">城乡标识：</label>
+						<span>城市</span>
+					</p>
+					<p>
+						<label class="sl">开通日期：</label>
+						<span>2016.21.5</span>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="commonTitleArea">
+		<div class="commonTitleArea-left" style="width: 40%"><span></span><b></b></div>
+		<div class="commonTitleArea-right" style="width: 40%"><span></span><b></b></div>
+		<p>行为特征</p>
+	</div>
+
+
+	<div class="panel panel-default commonPanel">
+		<div class="panel-body" style="padding:15px 0;">
+			<div class="col-sm-4" ng-click="test1()">
+				<div class="nine-detail">
+					<p class="nine-title">流量</p>
+					<p class="nine-icon1">60%</p>
+					<p style="margin-top:60px;">可用流量：126451M</p>
+					<p>实际使用流量：123M</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="nine-detail">
+					<p class="nine-title">话务</p>
+					<div id="nine-radar" lx-charts conf="conf2"></div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="nine-detail">
+					<p class="nine-title">短信</p>
+					<div class="clearfix">
+						<p class="nine-sms1"></p>
+						<span class="nine-smsD">上行短信：17800条</span>
+					</div>
+					<div class="clearfix" style="margin-top:10px;">
+						<p class="nine-sms2"></p>
+						<span class="nine-smsD">下行短信：17800条</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="nine-detail">
+					<p class="nine-title">终端</p>
+					<p class="nine-terminal"></p>
+					<p style="margin-top:50px;">机型：PROG_008</p>
+					<p>注册时间：2017-03-08</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="nine-detail">
+					<p class="nine-title">套餐</p>
+					<p class="nine-package"></p>
+					<p style="margin-top:33px;">当月套餐：</p>
+					<p>乐享4G201703 178员-主套餐</p>
+					<p>当前费用：108员</p>
+				</div>
+			</div>
+			<div class="col-sm-4">
+				<div class="nine-detail">
+					<p class="nine-title">位置</p>
+					<p class="nine-position"></p>
+					<p style="margin-top:50px;">XT_BC2963仙剑县省庄基站——城开学院售楼中心__[7__51]最活跃</p>
+				</div>
+			</div>
+			<div class="slide" ng-click="slide(3)"  ng-class="{active: active3}"></div>
+			<div class="col-sm-12" collapse="isCollapsed3">
+				<div class="col-sm-4">
+					<div class="nine-detail">九宫图7占位</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="nine-detail">九宫图8占位</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="nine-detail">九宫图9占位</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="panel panel-default commonPanel" style="margin-top:70px;">
+		<div class="panel-heading">
+			<h3 class="panel-title">上网清单详情</h3>
+		</div>
+		<div class="panel-body nine-area" bindonce="user" style="padding:15px 5px;">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>省份标识</th>
+						<th>本地网标识</th>
+						<th>手机上网次数</th>
+						<th>手机上网时长</th>
+						<th>手机上网流量</th>
+						<th>1X数据流量</th>
+						<th>1X计费时长</th>
+						<th>EVDO流量</th>
+						<th>EVDO次数</th>
+						<th>4G流量</th>
+						<th>WLAN上网次数</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+					</tr>
+					<tr>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+					</tr>
+					<tr>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+						<td>1231</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<div class="commonTitleArea">
+		<div class="commonTitleArea-left" style="width: 40%"><span></span><b></b></div>
+		<div class="commonTitleArea-right" style="width: 40%"><span></span><b></b></div>
+		<p>活动轨迹</p>
+	</div>
+
+	<div class="panel panel-default commonPanel">
+		<div class="panel-body" style="position:relative;">
+			<p class="lineDetail">
+				<label>活跃地点TOP5：</label>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+			</p>
+			<p class="lineDetail">
+				<label>流量使用TOP5：</label>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+				<span>上网地点基站1</span>
+			</p>
+			<div style="height:68px; overflow:hidden; margin:20px 0;">
+				<ul id="userInfo-dayList">
+					<li ng-repeat="line in dayList" bindonce>
+						<p bo-text="line.date"></p>
+						<p bo-text="line.day"></p>
+					</li>
+				</ul>
+			</div>
+			<p id="userInfo-next">&gt;</p>
+			<p id="userInfo-prev">&lt;</p>
+			<div id="userInfo-dayLine" lx-charts conf="conf1"></div>
+		</div>
+	</div>
+	</body>
+</html>

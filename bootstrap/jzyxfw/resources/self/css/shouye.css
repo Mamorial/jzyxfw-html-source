@@ -1,0 +1,132 @@
+.shouye{
+	width:100%;
+	height:100%;
+	border: 1px solid #ccc;
+	position: relative;
+	float: none;
+	text-align: center;
+	margin: 0px 0 0 0;
+	background:#fff;
+	padding-bottom: 50px;
+}
+.shouye .head_left{
+	float: left;
+	width:100%;
+	height:150px;
+	border: 0px solid red;
+	float: left;
+	
+	position: relative;
+}
+
+.shouye .head_center1{
+	width:50%;
+	height:150px;
+	
+	float:left;
+	
+	
+}
+.shouye .head_right{
+	width: 100%;
+	height: 150px;
+	border:1px solid #ddd;
+	float: left;
+	text-align: center;
+	position: relative;
+	
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px 2px #ddd;
+}
+/*
+.shouye .head_center #tt table{
+	width:100%;
+	height:100px;
+	border:none;
+}
+.shouye .head_center #tt table tr td{
+	text-align:center;
+	border:1px solid #ddd;
+	font-size:12px;
+}
+*/
+/*
+.shouye .head_right{
+	width: 34%;
+	height: 150px;
+	border: 0px solid #f00;
+	float: left;
+	text-align: center;
+	position: relative;
+}
+.shouye .head_center table{
+	width: 100%;
+	border:none;
+}
+.shouye .head_center .head_center_tab tr td{
+	height: 20px;
+	background: #F8F8F8;
+	border: 1px dotted #ccc;
+}*/
+
+.shouye .center{
+	
+	
+	border: 0px solid red;
+	position: relative;
+	
+}
+.shouye .center .center_left{
+	width: 100%;
+	height: 100%;
+	float:left;
+	border: 1px solid #ddd;
+	margin-right:1%;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px 2px #ddd;
+}
+.shouye .center .center_center{
+	width: 100%;
+	height: 100%;
+	float:left;
+	border: 1px solid #ddd;
+	margin-right:1%;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px 2px #ddd;
+}
+.shouye .center .center_right{
+	width: 100%;
+	height: 100%;
+	float:left;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	box-shadow: 2px 2px 2px 2px #ddd;
+}
+.shouye .bottom{
+	width: 93%;
+	height: 200px;
+	border: 0px solid red;
+	position: relative;
+	margin-top: 0px;
+	margin-left:3%;
+	padding:5px;
+}
+.shouye .bottom_left{
+	width: 100%;
+	height: 150px;
+	border:0px solid #95B8E7;
+	float: left;
+	text-align: center;
+	position: relative;
+}
+
+.shouye .bottom_left #tt table{
+	width:100%;
+	height:100px;
+	border:none;
+}
+.shouye .bottom_left #tt table tr td{
+	text-align:center;
+	border:1px solid #ddd;
+	font-size:12px;
+}

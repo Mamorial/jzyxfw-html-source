@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--引用样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<!--自定义样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		<!--引用js-->
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="../../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../../resources/echarts/js/echarts.js"></script>
+		<script type="text/javascript" src="../../../resources/self/js/commonJs.js"></script>
+		<style>
+		html{overflow-x:hidden;}
+			* {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			.Menu {
+				width: 100%;
+				height: 100px;
+				border: 0px solid red;
+				padding-bottom: 30px;
+				margin-top: -10px;
+				margin-top: 0px;
+			}
+			
+			.Menu table {
+				width: 100%;
+				height: 100%;
+				background: #E3EEFF;
+				padding: 5px
+			}
+			
+			.Menu table tr td {
+				text-align: center;
+				color: #999999;
+				padding-bottom: 5px;
+			}
+			
+			.Menu table tr td:nth-child(odd) {
+				width: 60px;
+			}
+			
+			.Menu table tr td span {
+				display: block;
+				width: 90%;
+				height: 2px;
+				background: #8D95CE;
+			}
+			.actTypetab{width: 100%;height: 300px;padding: 5px;background: #FAFAFA;border: 1px solid #FAFAFA;cursor: pointer;}
+			.actTypetab:hover{border: 1px solid #1CA5E8;background: #AEAFE9;border-radius: 5px;}
+			.actTypetab:hover table{color: #fff;}
+		</style>
+	</head>
+	<body style="padding-top:108px">
+		<div class="container-fluid navbar-fixed-top" style="border: 0px solid red;">
+			<div class="row" style="padding: 0 15px;">
+				<div class="Menu">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr height="30">
+							<td colspan="3" style="color:#0163AC">创建活动</td>
+							<td>目标筛选</td>
+							<td></td>
+							
+							<td>策略配置</td>
+							<td></td>
+							
+							<td>评估</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td style="padding-left:10px"><span></span></td>
+							<td width="70px"><a href="NewActStepActlx.html"><img src="../../../images/img/8.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewactStepCl.html"><img src="../../../images/img/3.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewactCdPz.html"><img src="../../../images/img/5.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewactStepHDpg.html"><img src="../../../images/img/7.png" width="70px"></a></td>
+							<td><span></span></td>
+						</tr>
+					</table>
+				</div>
+				
+			</div>	
+			</div>
+			<div class="container-fluid" style="margin-top:5px">
+				<div class="row" style="border: 0px solid green;">
+						<div class="col-lg-4 col-md-4 col-xs-12" style="border: 0px solid red;">
+							<a href="NewActStepActlx.html" style="text-decoration: none;color: #000;">
+								<div class="actTypetab">
+								<table class="table">
+									<tbody>
+										<tr>
+											<td style="border: none;"><img title="空白主题" src="../../../images/labelAccessData/fc.png" /></td>
+											<td style="border: none;line-height: 100px;font-size: 25px;">新建活动</td>
+										</tr>
+										<tr>
+											<td colspan="2">备注：自助口径配置</td>
+										</tr> 
+									</tbody>
+								</table>
+							</div>
+							</a>
+						</div>
+						<div class="col-lg-4 col-md-4 col-xs-12" style="border: 0px solid red;">
+						 <a href="../actManager/actManmge.html" style="text-decoration: none;color: #000;">
+							<div class="actTypetab">
+								<table class="table">
+									<tbody>
+										<tr>
+											<td style="border: none;"><img title="空白主题" src="../../../images/labelAccessData/home.png" /></td>
+											<td style="border: none;line-height: 100px;font-size: 25px;">复制活动</td>
+										</tr>
+										<tr>
+											<td colspan="2">备注：选择用户下已有的活动口径进行复制或修改</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						 </a>
+						</div>
+						<div class="col-lg-4 col-md-4 col-xs-12" style="border: 0px solid red;">
+						  <a href="../actManager/modelManager.html" style="text-decoration: none;color: #000;">
+							<div class="actTypetab">
+								<table class="table">
+									<tbody>
+										<tr>
+											<td style="border: none;"><img title="空白主题" src="../../../images/labelAccessData/bs.png" /></td>
+											<td style="border: none;line-height: 100px;font-size: 25px;">引用模板</td>
+										</tr>
+										<tr>
+											<td colspan="2">备注：选择省级发布的公用活动模板口径进行发送</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						  </a>
+						</div>
+				</div>
+			</div>
+	</body>
+</html>

@@ -1,0 +1,404 @@
+/*
+    存放系统的首页样式
+*/
+
+/* 一级菜单区域*/
+#levelOneMenu > li > a {
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+#levelOneMenu .active:after {
+    display: block;
+    content: "";
+    position: absolute !important;
+    bottom: 0;
+    margin-left: -15px;
+    left: 50%;
+    z-index: 1;
+    border: 6px solid transparent;
+    border-width: 10px 15px;
+    border-bottom-color: white;
+
+}
+
+/* 当子菜单隐藏时的按钮*/
+#menu_area_show {
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.21);
+    position: fixed;
+    top: 58px;
+    left: -9px;
+}
+
+#menu_area_show:hover {
+    color: rgb(0, 0, 0);
+}
+
+/* 子菜单区域*/
+#menu_area {
+    background-color: rgba(40, 37, 37, 0.45);
+    position: absolute;
+    width: 185px;
+    left: -185px;
+    /*
+    这样做导致一个样式失效
+    overflow-x: hidden;*/
+}
+
+/* 子菜单中的影藏菜单按钮 */
+#menu-sidebar {
+    background-color: transparent;
+    height: 41px;
+}
+
+#menu-sidebar i {
+    cursor: pointer;
+    color: white;
+    margin-top: 14px;
+    width: 18px;
+}
+
+#menu-sidebar:after {
+    content: "";
+    display: inline-block;
+    height: 0;
+    border-top: 1px SOLID #FFFFFF;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 19px;
+    z-index: -1;
+}
+
+/* 子菜单中的按钮*/
+#menu_buttons {
+    background-color: transparent;
+    border-bottom: 1px solid #A0A0A0;
+    height: 41px;
+    width: 100%;
+    padding-top: 8px;
+    padding-left: 30px;
+}
+
+#menu_buttons .btn {
+    margin-left: 2.8px;
+    margin-right: 0;
+}
+
+/* 子菜单中的菜单项*/
+#menu_area .list-group-item {
+    background-color: transparent;
+    border-radius: 0;
+    border: 0;
+    border-left: 3px solid transparent;
+    border-bottom: 1px solid #A0A0A0;
+    color: #F3FAFD;
+    cursor: pointer;
+    margin-top: 1px;
+}
+#menu_area .list-group-item:first-child{
+    border-top: 1px solid #A0A0A0;
+}
+
+#menu_area .list-group-item i {
+    color: #95CAE0;
+}
+
+#menu_area .list-group-item:hover {
+    background-color: rgba(11, 11, 11, 0.75);
+    border-left: 3px solid transparent;
+}
+
+/* 子菜单中的选中效果*/
+#menu_area .cur {
+    background-color: rgba(93, 109, 134, 0.75)
+
+}
+
+#menu_area .cur:hover {
+    background-color: rgba(75, 88, 108, 0.75);
+    border-left: 3px solid red;
+}
+
+#menu_area .cur .menu-content:after {
+    display: block;
+    content: "";
+    position: absolute !important;
+    right: 0;
+    top: 5px;
+    z-index: 1;
+    border: 8px solid transparent;
+    border-width: 15px 12px;
+    border-right-color: rgba(40, 37, 37, 0.75);
+}
+
+#menu_area .cur:after {
+    display: inline-block;
+    content: "";
+    position: absolute;
+    right: -2px;
+    top: 1px;
+    bottom: 0px;
+    z-index: 1;
+    border-right: 2px solid rgba(40, 37, 37, 0.75);
+}
+
+/* 子菜单中列表里的内容*/
+#menu_area .menu-content i {
+    width: 14px;
+}
+
+#menu_area .menu-content {
+    width: 100%;
+    padding-right: 20px;
+}
+
+/* 下拉菜单的图标*/
+#menu_area .fa-angle-left, #menu_area .fa-angle-down {
+    position: absolute;
+    top: 12px;
+    right: 18px;
+}
+
+#menu_area .menu-open .fa-angle-left, #menu_area .menu-open .fa-angle-down {
+    right: 20px;
+    -moz-transform: rotate(-90deg);
+    -webkit-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+
+/* 子菜单中的二级菜单*/
+#menu_area {
+    border-radius: 4px;
+
+}
+
+#menu_area .sub-menu {
+    padding: 0;
+    display: none;
+
+}
+
+#menu_area .sub-menu .list-group-item {
+    border: 0;
+    border-left: 3px solid transparent;
+    font-size: 12px;
+}
+
+#menu_area .sub-menu .list-group-item .menu-content {
+    padding-left: 15px;
+}
+
+#main_area {
+    /*background-color:rgba(255, 255, 255, 0.6);*/
+}
+
+/* z-index 调整，模态框的提交没有遮蔽效果*/
+.loading_back {
+    background: #000;
+    opacity: .5;
+    filter: alpha(opacity=50);
+    position: fixed;
+    z-index: 1055;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+}
+
+.loading_content {
+    position: fixed;
+    z-index: 1056;
+    top: 50%;
+    left: 50%;
+    margin-left: -100px;
+    margin-top: -100px;
+    display: none;
+}
+
+/* 表格扩展功能*/
+.table-circle-menu {
+    position: absolute;
+    z-index: 2;
+    display: none;
+    cursor: pointer;
+}
+
+.table-circle-menu .fa-stack-2x {
+    color: rgba(0, 0, 0, 0.60);
+}
+
+.table-circle-menu .fa-stack-1x {
+    color: rgba(255, 255, 255, 0.90);
+}
+
+/* 表格明细功能*/
+#table_detail {
+    position: absolute;
+    z-index: 2;
+    display: none;
+    top: 50%;
+    left: 50%;
+    min-width: 180px;
+    max-width: 360px;
+    min-height: 100px;
+    padding-top: 0px;
+}
+
+#table_detail .bg-ex-title {
+    cursor: move;
+    padding-top: 10px;
+}
+
+/* 选择的modal框 */
+#modal-icon-body .fa {
+    margin-right: 5px;
+}
+
+#modal-icon-body .col-md-3 span {
+    cursor: pointer;
+}
+
+/* template*/
+#pd_template_fixed_button {
+    position: fixed;
+    top: 0%;
+    margin-top: 55px;
+    right: 5px;
+    z-index: 2;
+}
+
+#template_01 .search-label {
+    font-size: 14px;
+    padding: 10px;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+/*
+山西新增部分
+**/
+#bodybg {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    top: 0px;
+    z-index: -1;
+}
+
+#bodybg .stretch {
+    width: 100%;
+    height: 100%;
+}
+
+.top-menu-style1 > li > ul {
+    padding: 12px 0;
+
+}
+
+.top-menu-style1 dl {
+    width: 400px;
+    padding-left: 115px;
+    clear: both;
+    line-height: 24px;
+    overflow: hidden; /*为了让float的元素也能正常有高度*/
+    margin: 0;
+}
+
+.top-menu-style1 dt {
+    color: rgb(56, 57, 105);
+    width: 100px;
+    overflow: hidden;
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    text-align: right;
+    cursor: default;
+
+}
+
+.top-menu-style1 dd {
+    float: left;
+    border-left: 1px solid #DDDDDD;
+    margin: 4px 0;
+    padding: 0 8px;
+    cursor: pointer;
+}
+
+.top-menu-style1 dd:hover {
+    font-weight: bolder;
+    color: #2F8621;
+}
+
+#main_area_menu a, #main_area_menu .navbar-brand {
+    padding: 5px 15px;
+    height: auto;
+    color: black;
+}
+
+#main_area_menu {
+    margin-top: 50px;
+    height: auto;
+    min-height: 0;
+    border-top: 0;
+
+}
+
+#main_area_menu .fa-times {
+    display: none;
+    position: absolute;
+    right: 2px;
+    top: -1px;
+}
+
+#main_area_menu .hover .fa-times {
+    display: inline-block;
+}
+
+#main_area_menu .hover .fa-times:hover {
+    color: red;
+    font-size: 16px;
+}
+
+/*
+    解决菜单被覆盖
+*/
+#header_menu ul.dropdown-menu {
+    z-index: 1031;
+}
+
+/* 浮动菜单 */
+.page-fix-buttons {
+    position: fixed;
+    bottom: 0%;
+    margin-bottom: 15px;
+    right: 15px;
+    z-index: 2;
+
+}
+
+#main_area_opened_tabs li {
+     border-top-left-radius: 4px;
+     border-top-right-radius: 4px;
+     border: 1px solid rgba(0,0,0,0.3);
+     border-bottom: 0;
+     margin-left: 3px;
+ }
+#main_area_opened_tabs li.active {
+    border-color:#000;
+}
+
+/*#main_area_opened_tabs li:last-child {*/
+    /*border-right: 0;*/
+/*}*/
+
+#sysMenu > li > a {
+    font-weight: bolder;
+}

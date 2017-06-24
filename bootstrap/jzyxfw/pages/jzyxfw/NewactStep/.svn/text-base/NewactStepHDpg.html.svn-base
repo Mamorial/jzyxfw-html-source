@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--引用样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<!--自定义样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		<!--引用js-->
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../../resources/echarts/js/echarts.js"></script>
+		<style>
+		html{overflow-x:hidden;}
+			* {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			
+			ul li,
+			span {
+				display: block;
+			}
+			
+			
+			.Menu {
+				width: 100%;
+				height: 100px;
+				border: 0px solid red;
+				padding-bottom: 30px;
+				margin-top: -10px;
+				margin-top: 5px;
+			}
+			
+			.Menu table {
+				width: 100%;
+				height: 100%;
+				background: #E3EEFF;
+				padding: 5px
+			}
+			
+			.Menu table tr td {
+				text-align: center;
+				color: #999999;
+				padding-bottom: 5px;
+			}
+			
+			.Menu table tr td:nth-child(odd) {
+				width: 60px;
+			}
+			
+			.Menu table tr td span {
+				display: block;
+				width: 90%;
+				height: 2px;
+				background: #8D95CE;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="container-fluid">
+			<div class="row" style="padding: 0 15px;">
+				<div class="Menu">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr height="30">
+							<td colspan="3">创建活动</td>
+							<td>目标筛选</td>
+							<td></td>
+							<td>策略配置</td>
+							<td></td>
+							<td style="color:#0163AC">评估</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td style="padding-left:10px"><span></span></td>
+							<td width="70px"><a href="NewActStepActlx.html"><img src="../../../images/img/1.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewactStepCl.html"><img src="../../../images/img/3.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewactCdPz.html"><img src="../../../images/img/5.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewactStepHDpg.html"><img src="../../../images/img/14.png" width="70px"></a></td>
+							<td><span></span></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+											<div class="row" style="margin-top:5px;padding: 0 15px;">
+												<div style="width: 100%;height: auto;border: 0px solid red;">
+													<table class="table" style="margin-top:15px">
+														<tbody>
+															<tr>
+																<td width="80" style="padding-right: 0;border: none;">活动名称：</td>
+																<td style="padding-left: 0;border: 0px solid red;padding-top:5px" width="200">
+																	<form role="form" style="width: 95%;float: left;margin-top:0px;padding-left: 0;">
+																		  <div class="form-group">
+																		    <select id="actNum" onchange="initdata()" class="form-control" style="padding-left: 5px;">
+																		      <option value="subact1">子活动一</option>
+																		      <option value="subact2">子活动二</option>
+																		      <option value="subact3">子活动三</option>
+																		    </select>
+																		    </select>
+																		  </div>
+																		</form>
+																</td>
+																<td width="80" style="padding-right: 0;border: none;">评估时间：</td>
+																<td style="padding-left: 0;border: none;">2016-12-22</td>
+																<td width="80" style="padding-right: 0;border: none;">发起时间：</td>
+																<td style="padding-left: 0;border: none;">2016-12-20</td>
+																<td width="80" style="padding-right: 0;border: none;">场景类型：</td>
+																<td style="padding-left: 0;border: none;">流量</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											</div>
+											<div id="showactAss" class="row" style="padding: 0 15px;">
+												
+											</div>
+											
+											
+											<div class="row">
+												<div style="width: 100%;height: 40px;border: 0px solid red;text-align: center; margin-top:20px">
+													<a href="NewactCdPz.html" style="text-decoration: none;"><div style="cursor:pointer;border-radius:5px;line-height:40px;margin:0 20px 0 40%;width: 100px;height: 100%;background: #8D95CE;color: #fff;float: left;" data-dismiss="modal">
+														上一步
+													</div></a>
+													<a href="../actManager/actManmge.html" style="text-decoration: none;"><div style="cursor:pointer;border-radius:5px;line-height:40px;float:left;width: 100px;height: 100%;background: #8D95CE;color: #fff;" data-dismiss="modal" data-toggle="modal" data-target=".mubiao_modal">
+														完成
+													</div></a>
+												</div>
+											</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+function ActAssessEcharts1(){
+	// 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainNewactpg_1'));
+                  var labelTop = {
+    normal : {
+      
+        labelLine : {
+            show : false
+        },
+       label : {
+            show : false,
+            position : 'center'
+        },
+    }
+};
+var labelFromatter = {
+    normal : {
+        label : {
+            formatter : function (params){
+                return 100 - params.value + '%'
+            },
+           
+        }
+    },
+}
+var labelBottom = {
+    normal : {
+        color: '#ccc',
+        label : {
+            show : true,
+            position : 'center'
+        },
+        labelLine : {
+            show : false
+        }
+    }
+};
+var radius = [30, 20];
+               
+    var option = {
+   
+    series : [
+       
+       
+        {
+            type : 'pie',
+            center : ['50%', '50%'],
+            radius : radius,
+            x:'60%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                { value:30, itemStyle : labelBottom},
+                { value:70,itemStyle : labelTop}
+            ]
+        },
+       
+      
+      
+    ]
+};
+myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+
+}
+        
+</script>
+<script type="text/javascript">
+function ActAssessEcharts2(){
+	// 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainNewactpg_2'));
+                  var labelTop = {
+    normal : {
+      
+        labelLine : {
+            show : false
+        },
+       label : {
+            show : false,
+            position : 'center'
+        },
+    }
+};
+var labelFromatter = {
+    normal : {
+        label : {
+            formatter : function (params){
+                return 100 - params.value + '%'
+            },
+           
+        }
+    },
+}
+var labelBottom = {
+    normal : {
+        color: '#ccc',
+        label : {
+            show : true,
+            position : 'center'
+        },
+        labelLine : {
+            show : false
+        }
+    }
+};
+var radius = [30, 20];
+               
+    var option = {
+   
+    series : [
+       
+       
+        {
+            type : 'pie',
+            center : ['50%', '50%'],
+            radius : radius,
+            x:'60%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                { value:30, itemStyle : labelBottom},
+                { value:70,itemStyle : labelTop}
+            ]
+        },
+       
+      
+      
+    ]
+};
+myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+}
+</script>
+<script type="text/javascript">
+function ActAssessEcharts3(){
+	 // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainNewactpg_3'));
+                  var labelTop = {
+    normal : {
+      
+        labelLine : {
+            show : false
+        },
+       label : {
+            show : false,
+            position : 'center'
+        },
+    }
+};
+var labelFromatter = {
+    normal : {
+        label : {
+            formatter : function (params){
+                return 100 - params.value + '%'
+            },
+           
+        }
+    },
+}
+var labelBottom = {
+    normal : {
+        color: '#ccc',
+        label : {
+            show : true,
+            position : 'center'
+        },
+        labelLine : {
+            show : false
+        }
+    }
+};
+var radius = [30, 20];
+               
+    var option = {
+   
+    series : [
+       
+       
+        {
+            type : 'pie',
+            center : ['50%', '50%'],
+            radius : radius,
+            x:'60%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                { value:30, itemStyle : labelBottom},
+                { value:70,itemStyle : labelTop}
+            ]
+        },
+       
+      
+      
+    ]
+};
+myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+}
+</script>
+<script type="text/javascript">
+function ActAssessEcharts4(){
+	 // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainNewactpg_4'));
+                  var labelTop = {
+    normal : {
+      
+        labelLine : {
+            show : false
+        },
+       label : {
+            show : false,
+            position : 'center'
+        },
+    }
+};
+var labelFromatter = {
+    normal : {
+        label : {
+            formatter : function (params){
+                return 100 - params.value + '%'
+            },
+           
+        }
+    },
+}
+var labelBottom = {
+    normal : {
+        color: '#ccc',
+        label : {
+            show : true,
+            position : 'center'
+        },
+        labelLine : {
+            show : false
+        }
+    }
+};
+var radius = [30, 20];
+               
+    var option = {
+   
+    series : [
+       
+       
+        {
+            type : 'pie',
+            center : ['50%', '50%'],
+            radius : radius,
+            x:'60%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                { value:40, itemStyle : labelBottom},
+                { value:60,itemStyle : labelTop}
+            ]
+        },
+       
+      
+      
+    ]
+};
+myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+}
+</script>
+<script type="text/javascript">
+function ActAssessEcharts5(){
+	 // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainNewactpg_5'));
+                  var labelTop = {
+    normal : {
+      
+        labelLine : {
+            show : false
+        },
+       label : {
+            show : false,
+            position : 'center'
+        },
+    }
+};
+var labelFromatter = {
+    normal : {
+        label : {
+            formatter : function (params){
+                return 100 - params.value + '%'
+            },
+           
+        }
+    },
+}
+var labelBottom = {
+    normal : {
+        color: '#ccc',
+        label : {
+            show : true,
+            position : 'center'
+        },
+        labelLine : {
+            show : false
+        }
+    }
+};
+var radius = [30, 20];
+               
+    var option = {
+   
+    series : [
+       
+       
+        {
+            type : 'pie',
+            center : ['50%', '50%'],
+            radius : radius,
+            x:'60%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                { value:40, itemStyle : labelBottom},
+                { value:60,itemStyle : labelTop}
+            ]
+        },
+       
+      
+      
+    ]
+};
+myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+}
+</script>
+<script type="text/javascript">
+function ActAssessEcharts6(){
+	 // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainNewactpg_6'));
+                  var labelTop = {
+    normal : {
+      
+        labelLine : {
+            show : false
+        },
+       label : {
+            show : false,
+            position : 'center'
+        },
+    }
+};
+var labelFromatter = {
+    normal : {
+        label : {
+            formatter : function (params){
+                return 100 - params.value + '%'
+            },
+           
+        }
+    },
+}
+var labelBottom = {
+    normal : {
+        color: '#ccc',
+        label : {
+            show : true,
+            position : 'center'
+        },
+        labelLine : {
+            show : false
+        }
+    }
+};
+var radius = [30, 20];
+               
+    var option = {
+   
+    series : [
+       
+       
+        {
+            type : 'pie',
+            center : ['50%', '50%'],
+            radius : radius,
+            x:'60%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                { value:40, itemStyle : labelBottom},
+                { value:60,itemStyle : labelTop}
+            ]
+        },
+       
+      
+      
+    ]
+};
+myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+}
+</script>
+<script type="text/javascript">
+function ActAssessEcharts7(){
+	 // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainNewactpg_7'));
+                  var labelTop = {
+    normal : {
+      
+        labelLine : {
+            show : false
+        },
+       label : {
+            show : false,
+            position : 'center'
+        },
+    }
+};
+var labelFromatter = {
+    normal : {
+        label : {
+            formatter : function (params){
+                return 100 - params.value + '%'
+            },
+           
+        }
+    },
+}
+var labelBottom = {
+    normal : {
+        color: '#ccc',
+        label : {
+            show : true,
+            position : 'center'
+        },
+        labelLine : {
+            show : false
+        }
+    }
+};
+var radius = [30, 20];
+               
+    var option = {
+   
+    series : [
+       
+       
+        {
+            type : 'pie',
+            center : ['50%', '50%'],
+            radius : radius,
+            x:'60%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                { value:20, itemStyle : labelBottom},
+                { value:80,itemStyle : labelTop}
+            ]
+        },
+       
+      
+      
+    ]
+};
+myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+}
+</script>
+<script type="text/javascript">
+function ActAssessEcharts8(){
+	 // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainNewactpg_8'));
+                  var labelTop = {
+    normal : {
+      
+        labelLine : {
+            show : false
+        },
+       label : {
+            show : false,
+            position : 'center'
+        },
+    }
+};
+var labelFromatter = {
+    normal : {
+        label : {
+            formatter : function (params){
+                return 100 - params.value + '%'
+            },
+           
+        }
+    },
+}
+var labelBottom = {
+    normal : {
+        color: '#ccc',
+        label : {
+            show : true,
+            position : 'center'
+        },
+        labelLine : {
+            show : false
+        }
+    }
+};
+var radius = [30, 20];
+               
+    var option = {
+   
+    series : [
+       
+       
+        {
+            type : 'pie',
+            center : ['50%', '50%'],
+            radius : radius,
+            x:'60%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                { value:20, itemStyle : labelBottom},
+                { value:80,itemStyle : labelTop}
+            ]
+        },
+       
+      
+      
+    ]
+};
+myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+}
+</script>
+<script type="text/javascript">
+function ActAssessEcharts9(){
+	 // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainNewactpg_9'));
+                  var labelTop = {
+    normal : {
+      
+        labelLine : {
+            show : false
+        },
+       label : {
+            show : false,
+            position : 'center'
+        },
+    }
+};
+var labelFromatter = {
+    normal : {
+        label : {
+            formatter : function (params){
+                return 100 - params.value + '%'
+            },
+           
+        }
+    },
+}
+var labelBottom = {
+    normal : {
+        color: '#ccc',
+        label : {
+            show : true,
+            position : 'center'
+        },
+        labelLine : {
+            show : false
+        }
+    }
+};
+var radius = [30, 20];
+               
+    var option = {
+   
+    series : [
+       
+       
+        {
+            type : 'pie',
+            center : ['50%', '50%'],
+            radius : radius,
+            x:'60%', // for funnel
+            itemStyle : labelFromatter,
+            data : [
+                { value:20, itemStyle : labelBottom},
+                { value:80,itemStyle : labelTop}
+            ]
+        },
+       
+      
+      
+    ]
+};
+myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+}
+</script>
+<script type="text/javascript">
+var obj={};
+$(function (){
+	initdata();
+})
+function initdata(){
+	actass();
+}
+
+
+	function actass(){
+		$("#showactAss").html("");
+		if($("#actNum").val()=='subact1'){
+			var actrowhtm="<div style=\"width: 100%;height: auto;border:1px solid #9199D0;\"><div style=\"width: 100%;height: 50px;line-height: 50px;background: #8D95CE;color: #fff;padding-left: 10px;\">活动评估</div><div class=\"Newactpg\" style=\"width: 100%;height: auto;\"><table class=\"table\"><tbody><tr style=\"background: #F5F6FA;\"><td></td><td width=\"140px\">触点名称</td><td width=\"140px\">目标用户数</td><td width=\"140px\">到达用户数</td><td width=\"140px\">到达率</td><td width=\"140px\">办理用户数</td><td width=\"140px\">成功率</td></tr><tr><td height=\"70px\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\" id=\"mainNewactpg_1\"></div></td><td style=\"line-height: 80px;padding: 0;\">短信</td><td style=\"line-height: 80px;padding: 0;\">43245</td><td style=\"line-height: 80px;padding: 0;\">34232</td><td style=\"line-height: 80px;padding: 0;\">60%</td><td style=\"line-height: 80px;padding: 0;\">23242</td><td style=\"line-height: 80px;padding: 0;\">70%</td></tr><tr><td height=\"70px\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\" id=\"mainNewactpg_2\"></div></td><td style=\"line-height: 80px;padding: 0;\">短信</td><td style=\"line-height: 80px;padding: 0;\">43245</td><td style=\"line-height: 80px;padding: 0;\">34232</td><td style=\"line-height: 80px;padding: 0;\">60%</td><td style=\"line-height: 80px;padding: 0;\">23242</td><td style=\"line-height: 80px;padding: 0;\">70%</td></tr><tr><td height=\"70px\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\" id=\"mainNewactpg_3\"></div></td><td style=\"line-height: 80px;padding: 0;\">微信</td><td style=\"line-height: 80px;padding: 0;\">43245</td><td style=\"line-height: 80px;padding: 0;\">34232</td><td style=\"line-height: 80px;padding: 0;\">60%</td><td style=\"line-height: 80px;padding: 0;\">23242</td><td style=\"line-height: 80px;padding: 0;\">70%</td></tr></tbody></table></div></div>";
+			$("#showactAss").append(actrowhtm);
+			ActAssessEcharts1();
+	ActAssessEcharts2();
+	ActAssessEcharts3();
+		}else if($("#actNum").val()=='subact2'){
+			var actrowhtm="<div style=\"width: 100%;height: auto;border:1px solid #9199D0;\"><div style=\"width: 100%;height: 50px;line-height: 50px;background: #8D95CE;color: #fff;padding-left: 10px;\">活动评估</div><div class=\"Newactpg\" style=\"width: 100%;height: auto;\"><table class=\"table\"><tbody><tr style=\"background: #F5F6FA;\"><td></td><td width=\"140px\">触点名称</td><td width=\"140px\">目标用户数</td><td width=\"140px\">到达用户数</td><td width=\"140px\">到达率</td><td width=\"140px\">办理用户数</td><td width=\"140px\">成功率</td></tr><tr><td height=\"70px\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\" id=\"mainNewactpg_4\"></div></td><td style=\"line-height: 80px;padding: 0;\">短信</td><td style=\"line-height: 80px;padding: 0;\">43245</td><td style=\"line-height: 80px;padding: 0;\">65435</td><td style=\"line-height: 80px;padding: 0;\">60%</td><td style=\"line-height: 80px;padding: 0;\">32546</td><td style=\"line-height: 80px;padding: 0;\">60%</td></tr><tr><td height=\"70px\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\" id=\"mainNewactpg_5\"></div></td><td style=\"line-height: 80px;padding: 0;\">短信</td><td style=\"line-height: 80px;padding: 0;\">43245</td><td style=\"line-height: 80px;padding: 0;\">75654</td><td style=\"line-height: 80px;padding: 0;\">70%</td><td style=\"line-height: 80px;padding: 0;\">65432</td><td style=\"line-height: 80px;padding: 0;\">60%</td></tr><tr><td height=\"70px\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\" id=\"mainNewactpg_6\"></div></td><td style=\"line-height: 80px;padding: 0;\">微信</td><td style=\"line-height: 80px;padding: 0;\">84562</td><td style=\"line-height: 80px;padding: 0;\">12354</td><td style=\"line-height: 80px;padding: 0;\">60%</td><td style=\"line-height: 80px;padding: 0;\">23242</td><td style=\"line-height: 80px;padding: 0;\">60%</td></tr></tbody></table></div></div>";
+			$("#showactAss").append(actrowhtm);
+			ActAssessEcharts4();
+	ActAssessEcharts5();
+	ActAssessEcharts6();
+		}else if($("#actNum").val()=='subact3'){
+			var actrowhtm="<div style=\"width: 100%;height: auto;border:1px solid #9199D0;\"><div style=\"width: 100%;height: 50px;line-height: 50px;background: #8D95CE;color: #fff;padding-left: 10px;\">活动评估</div><div class=\"Newactpg\" style=\"width: 100%;height: auto;\"><table class=\"table\"><tbody><tr style=\"background: #F5F6FA;\"><td></td><td width=\"140px\">触点名称</td><td width=\"140px\">目标用户数</td><td width=\"140px\">到达用户数</td><td width=\"140px\">到达率</td><td width=\"140px\">办理用户数</td><td width=\"140px\">成功率</td></tr><tr><td height=\"70px\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\" id=\"mainNewactpg_7\"></div></td><td style=\"line-height: 80px;padding: 0;\">短信</td><td style=\"line-height: 80px;padding: 0;\">43245</td><td style=\"line-height: 80px;padding: 0;\">65435</td><td style=\"line-height: 80px;padding: 0;\">60%</td><td style=\"line-height: 80px;padding: 0;\">32546</td><td style=\"line-height: 80px;padding: 0;\">80%</td></tr><tr><td height=\"70px\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\" id=\"mainNewactpg_8\"></div></td><td style=\"line-height: 80px;padding: 0;\">短信</td><td style=\"line-height: 80px;padding: 0;\">43245</td><td style=\"line-height: 80px;padding: 0;\">75654</td><td style=\"line-height: 80px;padding: 0;\">70%</td><td style=\"line-height: 80px;padding: 0;\">65432</td><td style=\"line-height: 80px;padding: 0;\">80%</td></tr><tr><td height=\"70px\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\" id=\"mainNewactpg_9\"></div></td><td style=\"line-height: 80px;padding: 0;\">微信</td><td style=\"line-height: 80px;padding: 0;\">84562</td><td style=\"line-height: 80px;padding: 0;\">12354</td><td style=\"line-height: 80px;padding: 0;\">60%</td><td style=\"line-height: 80px;padding: 0;\">23242</td><td style=\"line-height: 80px;padding: 0;\">80%</td></tr></tbody></table></div></div>";
+			$("#showactAss").append(actrowhtm);
+			ActAssessEcharts7();
+	ActAssessEcharts8();
+	ActAssessEcharts9();
+		}
+	}
+</script>
+

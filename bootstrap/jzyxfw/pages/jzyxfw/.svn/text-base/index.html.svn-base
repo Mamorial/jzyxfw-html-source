@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--引用样式-->
+		<!--<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/css/bootstrap.css" />-->
+		<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/css/bootstrap-datetimepicker.css"/>
+		<link rel="stylesheet" type="text/css" href="../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css"/>
+		<link rel="stylesheet" type="text/css" href="../../resources/self/css/assets/css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="../../resources/self/css/assets/css/responsive.css"/>
+		<!--自定义样式-->
+		<link rel="stylesheet" type="text/css" href="../../resources/self/css/index_theme.css"/>
+		<link rel="stylesheet" type="text/css" href="../../resources/self/css/shouye.css"/>
+		<link rel="stylesheet" type="text/css" href="../../resources/self/css/style/style.css"/>
+		<!--引用js-->
+		<script type="text/javascript" src="../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../resources/echarts/js/echarts.js"></script>
+		<script type="text/javascript" src="../../resources/self/css/assets/js/app.js"></script>
+		<script type="text/javascript" src="../../resources/self/css/assets/js/libs/breakpoints.js"></script>
+		<script type="text/javascript" src="../../resources/self/css/assets/js/jquery.slimscroll.min.js"></script>
+		<!--自定义js-->
+		<script type="text/javascript" src="../../resources/viewJs/jzyxfw/jquery.dataStatistics.js"></script>
+		<script type="text/javascript" src="../../resources/viewJs/jzyxfw/tjcharts.js"></script>
+		<script>
+      $(document).ready(function() {
+ //    App.init();
+//      Plugins.init();
+//      FormComponents.init()
+      });
+    </script>
+    <style>
+    	html { overflow-x:hidden;overflow-y: hidden;}
+    </style>
+	</head>
+	<body style="border: 0px solid red;padding-bottom: 25px;">
+		<header class="header navbar navbar-fixed-top" role="banner" style="border: 0px solid red;background: #0060AF;">
+      <div class="container" style="border: 0px solid red;">
+        <ul class="nav navbar-nav" style="border: 0px solid red;">
+          <li class="nav-toggle" style="height: 70px;">
+            <a href="javascript:void(0);" title="" style="margin-top:10px;border: 0px solid red;">
+              <i class="icon-reorder">
+              </i>
+            </a>
+          </li>
+        </ul>
+        <a class="navbar-brand" href="index.html" style="border: 0px solid blue;height: 70px;">
+          <img src="../../images/logo.png" alt="logo" />
+          
+        </a>
+        <a href="#" class="toggle-sidebar bs-tooltip" data-placement="bottom"
+        data-original-title="Toggle navigation"  style="margin-top:10px;border: 0px solid #000;">
+          <i class="icon-reorder">
+          </i>
+        </a>
+        <ul class="nav navbar-nav navbar-left hidden-xs hidden-sm">
+          <li>
+            <a href="#" id="shouye" onclick="initSystemMenu(this.id);">
+            	<div style="width: 100%;text-align: center;font-size: 20px;height: 20px;border: 0px solid red;margin-top:-5px"><i class="icon-home"></i></div>
+              <span style="display:block;font-size: 15px;border: 0px solid blue;padding-top:6px"><b>首页</b></span>
+            </a>
+          </li>
+          <li>
+          	
+            <a href="javascript:void(0)" onclick="initSystemMenu(this.id);" id="jzyxfw" style="background: #222222;">
+            	<div style="width: 100%;text-align: center;font-size: 20px;margin-top:-5px"><i class="icon-dashboard"></i></div>
+              <span style="font-size: 15px;display: block;margin-top:6px">
+              	<b>精准营销服务</b>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="biaoqiangl" onclick="initSystemMenu(this.id);">
+            	<div style="width: 100%;text-align: center;font-size: 20px;margin-top:-5px"><i class="icon-list-alt"></i></div>
+              <span style="font-size: 15px;display: block;margin-top:6px"><b>标签管理</b></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="yingxiaozy" onclick="initSystemMenu(this.id);">
+            	<div style="width: 100%;text-align: center;font-size: 20px;margin-top:-5px"><i class="icon-tags"></i></div>
+              <span style="font-size: 15px;display: block;margin-top:6px"><b>营销指引</b></span>
+            </a>
+          </li>
+          <li>
+            <a href="#" id="xitonggl" onclick="initSystemMenu(this.id);">
+            	<div style="width: 100%;text-align: center;font-size: 20px;margin-top:-5px"><i class="icon-cog"></i></div>
+              <span style="font-size: 15px;display: block;margin-top:6px"><b>系统管理</b></span>
+            </a>
+          </li>
+          
+        </ul>
+        <ul class="nav navbar-nav navbar-right" style="padding-top:10px;border: 0px solid red;">
+          <li class="dropdown" style="border: 0px solid blue;">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="display: block;border: 0px solid red;line-height: 20px;">
+            	
+              <i class="icon-warning-sign">
+              </i>
+              <span class="badge">
+                5
+              </span>
+            </a>
+            <ul class="dropdown-menu extended notification">
+              <li class="title">
+                <p>
+                  你有5条通知信息。
+                </p>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="label label-success">
+                    <i class="icon-plus">
+                    </i>
+                  </span>
+                  <span class="message">
+                    新用户注册.
+                  </span>
+                  <span class="time">
+                    1分钟之前
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="label label-danger">
+                    <i class="icon-warning-sign">
+                    </i>
+                  </span>
+                  <span class="message">
+                    High CPU load on cluster #2.
+                  </span>
+                  <span class="time">
+                    5 mins
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="label label-success">
+                    <i class="icon-plus">
+                    </i>
+                  </span>
+                  <span class="message">
+                    New user registration.
+                  </span>
+                  <span class="time">
+                    10 mins
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="label label-info">
+                    <i class="icon-bullhorn">
+                    </i>
+                  </span>
+                  <span class="message">
+                    New items are in queue.
+                  </span>
+                  <span class="time">
+                    25 mins
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="label label-warning">
+                    <i class="icon-bolt">
+                    </i>
+                  </span>
+                  <span class="message">
+                    Disk space to 85% full.
+                  </span>
+                  <span class="time">
+                    55 mins
+                  </span>
+                </a>
+              </li>
+              <li class="footer">
+                <a href="javascript:void(0);">
+                  View all notifications
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown hidden-xs hidden-sm">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="icon-tasks">
+              </i>
+              <span class="badge">
+                7
+              </span>
+            </a>
+            <ul class="dropdown-menu extended notification">
+              <li class="title">
+                <p>
+                  你有7条开展中的任务
+                </p>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="task">
+                    <span class="desc">
+                      Preparing new release
+                    </span>
+                    <span class="percent">
+                      30%
+                    </span>
+                  </span>
+                  <div class="progress progress-small">
+                    <div style="width: 30%;" class="progress-bar progress-bar-info">
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="task">
+                    <span class="desc">
+                      Change management
+                    </span>
+                    <span class="percent">
+                      80%
+                    </span>
+                  </span>
+                  <div class="progress progress-small progress-striped active">
+                    <div style="width: 80%;" class="progress-bar progress-bar-danger">
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="task">
+                    <span class="desc">
+                      Mobile development
+                    </span>
+                    <span class="percent">
+                      60%
+                    </span>
+                  </span>
+                  <div class="progress progress-small">
+                    <div style="width: 60%;" class="progress-bar progress-bar-success">
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="task">
+                    <span class="desc">
+                      Database migration
+                    </span>
+                    <span class="percent">
+                      20%
+                    </span>
+                  </span>
+                  <div class="progress progress-small">
+                    <div style="width: 20%;" class="progress-bar progress-bar-warning">
+                    </div>
+                  </div>
+                </a>
+              </li>
+              <li class="footer">
+                <a href="javascript:void(0);">
+                  View all tasks
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown hidden-xs hidden-sm">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="icon-envelope">
+              </i>
+              <span class="badge">
+                1
+              </span>
+            </a>
+            <ul class="dropdown-menu extended notification">
+              <li class="title">
+                <p>
+                  你有3条新消息
+                </p>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="photo">
+                    <img src="assets/img/demo/avatar-1.jpg" alt="" />
+                  </span>
+                  <span class="subject">
+                    <span class="from">
+                      Bob Carter
+                    </span>
+                    <span class="time">
+                      Just Now
+                    </span>
+                  </span>
+                  <span class="text">
+                    Consetetur sadipscing elitr...
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="photo">
+                    <img src="assets/img/demo/avatar-2.jpg" alt="" />
+                  </span>
+                  <span class="subject">
+                    <span class="from">
+                      Jane Doe
+                    </span>
+                    <span class="time">
+                      45 mins
+                    </span>
+                  </span>
+                  <span class="text">
+                    Sed diam nonumy...
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="javascript:void(0);">
+                  <span class="photo">
+                    <img src="assets/img/demo/avatar-3.jpg" alt="" />
+                  </span>
+                  <span class="subject">
+                    <span class="from">
+                      Patrick Nilson
+                    </span>
+                    <span class="time">
+                      6 hours
+                    </span>
+                  </span>
+                  <span class="text">
+                    No sea takimata sanctus...
+                  </span>
+                </a>
+              </li>
+              <li class="footer">
+                <a href="javascript:void(0);">
+                  View all messages
+                </a>
+              </li>
+            </ul>
+          </li>
+          <!--<li>
+            <a href="#" class="dropdown-toggle row-bg-toggle">
+              <i class="icon-resize-vertical">
+              </i>
+            </a>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="project-switcher-btn dropdown-toggle">
+              <i class="icon-folder-open">
+              </i>
+              <span>
+                项目
+              </span>
+            </a>
+          </li>-->
+          <li class="dropdown user">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <i class="icon-male">
+              </i>
+              <span class="username">
+                John Doe
+              </span>
+              <i class="icon-caret-down small">
+              </i>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="pages_user_profile.html">
+                  <i class="icon-user">
+                  </i>
+                  我的资料
+                </a>
+              </li>
+              <li>
+                <a href="pages_calendar.html">
+                  <i class="icon-calendar">
+                  </i>
+                  我的日历
+                </a>
+              </li>
+              <li>
+                <a href="#">
+                  <i class="icon-tasks">
+                  </i>
+                  我的任务
+                </a>
+              </li>
+              <li class="divider">
+              </li>
+              <li>
+                <a href="login.html">
+                  <i class="icon-key">
+                  </i>
+                  退出
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div id="project-switcher" class="container project-switcher">
+        <div id="scrollbar">
+          <div class="handle">
+          </div>
+        </div>
+        <div id="frame">
+          <ul class="project-list">
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-desktop">
+                  </i>
+                </span>
+                <span class="title">
+                  Lorem ipsum dolor
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-compass">
+                  </i>
+                </span>
+                <span class="title">
+                  Dolor sit invidunt
+                </span>
+              </a>
+            </li>
+            <li class="current">
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-male">
+                  </i>
+                </span>
+                <span class="title">
+                  Consetetur sadipscing elitr
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-thumbs-up">
+                  </i>
+                </span>
+                <span class="title">
+                  Sed diam nonumy
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-female">
+                  </i>
+                </span>
+                <span class="title">
+                  At vero eos et
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-beaker">
+                  </i>
+                </span>
+                <span class="title">
+                  Sed diam voluptua
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-desktop">
+                  </i>
+                </span>
+                <span class="title">
+                  Lorem ipsum dolor
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-compass">
+                  </i>
+                </span>
+                <span class="title">
+                  Dolor sit invidunt
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-male">
+                  </i>
+                </span>
+                <span class="title">
+                  Consetetur sadipscing elitr
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-thumbs-up">
+                  </i>
+                </span>
+                <span class="title">
+                  Sed diam nonumy
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-female">
+                  </i>
+                </span>
+                <span class="title">
+                  At vero eos et
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="javascript:void(0);">
+                <span class="image">
+                  <i class="icon-beaker">
+                  </i>
+                </span>
+                <span class="title">
+                  Sed diam voluptua
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div id="container" style="">
+      <div id="sidebar" class="sidebar-fixed">
+        <div id="sidebar-content" style="border: 0px solid red;">
+          <!-- <form class="sidebar-search">
+           <div class="input-box">
+              <button type="submit" class="submit">
+                <i class="icon-search">
+                </i>
+              </button>
+              <span>
+                <input type="text" placeholder="搜索...">
+              </span>
+            </div>
+          </form>-->
+          <!--<div class="sidebar-search-results">
+            <i class="icon-remove close">
+            </i>
+            <div class="title">
+              Documents
+            </div>
+          </div>-->
+          <ul id="nav" style="border:0px solid red;">
+         
+          </ul>
+         
+          
+         
+        </div>
+        <div id="divider" class="resizeable">
+        </div>
+      </div>
+      <div id="content" style="height: 1500px;">
+        <div class="container" style="border: 0px solid blue;padding-left: 2px;margin-top:0px;height: 100%;">
+          <div class="crumbs" style="border: 0px solid red;">
+            <ul id="breadcrumbs" class="breadcrumb" style="">
+
+            </ul>
+          </div>
+         
+         <!--正文内容-->
+         <div style="width: 101.5%;height:100%;border: 0px solid #f00;padding: 0;">
+         <iframe id="framess" src="yingxiaozhinan.html" width="100%" height="600px" style="border: 1px solid #ddd;padding-bottom: 50px;"></iframe>
+         </div>
+        </div>
+      </div>
+    </div>
+	</body>
+</html>
+<script type="text/javascript">
+//	function zhyxClick(obj){
+//		var id=$(obj).attr("id");
+//		if(id=='yxch'){
+//			$("#framess").attr("src","actManager/actManmge.html");
+//			Tooptoop($(obj),"actManager/actManmge.html");
+//		}else if(id=='touch_assess'){
+//			$("#framess").attr("src","actManager/touch_assess.html");
+//		}else if(id=='yxznz'){
+//			$("#framess").attr("src","yingxiaozhinan.html");
+//			Tooptoop($(obj));
+//		}else if(id=='hdflgl'){
+//			$("#framess").attr("src","actManager/actManager.html");
+//			Tooptoop($(obj));
+//		}else if(id=='hdmbgl'){
+//			$("#framess").attr("src","actManager/modelManager.html");
+//			Tooptoop($(obj));
+//		}else if(id=='Message'){
+//			$("#framess").attr("src","ContactManage/MessagesContact.html");
+//			Tooptoop($(obj));
+//		}else if(id=='Weixin'){
+//			$("#framess").attr("src","ContactManage/MessageContactWeix.html");
+//			Tooptoop($(obj));
+//		}else if(id=='hdbqgl'){
+//			$("#framess").attr("src","actManager/exercise_label_manager.html");
+//			Tooptoop($(obj));
+//		}else if(id=="shouye"){
+//			//$("#framess").attr("src","yingxiaozhinan.html");
+//			headToop($(obj));
+//		}else if(id=="biaoqiangl"){
+//			//$("#framess").attr("src","yingxiaozhinan.html");
+//			headToop($(obj));
+//		}else if(id=="yingxiaozy"){
+//			//$("#framess").attr("src","yingxiaozhinan.html");
+//			headToop($(obj));
+//		}else if(id=="xitonggl"){
+//			//$("#framess").attr("src","yingxiaozhinan.html");
+//			headToop($(obj));
+//		}else if(id=="jzyxfw"){
+//			$("#framess").attr("src","yingxiaozhinan.html");
+//			headToop($(obj));
+//		}
+//	}
+//	function headToop(obj){
+//		//alert(n);
+//		var o=$(obj).find("span").html();
+//		$(obj).parent().siblings().each(function (i,n){
+//			$(n).find("a").css("background","#0060AF");
+//		})
+//		$(obj).css("background","#222222");
+//		//alert($.trim(o));
+//		$("#HeadToop").html(o);
+//	}
+//	function Tooptoop(obj,m){
+//		var o=$(obj).find("span").html();
+//		//alert(o);
+//		$("#ToopToop").html(o);
+//		$("#framess").attr("src",m);
+//	}
+//-------------------------------------
+	var warr=[{
+		node_id: 1
+		,node_name:"营销指南针"
+		,node_level: 2
+		,node_url: "yingxiaozhinan.html"
+		,parent_node_id:0
+		,parent_node_level:1
+		,isIndex: 1
+		,icons_class:'icon-dashboard'
+	},{
+		node_id: 2
+		,node_name:"营销策划"
+		,node_level: 2
+		,node_url: "actManager/actManmge.html"
+		,parent_node_id:0
+		,parent_node_level:1
+		,isIndex: 0
+		,icons_class:'icon-desktop'
+	},{
+		node_id: 3
+		,node_name:"活动管理"
+		,node_level: 2
+		,node_url: ""
+		,parent_node_id:0
+		,parent_node_level:1
+		,isIndex: 0
+		,icons_class:'icon-edit'
+	},{
+		node_id: 4
+		,node_name:"活动分类管理"
+		,node_level: 3
+		,node_url: "actManager/actManager.html"
+		,parent_node_id:3
+		,parent_node_level:2
+		,isIndex: 0
+	},{
+		node_id: 5
+		,node_name:"活动模板管理"
+		,node_level: 3
+		,node_url: "actManager/modelManager.html"
+		,parent_node_id:3
+		,parent_node_level:2
+		,isIndex: 0
+	},{
+		node_id: 6
+		,node_name:"活动标签管理"
+		,node_level: 3
+		,node_url: "actManager/exercise_label_manager.html"
+		,parent_node_id:3
+		,parent_node_level:2
+		,isIndex: 0
+	},{
+		node_id: 7
+		,node_name:"接触评估"
+		,node_level: 2
+		,node_url: ""
+		,parent_node_id:0
+		,parent_node_level:1
+		,isIndex: 0
+		,icons_class:'icon-table'
+	},{
+		node_id: 8
+		,node_name:"用户评估"
+		,node_level: 3
+		,node_url: ""
+		,parent_node_id:7
+		,parent_node_level:2
+		,isIndex: 0
+	},{
+		node_id: 9
+		,node_name:"接触评估"
+		,node_level: 3
+		,node_url: "actManager/touch_assess.html"
+		,parent_node_id:7
+		,parent_node_level:2
+		,isIndex: 0
+	},{
+		node_id: 10
+		,node_name:"标签评估"
+		,node_level: 3
+		,node_url: ""
+		,parent_node_id:7
+		,parent_node_level:2
+		,isIndex: 0
+	},{
+		node_id: 11
+		,node_name:"触点管理"
+		,node_level: 2
+		,node_url: ""
+		,parent_node_id:0
+		,parent_node_level:1
+		,isIndex: 0
+		,icons_class:'icon-bar-chart'
+	},{
+		node_id: 12
+		,node_name:"触点配置"
+		,node_level: 3
+		,node_url: "ContactManage/MessagesContact.html"
+		,parent_node_id:11
+		,parent_node_level:2
+		,isIndex: 0
+	},{
+		node_id: 13
+		,node_name:"红黑名单维护"
+		,node_level: 3
+		,node_url: "ContactManage/RedBlackListManage.html"
+		,parent_node_id:11
+		,parent_node_level:2
+		,isIndex: 0
+	},{
+		node_id: 14
+		,node_name:"审核管理"
+		,node_level: 2
+		,node_url: "ContactManage/AssessorManage.html"
+		,parent_node_id:0
+		,parent_node_level:1
+		,isIndex: 0
+		,icons_class:'icon-edit'
+	}];
+//	alert(JSON.stringify(warr));
+	initSystemMenu('jzyxfw');
+	function initSystemMenu(sid){
+		$("#"+sid).parent().siblings().each(function (i,n){
+			$(n).find("a").css("background","#0060AF");
+		})
+		$("#"+sid).css("background","#222222");
+		initMenu(sid);
+		App.init();
+	}
+	function initMenu(sid){
+		var sname=$("#"+sid).find("span").html();  
+		var shtml="<li> <i class=\"icon-home\"> </i> <a href=\"#\">";
+		shtml+=sname+"</a></li>";
+		$("#breadcrumbs").html(shtml);
+		if(sid=='jzyxfw'){
+			//....showMenu ul 传值为url  节点id :number, jzyxfw_$id$
+			$("#nav").html("");
+			for(var i=0;i<  warr.length;i++){
+//				alert(JSON.stringify(warr[i]));
+				var obj=warr[i];
+				initLeftMenu(obj);
+				if(obj.isIndex){
+					$("#"+obj.node_id+"_"+obj.node_level).find("a").click();
+				}
+			}
+//			alert($("#nav").html());
+		}
+	}
+	function initLeftMenu(obj){
+		if(typeof obj !='object')return;
+		var scurrent="";
+		if(obj.isIndex==1)scurrent+="class=\"current\"";
+		if(obj.node_level==2){
+			var shtml="";
+			shtml+="<li "+scurrent+" id='"+obj.node_id+"_"+obj.node_level+"'>";
+			shtml+="	<a href=\"#\">";
+			shtml+="		<i class=\""+obj.icons_class+"\">";
+			shtml+="		</i>";
+			shtml+="		<span>"+obj.node_name+"</span> ";
+			shtml+="	</a>";
+			shtml+="</li>";
+			$("#nav").append(shtml);
+		}else if(obj.node_level==3){
+			var shtml="",sheader="",sfooter="";
+			shtml+="<li class=\"current\" style='display:block' id='"+obj.node_id+"_"+obj.node_level+"'>";
+			shtml+="	<a href=\"#\">";
+			shtml+="		<i class=\"icon-angle-right\" style='display:block'>";
+			shtml+="		</i>";
+			shtml+="		<span  style='display:block'>"+obj.node_name+"</span> ";
+			shtml+="	</a>";
+			shtml+="</li>";
+			if($("#nav #"+obj.parent_node_id+"_"+obj.parent_node_level).find("ul").length==0){
+				sheader+="<ul class=\"sub-menu\">"; 
+				sfooter+="</ul>";
+				$("#nav #"+obj.parent_node_id+"_"+obj.parent_node_level).append(sheader+shtml+sfooter);
+			}else {
+				$("#nav #"+obj.parent_node_id+"_"+obj.parent_node_level).find("ul").append(shtml);
+			}
+		}
+		initTitle(obj);
+	}
+	function initTitle(obj){
+		$("#"+obj.node_id+"_"+obj.node_level).find("a").click(function (){
+			//设置URL
+			if(obj.node_url!="")$("#framess").attr("src",obj.node_url);
+			//设置title
+			
+			var fn=function (sname){
+				var htmls="<li class=\"current\"><a href=\"#\">"+sname+"</a></li>";
+				return  htmls;
+			}
+			var shtml="",arr=[];
+			var indexobj=$(this);
+			for(var i=obj.node_level;i>1;i--){
+				var names="";
+				if(i!=obj.node_level){
+//					alert(indexobj.parent().parent().html());
+					indexobj=indexobj.parent().parent().parent().find("a:first");
+//					alert(indexobj.find("span").html());
+				}
+				names=indexobj.find("span").html();
+				arr.push(fn(names));
+			}
+			arr.reverse();
+			shtml+=arr.join("");
+//			var shtml=fn(parentName)+fn(thisName);
+			
+			$("#breadcrumbs").find("li").eq(0).nextAll().remove();
+			$("#breadcrumbs").find("li").after(shtml);
+			$("#breadcrumbs").find("li").next().find("a").click(function (){
+				if(obj.node_url!=""){
+					$("#framess").attr("src",obj.node_url);
+				}
+			});
+		});	
+	}
+	
+	
+	
+	//------------------------------
+	
+	
+	
+//	function setDivTitle(titleObj,titleName,fn){
+//	
+//		var strHtml="<span style=\"font-family:'微软雅黑';font-weight:bold;font-size:15px;\">";
+//		strHtml+="<a href='javascript:void(0)'>"+titleName+"</a></span>";
+//		var strIcon="<span style=\"font-family:'微软雅黑';font-weight:bold;font-size:15px;\">&nbsp;&gt;&nbsp;</span>";
+//		if($(titleObj).find("table tr td").html()=='')strIcon='';
+//		$(titleObj).find("table tr td").append(strIcon+strHtml).find('a:last').click(function (){
+//			//删除子标题
+//			$(this).parent().nextAll('span').remove();
+//			//先隐藏所有
+//			$(titleObj).nextAll('div').hide();
+//			//然后显示特定div
+//			$(isShowDivObj).show();
+//			//再开始执行点击事件
+//			fn.call(this);
+//			
+//		});
+//	}
+
+	
+	
+	
+</script>

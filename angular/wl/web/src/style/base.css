@@ -1,0 +1,187 @@
+* {
+	font-family: "微软雅黑";
+}
+
+body {
+	background: #e6f1ff;
+}
+
+.wrap {
+	width: 1200px;
+	overflow: hidden;
+	margin: 0 auto;
+}
+
+#top {
+	height: 30px;
+	background: #0163ac;
+	overflow: hidden;
+}
+
+#homeLink, #aboutLink, #controlLink {
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	float: right;
+	margin-top: 4px;
+	margin-right: 10px;
+}
+
+#homeLink {
+	float: left;
+}
+
+#homeLink span {
+	display: inline-block;
+	margin-right: 5px;
+	width: 12px;
+	height: 12px;
+	background: url(../images/elements.png) no-repeat -231px 0;
+}
+
+#middle {
+	height: 148px;
+	background: ##e6f1ff;
+}
+
+#logo {
+	float: left;
+	width: 231px;
+	height: 63px;
+	margin-top: 33px;
+	background: url(../images/elements.png) no-repeat;
+}
+
+#homeSearch {
+	float: right;
+	width: 40%;
+	height: 40px;
+	position: relative;
+	margin-top: 40px;
+}
+
+#homeSearch input {
+	display: block;
+	height: 40px;
+	line-height: 40px;
+	border: none;
+	background: #fff;
+	padding: 0 5%;
+	width: 100%;
+	border-radius: 20px;
+}
+
+#homeSearch span {
+	position: absolute;
+	width: 24px;
+	height: 24px;
+	background: url(../images/elements.png) no-repeat 0 -63px;
+	cursor: pointer;
+	top: 8px;
+	right: 15px;
+}
+
+#nav {
+	float: right;
+	font-size: 18px;
+	font-weight: bold;
+	list-style: none;
+	margin: 0;
+}
+
+#nav li {
+	float:left;
+	margin-right: 25px;
+	height: 128px;
+	line-height: 128px;
+	position: relative;
+}
+
+#nav li.active {
+	border-top: 4px solid #e6f1ff;
+	line-height: 120px;
+}
+
+#nav li a {
+	display: block;
+	color: #fff;
+}
+
+#nav li a:hover {
+	text-decoration: none;
+	color: yellow;
+}
+
+#nav li span {
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	border: 10px solid #3497db;
+	border-bottom-color: #e6f1ff;
+	margin-left: -5px;
+	display: none;
+}
+
+#nav li.active span {
+	display: block;
+}
+
+.commonTitleArea {
+	height: 34px;
+	line-height: 34px;
+	color: #666;
+	font-size: 30px;
+	font-weight: bold;
+	overflow: hidden;
+	text-align: center;
+	margin: 60px 0;
+}
+
+.commonTitleArea-left, .commonTitleArea-right {
+	float: left;
+	margin-top: 6px;
+}
+
+.commonTitleArea-right {
+	float: right;
+}
+
+.commonTitleArea-left b, .commonTitleArea-right b {
+	display: block;
+	background: url(../images/re-h.png) repeat-x;
+	height: 22px;
+	overflow: hidden;
+}
+
+.commonTitleArea-left span, .commonTitleArea-right span {
+	width: 44px;
+	height: 22px;
+	float: right;
+	background: #e6f1ff url(../images/elements.png) no-repeat -64px -63px;
+}
+
+.commonTitleArea-left span {
+	margin-left: 10px;
+}
+
+.commonTitleArea-right span {
+	float: left;
+	background-position: -108px -63px;
+	margin-right: 10px;
+}
+
+.commonPanel {
+	border-top: 4px solid #3497db;
+}
+
+.userStar {
+	display: inline-block;
+	width: 20px;
+	height: 18px;
+	margin-right: 5px;
+	background: url(../images/elements.png) no-repeat -24px -63px;
+}
+
+.userStar.active {
+	background-position: -43px -63px;
+}

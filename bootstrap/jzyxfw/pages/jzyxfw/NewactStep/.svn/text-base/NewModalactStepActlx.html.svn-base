@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--引用样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<!--自定义样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		<!--引用js-->
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="../../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../../resources/echarts/js/echarts.js"></script>
+		<style>
+		html{overflow-x:hidden;}
+			* {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			
+			ul li,
+			span {
+				display: block;
+			}
+			
+			
+			.Menu {
+				width: 100%;
+				height: 100px;
+				border: 0px solid red;
+				padding-bottom: 30px;
+				margin-top: -10px;
+				margin-top: 0px;
+			}
+			
+			.Menu table {
+				width: 100%;
+				height: 100%;
+				background: #E3EEFF;
+				padding: 5px
+			}
+			
+			.Menu table tr td {
+				text-align: center;
+				color: #999999;
+				padding-bottom: 5px;
+			}
+			
+			.Menu table tr td:nth-child(odd) {
+				width: 60px;
+			}
+			
+			.Menu table tr td span {
+				display: block;
+				width: 90%;
+				height: 2px;
+				background: #8D95CE;
+			}
+			.add-on{float: right;display: block;margin-right: 5px;}
+		</style>
+	</head>
+
+	<body style="padding-top:108px">
+		<div class="container-fluid navbar-fixed-top">
+			<div class="row" style="padding: 0 15px;">
+				<div class="Menu">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr height="30">
+							<td colspan="3" style="color:#0163AC">创建模板</td>
+							<td>目标筛选</td>
+							<td></td>
+							<td>策略配置</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td style="padding-left:10px"><span></span></td>
+							<td width="70px"><a href="NewModalactStepActlx.html"><img src="../../../images/img/8.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewModalactSX.html"><img src="../../../images/img/3.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewModalactClPz.html"><img src="../../../images/img/5.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+						</tr>
+					</table>
+				</div>
+				
+			</div>	
+			</div>
+			<div class="container-fluid">
+				<div class="row huodCon" style="width:100%;margin-top:10px;border: 0px solid red;height: auto;margin-left: 0px;padding: 0 15px;">
+					
+					<table border="0" cellpadding="0" cellspacing="0" style="width: 100%;height: auto;">
+						<tr>
+							<td><b>模板名称</b></td>
+							<td colspan="3"><form class="bs-example bs-example-form" role="form" style="margin: 10px;">
+
+		<div class="input-group" style="width: 90%;">
+			<input type="text" class="form-control" style="border-radius: 5px;" placeholder="请输入模板名称">
+			
+		</div>
+
+	</form>   </td>
+						</tr>
+														<tr>
+															<td width="100" height="30"><b>业务类型</b></td>
+															<td style="width: 40%;"></td>
+									<td width="100"><b>开始时间</b></td>
+									<td></td>
+														</tr>
+														<tr>
+															<td colspan="2"><form role="form" style="width: 95%;float: left;margin-top:15px;">
+									  <div class="form-group">
+									    <select id="sceneshow" class="form-control">
+									      <option value="ll">流量</option>
+									      <option value="kd">宽带</option>
+									      <option value="wx">微信</option>
+									    </select>
+									    </select>
+									  </div>
+									</form></td>
+									<td colspan="2"><div class="control-group" style="margin-top:15px">
+                <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1" style="border: 1px solid #DDDDDD;border-radius: 5px;height: 35px;width: 95%;padding: 5px;">
+                    <input style="float: left;display: block;border: none;" size="20" type="text" placeholder="请输入开始时间" readonly>
+                    <span class="add-on"><i class="icon-th"></i></span>
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+            </div></td>
+									
+									</tr>
+									<tr>
+										<td width="100" height="40"><b>场&nbsp;&nbsp;&nbsp;&nbsp;景</b></td>
+										<td>
+											<!--<div id="AlertShow" style="width: 90%;height: 0;border: 0px solid red;overflow: hidden;display: block;">
+												<div id="myAlert" class="alert alert-success" style="padding:3px;margin: 0;">
+													<a href='../actManager/modelManager.html' style="font-size:15px;color: #3C763D;float: right;text-decoration: none;">查看</a>
+													该场景下有公共模板,可点击查看详细信息。
+												</div>
+											</div>-->
+										</td>
+										<td width="100"><b>结束时间</b></td>
+									<td></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+										   <form role="form" style="width: 95%;float: left;">
+									  <div class="form-group">
+									    <select id="selalert" onchange="showalert()"  class="form-control">
+									      <option value="sc">奢侈型</option>
+									      <option value="hh">豪华型</option>
+									      <option value="jh">聚划算</option>
+									    </select>
+									    </select>
+									  </div>
+									</form>
+										</td>
+									<td colspan="2">
+										<div class="control-group">
+                <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1" style="border: 1px solid #DDDDDD;border-radius: 5px;height: 35px;width: 95%;padding: 5px;">
+                    <input style="float: left;display: block;border: none;" size="20" type="text" placeholder="请输入结束时间" readonly>
+                    <span class="add-on"><i class="icon-th"></i></span>
+                    <span class="add-on"><i class="icon-remove"></i></span>
+					
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+            </div>
+									</td>
+									</tr>
+									
+														<!--<tr>
+															<td colspan="2">
+																<div class="control-group">
+                <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1" style="border: 1px solid #DDDDDD;border-radius: 5px;height: 35px;width: 95%;padding: 5px;">
+                    <input style="float: left;display: block;border: none;" size="20" type="text" placeholder="请输入开始时间" readonly>
+                    <span class="add-on"><i class="icon-th"></i></span>
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+            </div>
+															</td>
+															<td colspan="2">
+																<div class="control-group">
+                <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1" style="border: 1px solid #DDDDDD;border-radius: 5px;height: 35px;width: 95%;padding: 5px;">
+                    <input style="float: left;display: block;border: none;" size="20" type="text" placeholder="请输入结束时间" readonly>
+                    <span class="add-on"><i class="icon-th"></i></span>
+                    <span class="add-on"><i class="icon-remove"></i></span>
+					
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+            </div>
+															</td>
+														</tr>-->
+													</table>
+					
+					
+					
+					
+													<!--<table border="1" cellpadding="0" cellspacing="0" style="width: 100%;height: auto;">
+														<tr>
+															<td width="100" height="30"><b>业务类型</b></td>
+															<td></td>
+									<td width="100"><b>场&nbsp;&nbsp;&nbsp;&nbsp;景</b></td>
+									<td></td>
+														</tr>
+														<tr>
+															<td colspan="2"><form role="form" style="width: 95%;float: left;margin-top:15px;">
+									  <div class="form-group">
+									    <select class="form-control">
+									      <option>流量</option>
+									      <option>宽带</option>
+									      <option>微信</option>
+									    </select>
+									    </select>
+									  </div>
+									</form></td>
+									<td colspan="2"><form role="form" style="width: 95%;float: left;margin-top:15px;">
+									  <div class="form-group">
+									    <select class="form-control">
+									      <option>奢侈型</option>
+									      <option>豪华型</option>
+									      <option>聚划算</option>
+									    </select>
+									    </select>
+									  </div>
+									</form></td>
+									
+														</tr>
+									<tr>
+										<td width="100" height="40"><b>活动名称</b></td>
+										<td></td>
+									<td></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+										   <form class="bs-example bs-example-form" role="form">
+
+		<div class="input-group" style="width: 95%;">
+			<input type="text" class="form-control" style="border-radius: 5px;" placeholder="请输入活动名称">
+			
+		</div>
+
+	</form>   
+										</td>
+									<td colspan="2"></td>
+									</tr>
+									<tr>
+										<td width="100" height="40px"><b>开始时间</b></td>
+										<td>
+								 
+										</td>
+									<td width="100"><b>结束时间</b></td>
+									<td>
+								 
+									</td>
+														</tr>
+														<tr>
+															<td colspan="2">
+																<div class="control-group">
+                <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1" style="border: 1px solid #DDDDDD;border-radius: 5px;height: 35px;width: 95%;padding: 5px;">
+                    <input style="float: left;display: block;border: none;" size="20" type="text" placeholder="请输入开始时间" readonly>
+                    <span class="add-on"><i class="icon-th"></i></span>
+                    <span class="add-on"><i class="icon-remove"></i></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+            </div>
+															</td>
+															<td colspan="2">
+																<div class="control-group">
+                <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy MM dd - HH:ii p" data-link-field="dtp_input1" style="border: 1px solid #DDDDDD;border-radius: 5px;height: 35px;width: 95%;padding: 5px;">
+                    <input style="float: left;display: block;border: none;" size="20" type="text" placeholder="请输入结束时间" readonly>
+                    <span class="add-on"><i class="icon-th"></i></span>
+                    <span class="add-on"><i class="icon-remove"></i></span>
+					
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+            </div>
+															</td>
+														</tr>
+													</table>-->
+												</div>
+												
+												
+												
+											</div>
+											
+											<div class="row" style="padding-top:30px">
+												<div style="width: 100%;height: 40px;border: 0px solid red;text-align: center; ">
+													<a href="NewModalact.html" style="text-decoration: none;"><div style="cursor:pointer;border-radius:5px;line-height:40px;margin:0 20px 0 40%;width: 100px;height: 100%;background: #8D95CE;color: #fff;float: left;" data-dismiss="modal">
+														上一步
+													</div></a>
+													<a href="NewModalactSX.html" onclick="ab()" style="text-decoration: none;"><div style="cursor:pointer;border-radius:5px;line-height:40px;float:left;width: 100px;height: 100%;background: #8D95CE;color: #fff;" data-dismiss="modal" data-toggle="modal" data-target=".mubiao_modal">
+														下一步
+													</div></a>
+												</div>
+											
+		</div>
+	</body>
+
+</html>
+
+<script type="text/javascript">
+$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+</script> 
+<script type="text/javascript">
+	function showalert(){
+		if($("#selalert").val()=='hh'){
+			$("#AlertShow").animate({height:"30px"});
+		}else $("#AlertShow").animate({height:0});
+	}
+//	function ab(){
+//		window.location="NewactStepCl.html?sceneid="+$("#sceneshow").val();
+//	}
+</script>

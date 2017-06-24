@@ -1,0 +1,2195 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--引用样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<!--自定义样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		<!--引用js-->
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../../resources/echarts/js/echarts.js"></script>
+		
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			
+			ul li,
+			span {
+				display: block;
+			}
+			
+			
+			.Menu {
+				width: 100%;
+				height: 100px;
+				border: 0px solid red;
+				padding-bottom: 30px;
+				margin-top: -10px;
+				margin-top: 0px;
+			}
+			
+			.Menu table {
+				width: 100%;
+				height: 100%;
+				background: #E3EEFF;
+				padding: 5px
+			}
+			
+			.Menu table tr td {
+				text-align: center;
+				color: #999999;
+				padding-bottom: 5px;
+			}
+			
+			.Menu table tr td:nth-child(odd) {
+				width: 60px;
+			}
+			
+			.Menu table tr td span {
+				display: block;
+				width: 90%;
+				height: 2px;
+				background: #8D95CE;
+			}
+			.celueTab table tr td{
+				line-height: 30px;
+			}
+			.ztree li ul.line {
+				background: url(../../../resources/jquery.ztree/css/zTreeStyle/img/line_conn.gif) 0 0 repeat-y;
+			}
+			
+			.ztree * {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.ztree {
+				margin: 0;
+				padding: 5px;
+				color: #333;
+				border: 0px solid blue;
+			}
+			
+			
+			.ztree li ul.line {
+				background: url(../../../resources/jquery.ztree/css/zTreeStyle/img/line_conn.gif) 0 0 repeat-y;
+			}
+			
+			.ztree li span.button {
+				line-height: 0;
+				margin: 0;
+				width: 16px;
+				height: 16px;
+				display: inline-block;
+				vertical-align: middle;
+				border: 0 none;
+				cursor: pointer;
+				outline: none;
+				background-color: transparent;
+				background-repeat: no-repeat;
+				background-attachment: scroll;
+				background-image: url("../../../resources/jquery.ztree/css/zTreeStyle/img/zTreeStandard.png");
+				*background-image: url("../../../resources/jquery.ztree/css/zTreeStyle/img/zTreeStandard.gif")
+			}
+			
+			.ztree li {
+				padding: 10px 0 0 10px;
+				margin: 0;
+				list-style: none;
+				line-height: 0px;
+				text-align: left;
+				white-space: nowrap;
+				outline: 0;
+				border: 0px solid red;
+			}
+			
+			
+			.ztree li ul.line {
+				background: url(../../../resources/jquery.ztree/css/zTreeStyle/img/line_conn.gif) 0 0 repeat-y;
+			}
+			
+			.ztree li a {
+				padding: 1px 3px 0 0;
+				margin: 0;
+				cursor: pointer;
+				height: 17px;
+				color: #333;
+				background-color: transparent;
+				text-decoration: none;
+				vertical-align: top;
+				display: inline-block;
+				font-size: 15px;
+			}
+			
+			.ztree li span.button.root_open {
+				background-position: -92px -54px
+			}
+			
+			.ztree li span.button.root_close {
+				background-position: -74px -54px
+			}
+			
+			.ztree li span.button.roots_open {
+				background-position: -92px 0
+			}
+			
+			.ztree li span.button.roots_close {
+				background-position: -74px 0
+			}
+			
+			.ztree li span.button.center_open {
+				background-position: -92px -18px
+			}
+			
+			.ztree li span.button.center_close {
+				background-position: -74px -18px
+			}
+			
+			.ztree li span.button.bottom_open {
+				background-position: -92px -36px
+			}
+			
+			.ztree li span.button.bottom_close {
+				background-position: -74px -36px
+			}
+			
+			.ztree li span.button.noline_open {
+				background-position: -92px -72px
+			}
+			
+			.ztree li span.button.noline_close {
+				background-position: -74px -72px
+			}
+			
+			.ztree li span.button.root_docu {
+				background: none;
+			}
+			
+			.ztree li span.button.roots_docu {
+				background-position: -56px 0
+			}
+			
+			.ztree li span.button.center_docu {
+				background-position: -56px -18px
+			}
+			
+			.ztree li span.button.bottom_docu {
+				background-position: -56px -36px
+			}
+			
+			.ztree li span.button.noline_docu {
+				background: none;
+			}
+			
+			.ztree li span.button.ico_open {
+				margin-right: 2px;
+				background-position: -110px -16px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.ico_close {
+				margin-right: 2px;
+				background-position: -110px 0;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.ico_docu {
+				margin-right: 2px;
+				background-position: -110px -32px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.edit {
+				margin-right: 2px;
+				background-position: -110px -48px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.remove {
+				margin-right: 2px;
+				background-position: -110px -64px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			.add-on{display: block;float: right;margin-right: 5px;}
+/*	/*	/*	/*
+			.chk_1,.chk_2,.chk_3,.chk_4 {
+    display: none;
+}
+			
+			.chk_4 + label {
+	background-color: #FFF;
+	padding: 11px 9px;
+	border-radius: 7px;
+	display: inline-block;
+	position: relative;
+	margin-right: 30px;
+	background: #F7836D;
+	width: 58px;
+	height: 100%;
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1), 0 0 10px rgba(245, 146, 146, 0.4);
+}
+
+.chk_4 + label:before {
+	content: ' ';
+	position: absolute;
+	background: #FFF;
+	top: 0px;
+	z-index: 99999;
+	left: 0px;
+	width: 24px;
+	color: #FFF;
+	height: 22px;
+	border-radius: 7px;
+	box-shadow: 0 0 1px rgba(0,0,0,0.6);
+}
+
+.chk_4 + label:after {
+	content: '否';	
+	position: absolute;
+	top: 7px;
+	left: 37px;
+	font-size: 1.2em;
+	color: white;
+	font-weight: bold;
+	left: 8px;
+	padding: 5px;
+	top: 4px;
+	border-radius: 100px;
+}
+
+.chk_4:checked + label {
+	background: #67A5DF;
+	box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.1), 0 0 10px rgba(146, 196, 245, 0.4);
+}
+
+.chk_4:checked + label:after {
+	content: '是';
+	left: 10px;
+}
+
+.chk_4:checked + label:before {
+	content: ' ';
+	position: absolute;
+	z-index: 99999;
+	left: 52px;
+}
+
+
+.chk_4 + label:after {
+	left: 35px;	
+}*/
+html{overflow-x:hidden;}
+		</style>
+	</head>
+
+	<body style="padding-top:105px">
+		<div class="container-fluid navbar-fixed-top ">
+			<div class="row" style="border: 0px solid red;">
+				<div class="Menu col-lg-12 col-md-12 col-xs-12">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr height="30">
+							<td colspan="3">创建模板</td>
+							<td style="color:#0163AC">目标筛选</td>
+							<td></td>
+							<td>策略配置</td>
+							<td></td>
+						</tr>
+						<tr>
+							
+							<td style="padding-left:10px"><span></span></td>
+							<td width="70px"><a href="NewModalactStepActlx.html"><img src="../../../images/img/1.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewModalactSX.html"><img src="../../../images/img/10.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewModalactClPz.html"><img src="../../../images/img/5.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+			
+		</div>
+		
+		  <div class="container-fluid">
+			<div class="row" style="border: 1px solid #ddd;margin-top:10px;width: 100%;margin-left: 0px;padding: 0;height: 250px;overflow: hidden;"  id="Dzd2">
+				<div class="col-lg-8 col-md-8 col-xs-12" style="border: 0px solid red;padding-right: 10px;padding: 0;">
+					<div id="Dzdtab2" style="width: 100%;height: 250px;border: 0px solid red;overflow-y: scroll;">
+						<div style="width: 100%;height: 40px;line-height: 40px;padding-left: 10px;background: #8D95CE;color:#fff">目标用户统计</div>
+						<div style="width: 100%;height: auto;">
+							<table id="subTab" class="table" style="width: 100%;height: auto;">
+								<tbody>
+									<tr class="active">
+										<td>子活动序号</td>
+										<td>子活动名</td>
+										<td>目标用户数</td>
+										<td>口径</td>
+										<td>优先级</td>
+									</tr>
+								<!--	<tr class="tabsubtr" tabst="1">
+										<td style="line-height:35px;">1</td>
+										<td style="line-height:35px;">活动名称一</td>
+										<td style="line-height:35px;">55166</td>
+										<td style="line-height:35px;">口径1</td>
+										<td>
+											<form role="form" style="width: 95%;float: left;margin:0px;border: 0px solid red;padding: 0;">
+									  <div class="form-group" style="margin: 0;padding: 0;">
+									    <select class="form-control">
+									      <option>1</option>
+									      <option>2</option>
+									      <option>3</option>
+									      <option>4</option>
+									      <option>5</option>
+									      <option>6</option>
+									      <option>7</option>
+									      <option>8</option>
+									      <option>9</option>
+									    </select>
+									    </select>
+									  </div>
+									</form>
+										</td>
+									</tr>
+									<tr class="tabsubtr" tabst="2">
+										<td style="line-height:35px;">2</td>
+										<td style="line-height:35px;">活动名称二</td>
+										<td style="line-height:35px;">6863</td>
+										<td style="line-height:35px;">口径1</td>
+										<td>
+											<form role="form" style="width: 95%;float: left;margin:0px;border: 0px solid red;padding: 0;">
+									  <div class="form-group" style="margin: 0;padding: 0;">
+									    <select class="form-control">
+									      <option>1</option>
+									      <option selected="selected">2</option>
+									      <option>3</option>
+									      <option>4</option>
+									      <option>5</option>
+									      <option>6</option>
+									      <option>7</option>
+									      <option>8</option>
+									      <option>9</option>
+									    </select>
+									    </select>
+									  </div>
+									</form>
+										</td>
+									</tr>
+									<tr class="tabsubtr"  tabst="3">
+										<td style="line-height:35px;">3</td>
+										<td style="line-height:35px;">活动名称三</td>
+										<td style="line-height:35px;">68460</td>
+										<td style="line-height:35px;">口径1</td>
+										<td>
+											<form role="form" style="width: 95%;float: left;margin:0px;border: 0px solid red;padding: 0;">
+									  <div class="form-group" style="margin: 0;padding: 0;">
+									    <select class="form-control">
+									      <option>1</option>
+									      <option>2</option>
+									      <option selected="selected">3</option>
+									      <option>4</option>
+									      <option>5</option>
+									      <option>6</option>
+									      <option>7</option>
+									      <option>8</option>
+									      <option>9</option>
+									    </select>
+									    </select>
+									  </div>
+									</form>
+										</td>
+									</tr>
+								-->
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-xs-12" style="border: 0px solid blue;height: 100%;padding: 0 0 0 10px;">
+					<table class="table" style="width: 100%;height: 100%;">
+						<tbody>
+							<tr style="background: #8D95CE;height: 40px;">
+								<th style="color: #fff;border: 0px solid red;">目标用户数</th>
+								<td style="border: none;padding: 2px 5px 3px 0;" align="right"><button class="btn btn-success" data-toggle="modal" data-target=".myModal2"><i class="icon-globe"></i> 数据预览</button></td>
+								<td style="border: none;padding: 2px 5px 3px 0;" align="right"><button class="btn btn-success"><i class="icon-align-right"></i> 用户统计</button></td>
+								<td style="padding-left: 0;border: none;" width="40">
+									<div style="width: 20px;height: 20px;border: 0px solid red;margin:3px 0 0 10px;color: #fff;">
+			    	 					<b><i id="tabZd2" class="icon-chevron-up" style="cursor: pointer;position: absolute;"></i>
+			    	 					<i class="icon-chevron-down" style="position: absolute;cursor: pointer;display: none;" id="tabZk2"></i>
+			    	 					</b>
+			    	 				</div>
+								</td>
+							</tr>
+							<tr>
+								<td style="font-size: 50px; color: #FFCB65;padding:55px 0" colspan="4" align="center"><b>112278</b></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			
+			
+			<!--<div class="row" style="border: 0px solid red;margin-top:5px;padding-left: 15px;height: auto;">
+				<div style="width: 100%;height: 100%;border: 0px solid blue;display: block;">
+					<div style="width: 6%;height:auto;border: 0px solid red;float: left;padding: 5px 0 5px;">已选标签:</div>
+					<div style="margin-right: 10px;padding:4px 5px 4px;width: 8%;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">本地网ID<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+					<div style="margin-right: 10px;padding:4px 5px 4px;width: 12%;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">是否无线宽带<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+					<div style="margin-right: 10px;padding:4px 5px 4px;width: 8%;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">用户名ID<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+					<div style="margin-right: 10px;padding:4px 5px 4px;width: 7%;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">号码<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+				</div>
+			</div>-->
+				<!--<div class="col-lg-1 col-md-1 col-xs-6" style="height: auto;border: 0px solid blue;padding: 8px 0 6px 10px;">已选标签：</div>
+				<div class="col-lg-1 col-md-1 col-xs-6" style="border: 0px solid blue;padding: 2px;">
+					<div style="width: 100%;height: 30px;border: 1px solid #9C9C9C;border-radius:5px;line-height: 30px;padding:0 5px;">本地网ID<button onclick="delbq(this)" style="margin-top:3px" class="close">&times;</button></div>
+				</div>
+				<div class="col-lg-10 col-md-10 col-xs-12" style="border: 0px solid green ;">
+					<div class="col-lg-5 col-md-5 col-xs-12" style="border: 0px solid red;padding: 0;">
+						<div class="col-lg-5 col-md-5 col-xs-5" style="border: 0px solid red;padding: 2px;"><div style="width: 90%;height: 30px;border: 1px solid #9C9C9C;border-radius:5px;line-height: 30px;padding:0 5px;">是否无线宽带<button onclick="delbq(this)" style="margin-top:3px" class="close">&times;</button></div></div>
+						<div class="col-lg-4 col-md-4 col-xs-4" style="border: 0px solid red;padding: 2px;"><div style="width: 90%;height: 30px;border: 1px solid #9C9C9C;border-radius:5px;line-height: 30px;padding:0 5px;">用户名ID<button onclick="delbq(this)" style="margin-top:3px" class="close">&times;</button></div></div>
+						<div class="col-lg-3 col-md-3 col-xs-3" style="border: 0px solid red;padding: 2px;"><div style="width: 90%;height: 30px;border: 1px solid #9C9C9C;border-radius:5px;line-height: 30px;padding:0 5px;">号码<button onclick="delbq(this)" style="margin-top:3px" class="close">&times;</button></div></div>
+					</div>
+				</div>-->
+			
+			
+			    	 		<div class="row" style="width: 100%;margin-left: 0px;margin-top: 10px;overflow: hidden;border: 1px solid #ddd;border-top: none;" id="Dzd">
+			    	 			<table class="table" id="TabAddTr">
+			    	 				<tbody>
+			    	 					<tr style="background: #8D95CE; color: #fff;" >
+			    	 						<td height="40px" colspan="5">过滤条件</td>
+			    	 						<td width="230px" style="padding: 3px 0 0 0;" align="right"><button id="addAct" class="btn btn-success" data-toggle="modal" data-target=".myModal"><b><i class="icon glyphicon-plus"></i></b> 添加</button>&nbsp;&nbsp;&nbsp;&nbsp; <button id="ReTr" class="btn btn-danger"><i class="icon-repeat"></i> 重置</button></td>
+			    	 						<td width="55px" style="position: relative;">
+			    	 							<div style="width: 20px;height: 20px;border: 0px solid red;margin:5px 0 0 10px;">
+			    	 								<b><i id="tabZd" class="icon-chevron-up" style="cursor: pointer;position: absolute;"></i>
+			    	 							<i class="icon-chevron-down" style="position: absolute;cursor: pointer;display: none;" id="tabZk"></i>
+			    	 						</b>
+			    	 							</div>
+			    	 						</td>
+			    	 					</tr>
+			    	 					<tr style="background: #F5F6FA;">
+			    	 						<td>括号</td>
+			    	 						<td>条件名称</td>
+			    	 						<td>关系符</td>
+			    	 						<td>阈值</td>
+			    	 						<td>括号</td>
+			    	 						<td>关联符</td>
+			    	 						<td>删除</td>
+			    	 					</tr>
+			    	 					
+			    	 					
+			    	 					
+			    	 				</tbody>
+			    	 			</table>
+			    	 		</div>
+			    	 		
+			    	 		<div class="row" style="width: 100%;margin: 10px 0 0 0;padding: 0;border: 1px solid #ddd;overflow: hidden;height: 40px;" id="Dzd1">
+			    	 		  <div class="col-lg-12 col-md-12 col-xs-12" style="padding: 0;">
+			    	 		  	<div style="background: #8D95CE; width: 100%;height: 40px;border: 0px solid red;">
+			    	 		  		<div style="border: 0px solid red;color: #fff;width: 90%;height: 100%;line-height: 40px;padding-left: 8px;float: left;">可选择的标签</div>
+			    	 		  		<div style="width: 5%;height: 100%;float: right;border: 0px solid red;">
+			    	 		  			<div style="width: 20px;height: 20px;border: 0px solid red;margin:10px auto;color: #fff;">
+			    	 								<b><i id="tabZd1" class="icon-chevron-up" style="cursor: pointer;position: absolute;display: none;"></i>
+			    	 							<i class="icon-chevron-down" style="position: absolute;cursor: pointer;" id="tabZk1"></i>
+			    	 						</b>
+			    	 							</div></div></div></div>
+			    	 			<div class="col-lg-4 col-md-4 col-xs-12" style="height: auto;border: 0px solid red;padding: 0;">
+			    	 				<div style="width: 100%;height: auto;border: 0px solid red;float: left;">
+			    	 				<div style="width: 100%;border: 0px solid red;">
+										<div class="panel panel-primary" style="border: 0px solid blue;">
+											
+											<div class="panel-body" style="background: #EEEEEE;height:455px;">
+												<ul id="treeDemo" class="ztree"></ul>
+											</div>
+										</div>
+									</div>
+			    	 			</div>
+			    	 			</div>
+			    	 			<div class="col-lg-8 col-md-8 col-xs-12" style="border: 0px solid red;padding: 0;height: auto">
+			    	 				<div style="width: 100%;height: 50px;border: 0px solid red;">
+			    	 					<table class="table" style="margin: 0;height: 100%;">
+			    	 					   <tbody>
+			    	 					   	<tr style="background: #F5F6FA;">
+			    	 						<td style="width: 10%;"></td>
+			    	 						<td align="center">&nbsp;标签名称</td>
+			    	 						<td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否显示</td>
+			    	 						<td align="center">过滤条件&nbsp;&nbsp;</td>
+			    	 					</tr>
+			    	 					   </tbody>
+			    	 					</table>
+			    	 				</div>
+			    	 				<div class="celueTab" style="width:100%;height: 405px;border: 0px solid red;float: left;overflow-y:scroll;">
+			    	 				<table id="subAddTab" class="table" style="height: 420px;margin: 0;">
+			    	 				<tbody>
+			    	 					<tr>
+			    	 						<td align="center">1</td>
+			    	 						<td align="center" class="addTd">本地网ID</td>
+			    	 						<td align="center">
+			    	 						<input type="radio" checked="checked" name="check1" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check1" id="no" />否</td>
+			    	 						<td align="center">
+			    	 							<button class="btn btn-success AddTr"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button>
+			    	 							</td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">2</td>
+			    	 						<td align="center" class="addTd">营业部标签</td>
+			    	 						<td align="center"><input type="radio" checked="checked" name="check2" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check2" id="no" />否</td>
+			    	 						<td align="center"><button class="btn btn-success AddTr"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">3</td>
+			    	 						<td align="center" class="addTd">是否无线宽带</td>
+			    	 						<td align="center"><input type="radio" name="check3" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" checked="checked" name="check3" id="no" />否</td>
+			    	 						<td align="center"><button class="btn btn-success AddTr"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">4</td>
+			    	 						<td align="center" class="addTd">套餐内可用流量</td>
+			    	 						<td align="center"><input type="radio" checked="checked" name="check4" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check4" id="no" />否</td>
+			    	 						<td align="center"><button class="btn btn-success AddTr"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">5</td>
+			    	 						<td align="center" class="addTd">用户ID</td>
+			    	 						<td align="center"><input type="radio" name="check5" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check5" id="no" checked="checked" />否</td>
+			    	 						<td align="center"><button class="btn btn-success AddTr"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">6</td>
+			    	 						<td align="center" class="addTd">付费模式</td>
+			    	 						<td align="center"><input type="radio" name="check6" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check6" id="no" checked="checked" />否</td>
+			    	 						<td align="center"><button class="btn btn-success AddTr"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">7</td>
+			    	 						<td align="center" class="addTd">号码</td>
+			    	 						<td align="center"><input type="radio" name="check7" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check7" id="no" checked="checked" />否</td>
+			    	 						<td align="center"><button class="btn btn-success AddTr"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">8</td>
+			    	 						<td align="center" class="addTd">总可用流量</td>
+			    	 						<td align="center"><input type="radio" checked="checked" name="check8" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check8" id="no" />否</td>
+			    	 						<td align="center"><button class="btn btn-success AddTr"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					
+			    	 				</tbody>
+			    	 			</table>
+			    	 			</div>
+			    	 			</div>
+			    	 		</div>
+			    	 		
+			    	 		
+			    	 			<div class="row" style="margin-top:20px;padding-bottom:100px">
+												<div style="width: 100%;height: 40px;border: 0px solid red;text-align: center; ">
+													<a href="NewModalactStepActlx.html"text-decoration: none;"><div style="cursor:pointer;border-radius:5px;line-height:40px;margin:0 20px 0 40%;width: 100px;height: 100%;background: #8D95CE;color: #fff;float: left;" data-dismiss="modal">
+														上一步
+													</div></a>
+													<a href="NewModalactClPz.html" style="text-decoration: none;"><div style="cursor:pointer;border-radius:5px;line-height:40px;float:left;width: 100px;height: 100%;background: #8D95CE;color: #fff;" data-dismiss="modal" data-toggle="modal" data-target=".mubiao_modal">
+														下一步
+													</div></a>
+												</div>
+											</div>
+   						    	 		</div>
+			    	 		<div class="modal myModal2" data-backdrop='static'>
+			    	 			<div class="modal-dialog modal-lg">
+			    	 				<div class="modal-content">
+			    	 					<div class="modal-header">
+			    	 						<button style="margin-top:-10px" class="close" data-dismiss="modal">&times;</button>
+			    	 					</div>
+			    	 					<div class="modal-body">
+			    	 						<div style="width: 100%;height: auto;border: 0px solid red;">
+			    	 							<ul class="nav nav-tabs">
+			    	 								<li class="active"><a href="#conn1" data-toggle='tab'>数据统计图表</a></li>
+			    	 								<li><a href="#conn2" data-toggle="tab">数据明细</a></li>
+			    	 							</ul>
+			    	 							<div class="tab-content" style="border:1px solid #ddd;border-top:none;padding: 5px;border-radius: 0 0 5px 5px;">
+										    	 	<div id="conn1" class="tab-pane active">
+			<div class="container-fluid">
+				<div class="row" style="margin:5px 0 0 0;width: 100%;height: auto;border: 0px solid red;padding: 0 ">
+			    	 			<div class="col-lg-12 col-md-12 col-xs-12">
+			    	 				
+			    	 				<table class="table" cellpadding="0" cellspacing="0" border="0" width="40%" height="60px" style="margin-left: 0;">
+			    	 				<tr>
+			    	 					<td width="100px" style="line-height: 60px;border: 0;"><b>活动名称:</b></td>
+			    	 					<td style="border: 0;">
+			    	 						<form role="form" style="width: 95%;float: left;margin-top:15px;padding-left: 0;">
+									  <div class="form-group">
+									    <select id="SelectSh" onchange="SubactNum()" class="form-control" style="padding-left: 5px;">
+									    	<option value="subactall">总子活动</option>
+									      <option value="subact1">子活动一</option>
+									      <option value="subact2">子活动二</option>
+									      <option value="subact3">子活动三</option>
+									    </select>
+									    </select>
+									  </div>
+									</form>
+			    	 					</td>
+			    	 					<td width="200px" style="border: 0;"></td>
+			    	 					<td width="100px" style="line-height: 60px;border: 0;"><b>目标用户数:</b></td>
+			    	 					<td id="actsubNum" style="font-size: 50px; color: #FFCB65;border: 0;"><b>112278</b></td>
+			    	 					
+			    	 				</tr>
+			    	 			</table>
+			    	 			</div>
+			    	 	</div>
+			    	 			<div class="row" style="width:100%;margin-left:0px;border: 0px solid green;">
+			    	 				<div class="col-lg-12 col-md-12 col-xs-12" style="padding: 0;">
+			    	 					<div style="width:100%;height:40px;line-height:40px;background: #8D95CE;color: #fff;padding: 0 0 0 10px;">分本地网</div>
+			    	 					</div>
+			    	 			</div>
+			    	 				<div class="row" style="border: 0px solid #000;">
+			    	 					<div class="col-lg-12 col-md-12 col-xs-12">
+			    	 						<div style="width: 100%;height: 300px;border: 1px solid #D6D9EE;">
+			    	 					<div class="active" style="width: 820px;height: 300px;border: 0px solid blue;display: block;" id="mainBenDiW"></div>
+			    	 				</div>
+			    	 					</div>
+			    	 				</div>
+			    	 				
+			    	 			<div class="row" style="width:100%;margin-left:0px;border: 0px solid red;margin-top: 20px;">
+			    	 				<div style="margin-right:4%;float:left;width: 48%;height: auto;border: 0px solid red;">
+			    	 					<div style="width:100%;height:40px;line-height:40px;background: #8D95CE;color: #fff;padding: 0 0 0 10px;float: left;">分客户群</div>
+			    	 				<div style="width: 100%;height: 300px;border: 1px solid #9BA3D4;float: left;">
+			    	 					<div style="width: 393.52px;height: 298px;" id="mainFenKefuq"></div>
+			    	 				</div>
+			    	 				</div>
+			    	 				<div style="width: 48%;height: auto;border: 0px solid red;float: left;">
+			    	 					<div style="width:100%;height:40px;line-height:40px;background: #8D95CE;color: #fff;padding: 0 0 0 10px;float: left;">已有派单情况</div>
+			    	 				<div style="width: 100%;height: 300px;border: 1px solid #9BA3D4;float: left;">
+			    	 					<div style="width: 393.52px;height: 298px;" id="mainYiYpd"></div>
+			    	 				</div>
+			    	 				</div>
+			    	 				
+			    	 			</div>
+			    	 			<div class="row" style="width:100%;margin-left:0px;border: 0px solid red;margin-top:20px;">
+			    	 				<div style="width:100%;height:40px;line-height:40px;background: #8D95CE;color: #fff;padding: 0 0 0 10px;">接触偏好</div>
+			    	 				<div style="width: 100%;height: 180px;border: 1px solid #9BA3D4;">
+			    	 					<div style="width: 18%;height: 100%;border: 0px solid red;float: left;margin-left: 10px;">
+			    	 						<div style="width: 138px;height: 178px;" id="mainXinaShang"></div>
+			    	 					</div>
+			    	 					<div style="width: 18%;height: 100%;border: 0px solid red;float: left;margin-right: 80px;">
+			    	 						<div style="width: 138px;height: 178px;" id="mainXinaXia"></div>
+			    	 					</div>
+			    	 					<div style="width: 18%;height: 100%;border: 0px solid red;float: left;">
+			    	 						<div style="width: 138px;height: 178px;" id="mainYueChu"></div>
+			    	 					</div>
+			    	 					<div style="width: 17%;height: 100%;border: 0px solid red;float: left;">
+			    	 						<div style="width: 138px;height: 178px;" id="mainYueZhong"></div>
+			    	 					</div>
+			    	 					<div style="width: 18%;height: 100%;border: 0px solid red;float: left;">
+			    	 						<div style="width: 138px;height: 178px;" id="mainYueMo"></div>
+			    	 					</div>
+			    	 				</div>
+			    	 			</div>
+			    	 			
+			    	 		
+			    	 		
+				          	
+			</div>
+										    	 	</div>
+										    	 	<div id="conn2" class="tab-pane">
+										    	 		<div class="container-fluid">
+										    	 			<div class="row" style="margin:5px 0 0 0;width: 100%;height: auto;border: 0px solid red;padding: 0 ">
+			    	 			<div class="col-lg-12 col-md-12 col-xs-12">
+			    	 				
+			    	 				<table class="table" cellpadding="0" cellspacing="0" border="0" width="40%" height="60px" style="margin-left: 0;">
+			    	 				<tr>
+			    	 					<td width="100px" style="line-height: 60px;border: 0;"><b>子活动名称:</b></td>
+			    	 					<td style="border: 0;">
+			    	 						<form role="form" style="width: 95%;float: left;margin-top:15px;padding-left: 0;">
+									  <div class="form-group">
+									    <select id="actNum" onchange="Numact()" class="form-control" style="padding-left: 5px;">
+									      <option value="subactAll">总子活动</option>
+									      <option value="subact1">子活动一</option>
+									      <option value="subact2">子活动二</option>
+									      <option value="subact3">子活动三</option>
+									    </select>
+									    </select>
+									  </div>
+									</form>
+			    	 					</td>
+			    	 					<td width="200px" style="border: 0;"></td>
+			    	 					<td width="100px" style="line-height: 60px;border: 0;"><b>目标用户数:</b></td>
+			    	 					<td id="subactnum" style="font-size: 50px; color: #FFCB65;border: 0;"><b>32546</b></td>
+			    	 					
+			    	 				</tr>
+			    	 			</table>
+			    	 			</div>
+			    	 	</div>
+			    	 	<div class="row">
+			    	 		<div class="col-lg-11  col-md-11 col-xs-12">
+			    	 			<div id="subactbq" style="width: 100%;height: 100%;">
+			    	 				<div style="width: 10%;height: 65px;border: 0px solid red;line-height: 25px;float: left;padding: 5px;
+			    	 				">展示字段:</div>
+			    	 			<div nam="1" style="margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width:auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">本地网ID&nbsp;&nbsp;<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+					<div nam="3" style="margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">是否无线宽带&nbsp;&nbsp;<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+					<div nam="5" style="margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">用户名ID&nbsp;&nbsp;<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+					<div nam="7" style="margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">号码&nbsp;&nbsp;<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+					<div nam="2" style="margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">营业部标签&nbsp;&nbsp;<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+					<div nam="4" style="margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">套餐内可用流量&nbsp;&nbsp;<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+					<div nam="6" style="margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">付费模式&nbsp;&nbsp;<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+					<div nam="8" style="margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;">总可用流量&nbsp;&nbsp;<button onclick="delbq(this)" style="margin-top:1px" class="close">&times;</button></div>
+			    	 			</div>
+				            </div>
+				            <div class="col-lg-1 col-md-1 col-xs-12" style="padding: 0;">
+				            	<div style="width: 100%;height: 30px;border: 0px solid red;position: relative;line-height: 25px;">
+				            		<div id="actaddzd" style="width: auto;height: auto;position: absolute;border: 0px solid blue;cursor: pointer;">>>更多</div>
+				            		<div id="actdelzd" style="width: auto;height: auto;position: absolute;border: 0px solid blue;cursor: pointer;display: none;"><<收起</div>
+				            	</div>
+				            </div>
+			    	 		</div>
+			    	 	</div>
+										    	 		
+										    	 		<div id="subactrow" class="row" style="border: 0px solid red;padding: 0 20px;margin-top:10px;height: 0;overflow: hidden;">
+										    	 			<div class="col-lg-4 col-md-4 col-xs-12" style="padding: 0;">
+										    	 				<div style="width: 100%;height: 457px;border: 1px solid #ddd;border-right: none;">
+										    	 					<div class="panel panel-primary" style="border: 0px solid blue;">
+																		<div class="panel-body" style="background: #EEEEEE;height:455px;">
+																			<ul id="treeDemo2" class="ztree"></ul>
+																		</div>
+																	</div>
+										    	 				</div>
+										    	 			</div>
+			    	 			<div class="col-lg-8 col-md-8 col-xs-12" style="padding: 0;">
+			    	 				<div style="width: 100%;height: 50px;border-right: 1px solid #ddd;">
+			    	 					<table class="table" style="margin: 0;height: 100%;">
+			    	 					   <tbody>
+			    	 					   	<tr style="background: #F5F6FA;">
+			    	 						<td style="width: 10%;"></td>
+			    	 						<td align="center">&nbsp;标签名称</td>
+			    	 						<td align="center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;是否显示</td>
+			    	 						<td align="center">过滤条件&nbsp;&nbsp;</td>
+			    	 					</tr>
+			    	 					   </tbody>
+			    	 					</table>
+			    	 				</div>
+			    	 				<div class="celueTab" style="width:100%;height: 407px;border: 1px solid #ddd;border-top: none;float: left;overflow-y:scroll;">
+			    	 			<table class="table" style="height: 420px;margin: 0;">
+			    	 				<tbody>
+			    	 					<tr>
+			    	 						<td align="center">1</td>
+			    	 						<td align="center" class="addTd"  nam="1">本地网ID</td>
+			    	 						<td align="center">
+			    	 						<input type="radio" checked="checked" name="check11" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check11" id="no" />否</td>
+			    	 						<td align="center">
+			    	 							<button class="btn btn-success Addsubactzd"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button>
+			    	 							</td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">2</td>
+			    	 						<td align="center" class="addTd"  nam="2">营业部标签</td>
+			    	 						<td align="center"><input type="radio" checked="checked" name="check22" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check22" id="no" />否</td>
+			    	 						<td align="center"><button class="btn btn-success Addsubactzd"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">3</td>
+			    	 						<td align="center" class="addTd"  nam="3">是否无线宽带</td>
+			    	 						<td align="center"><input type="radio" name="check33" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" checked="checked" name="check33" id="no" />否</td>
+			    	 						<td align="center"><button class="btn btn-success Addsubactzd"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">4</td>
+			    	 						<td align="center" class="addTd"  nam="4">套餐内可用流量</td>
+			    	 						<td align="center"><input type="radio" checked="checked" name="check44" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check44" id="no" />否</td>
+			    	 						<td align="center"><button class="btn btn-success Addsubactzd"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">5</td>
+			    	 						<td align="center" class="addTd" nam="5">用户ID</td>
+			    	 						<td align="center"><input type="radio" name="check55" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check55" id="no" checked="checked" />否</td>
+			    	 						<td align="center"><button class="btn btn-success Addsubactzd"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">6</td>
+			    	 						<td align="center" class="addTd" nam="6">付费模式</td>
+			    	 						<td align="center"><input type="radio" name="check66" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check66" id="no" checked="checked" />否</td>
+			    	 						<td align="center"><button class="btn btn-success Addsubactzd"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">7</td>
+			    	 						<td align="center" class="addTd" nam="7">号码</td>
+			    	 						<td align="center"><input type="radio" name="check77" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check77" id="no" checked="checked" />否</td>
+			    	 						<td align="center"><button class="btn btn-success Addsubactzd"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					<tr>
+			    	 						<td align="center">8</td>
+			    	 						<td align="center" class="addTd" nam="8">总可用流量</td>
+			    	 						<td align="center"><input type="radio" checked="checked" name="check88" id="yes" />是&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="check88" id="no" />否</td>
+			    	 						<td align="center"><button class="btn btn-success Addsubactzd"><b><i class="glyphicon glyphicon-plus"></i></b> 添加</button></td>
+			    	 					</tr>
+			    	 					
+			    	 				</tbody>
+			    	 			</table>
+			    	 			</div>
+										    	 			</div>
+										    	 		</div>
+										    	 		<div class="row" style="padding: 0 20px;margin-top:10px">
+										    	 			<div class="col-lg-12 col-md-12 col-xs-12" style="padding-right: 5px;">
+										    	 				<div style="width: 100%;height: auto;border: 1px solid #ddd;">
+										    	 					<table class="table" style="margin: 0;">
+										    	 						<thead>
+										    	 							<tr>
+										    	 								<th colspan="3" class="active" style="border-bottom: none;">按区域</th>
+										    	 							</tr>
+										    	 						</thead>
+										    	 						<tbody>
+										    	 							<tr>
+										    	 								<td>区域名称</td>
+										    	 								<td>目标用户数</td>
+										    	 								<td align="center">目标用户清单</td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>全省</td>
+										    	 								<td>1122334</td>
+										    	 								<td align="center"><button class="btn btn-primary btn-xs userlist" showuserlist="1">查看</button></td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>南昌市</td>
+										    	 								<td>564835</td>
+										    	 								<td align="center"><button class="btn btn-primary btn-xs userlist" showuserlist="2">查看</button></td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>九江市</td>
+										    	 								<td>654352</td>
+										    	 								<td align="center"><button class="btn btn-primary btn-xs userlist" showuserlist="3">查看</button></td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>吉安市</td>
+										    	 								<td>98894</td>
+										    	 								<td align="center"><button class="btn btn-primary btn-xs userlist" showuserlist="4">查看</button></td>
+										    	 							</tr>
+										    	 						</tbody>
+										    	 					</table>
+										    	 				</div>
+										    	 			</div>
+										    	 		</div>
+										    	 		<div id="userlistrow" class="row" style="padding: 0 20px;margin-top:15px;height: 0;overflow: hidden;">
+										    	 			<div class="col-lg-12" id="showuserlist">
+										    	 				<div style="width: 100%;height: auto;">
+										    	 					<table class="table" style="margin: 0;">
+										    	 						<tr class="active">
+										    	 								<td style="padding-left: 0">付费模式</td>
+										    	 								<td>号码</td>
+										    	 								<td style="padding-left: 0;">年龄</td>
+										    	 								<td>新装日期</td>
+										    	 								<td>营业部名称</td>
+										    	 								<td style="padding-left: 0;">性别</td>
+										    	 								<td>县局名</td>
+										    	 								<td>是否员工</td>
+										    	 								<td>客户名称 <button onclick="delusertab(this)" class="close" style="float: right;">&times;</button></td>
+										    	 							</tr>
+										    	 					</table>
+										    	 				</div>
+										    	 				<div style="width: 100%;height: 220px;overflow-y: scroll;border:1px solid #ddd;border-radius: 5px;border-top:none">
+										    	 					<table class="table">
+										    	 						<tbody>
+										    	 							
+										    	 							<tr>
+										    	 								<td>10</td>
+										    	 								<td>18156522654</td>
+										    	 								<td></td>
+										    	 								<td>1472405165000</td>
+										    	 								<td>临空工业园营业部(筹)</td>
+										    	 								<td></td>
+										    	 								<td>南昌市</td>
+										    	 								<td align="center">否</td>
+										    	 								<td>江西鸿利光有限公司</td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>10</td>
+										    	 								<td>18156522654</td>
+										    	 								<td></td>
+										    	 								<td>1472405165000</td>
+										    	 								<td>临空工业园营业部(筹)</td>
+										    	 								<td></td>
+										    	 								<td>南昌市</td>
+										    	 								<td align="center">否</td>
+										    	 								<td>江西鸿利光有限公司</td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>10</td>
+										    	 								<td>18156522654</td>
+										    	 								<td></td>
+										    	 								<td>1472405165000</td>
+										    	 								<td>临空工业园营业部(筹)</td>
+										    	 								<td></td>
+										    	 								<td>南昌市</td>
+										    	 								<td align="center">否</td>
+										    	 								<td>江西鸿利光有限公司</td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>10</td>
+										    	 								<td>18156522654</td>
+										    	 								<td></td>
+										    	 								<td>1472405165000</td>
+										    	 								<td>临空工业园营业部(筹)</td>
+										    	 								<td></td>
+										    	 								<td>南昌市</td>
+										    	 								<td align="center">否</td>
+										    	 								<td>江西鸿利光有限公司</td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>10</td>
+										    	 								<td>18156522654</td>
+										    	 								<td></td>
+										    	 								<td>1472405165000</td>
+										    	 								<td>临空工业园营业部(筹)</td>
+										    	 								<td></td>
+										    	 								<td>南昌市</td>
+										    	 								<td align="center">否</td>
+										    	 								<td>江西鸿利光有限公司</td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>10</td>
+										    	 								<td>18156522654</td>
+										    	 								<td></td>
+										    	 								<td>1472405165000</td>
+										    	 								<td>临空工业园营业部(筹)</td>
+										    	 								<td></td>
+										    	 								<td>南昌市</td>
+										    	 								<td align="center">否</td>
+										    	 								<td>江西鸿利光有限公司</td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>10</td>
+										    	 								<td>18156522654</td>
+										    	 								<td></td>
+										    	 								<td>1472405165000</td>
+										    	 								<td>临空工业园营业部(筹)</td>
+										    	 								<td></td>
+										    	 								<td>南昌市</td>
+										    	 								<td align="center">否</td>
+										    	 								<td>江西鸿利光有限公司</td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>10</td>
+										    	 								<td>18156522654</td>
+										    	 								<td></td>
+										    	 								<td>1472405165000</td>
+										    	 								<td>临空工业园营业部(筹)</td>
+										    	 								<td></td>
+										    	 								<td>南昌市</td>
+										    	 								<td align="center">否</td>
+										    	 								<td>江西鸿利光有限公司</td>
+										    	 							</tr>
+										    	 							<tr>
+										    	 								<td>10</td>
+										    	 								<td>18156522654</td>
+										    	 								<td></td>
+										    	 								<td>1472405165000</td>
+										    	 								<td>临空工业园营业部(筹)</td>
+										    	 								<td></td>
+										    	 								<td>南昌市</td>
+										    	 								<td align="center">否</td>
+										    	 								<td>江西鸿利光有限公司</td>
+										    	 							</tr>
+										    	 						</tbody>
+										    	 					</table>
+										    	 				</div>
+										    	 			</div>
+										    	 		</div>
+										    	 	</div>
+										    	</div>
+										   	 </div>
+			    	 					</div>
+			    	 				</div>
+			    	 			</div>
+			    	 		</div>
+			    	 	</div>
+				          	
+		<div class="modal myModal" data-backdrop='static'>
+			<div class="modal-dialog modal-md">
+				<div class="modal-content">
+					<div class="modal-header" style="padding: 10px 10px 20px 0;border: none;"><button class="close" data-dismiss="modal">&times;</button></div>
+						<div class="modal-body">
+							<table class="table AddTab">
+								<tr>
+									<td style="border: none;width: 150px;line-height: 35px;">请输入活动名称：</td>
+									<td style="border: none;" class='TdInput'">
+				    	 				<form class="bs-example bs-example-form" role="form" style="width: 100%;float: left;margin-top:0px;">
+											<div class="input-group" style="width: 100%;">
+												<input type="text " class="form-control" style="border-radius: 5px;" placeholder="活动名称" value="">
+											</div>
+										</form> 
+			    	 				</td>
+			    	 			</tr>
+			    	 		</table>
+		    	 			<table class="table">
+	 							<tr>
+	 								<td style="border: none;line-height: 30px;">开始时间:</td>
+	 								<td style="border: none;">
+	 									<div class="control-group">
+							                <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd - HH:ii p" data-link-field="dtp_input1" style="border: 1px solid #DDDDDD;border-radius: 5px;height: 30px;width:100%;padding: 3px;">
+							                    <input style="float: left;display: block;border: none;outline: none;" size="12" type="text" placeholder="请输入开始时间 ">
+							                    <span class="add-on"><i class="icon-th"></i></span>
+							                    <span class="add-on"><i class="icon-remove"></i></span>
+							             </div>
+											<input type="hidden" id="dtp_input1" value="" /><br/>
+							            </div>
+			    	 								</td>
+			    	 								<td style="border: none;line-height: 30px">结束时间:</td>
+			    	 								<td style="border: none;">
+			    	 									<div class="control-group">
+                <div class="controls input-append date form_datetime" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd - HH:ii p" data-link-field="dtp_input1 " style="border: 1px solid #DDDDDD;border-radius: 5px;height: 30px;width: 100%;padding: 3px; ">
+                    <input style="float: left;display: block;border: none;outline: none;" size="12" type="text" placeholder="请输入结束时间" >
+                    <span class="add-on"><i class="icon-th"></i></span>
+                    <span class="add-on"><i class="icon-remove"></i></span>
+					
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+            </div>
+			    	 								</td>
+			    	 							</tr>
+			    	 						</table>
+			    	 				</div>
+			    	 					<div class="modal-footer">
+			    	 						<button onclick="AddInput(this)" class="btn btn-info" data-dismiss="modal">保存</button>
+			    	 					</div>
+			    	 				</div>
+			    	 			</div>
+	         	</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+			var setting = {
+				view: {
+					showLine: true,
+					fontCss: {
+						"text-decoration": "none"
+					},
+					
+					showIcon: false//不显示图标
+				},
+				edit: {
+					enable: true,
+					showRemoveBtn: false,
+					showRenameBtn: false,
+				},
+				data: {
+					simpleData: {
+						enable: true,
+						idKey: "id", //自己的id
+						pIdKey: "pId", //父节点id
+						rootPId: 0
+					}
+				}
+			};
+
+
+			$(document).ready(function() {
+				$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+               //alert(param);
+
+			});
+			//模拟用户自定义标签(树形)
+			
+				var zNodes = [{
+				id: 1,
+				tId: 1,
+				pId: 0,
+				name: "流量",
+				open: true
+			}, {
+				id: 11,
+				tId: 11,
+				pId: 1,
+				name: "● 流量活动1",
+				open: true
+			}, {
+				id: 12,
+				tId: 12,
+				pId: 1,
+				name: "● 流量活动2"
+			}];
+//			}, {
+//				id: 2,
+//				tId: 2,
+//				pId: 0,
+//				name: "宽带",
+//				open: true
+//			}, {
+//				id: 21,
+//				tId: 21,
+//				pId: 2,
+//				name: "● 客户关怀"
+//			}, {
+//				id: 22,
+//				tId: 22,
+//				pId: 2,
+//				name: "● 流失预警"
+//			}, {
+//				id: 3,
+//				tId: 3,
+//				pId: 0,
+//				name: "流量",
+//				open: false
+//			}, {
+//				id: 31,
+//				tId: 31,
+//				pId: 3,
+//				name: "● 流量活动1"
+//			}, 
+//			{
+//				id: 32,
+//				tId: 32,
+//				pId: 3,
+//				name: "● 流量活动2"
+//			}, {
+//				id: 4,
+//				tId: 4,
+//				pId: 0,
+//				name: "ITV",
+//				open: false
+//			}, {
+//				id: 41,
+//				tId: 41,
+//				pId: 4,
+//				name: "● ITV"
+//			}
+
+
+</script>
+
+<script type="text/javascript">
+			var setting = {
+				view: {
+					showLine: true,
+					fontCss: {
+						"text-decoration": "none"
+					},
+					
+					showIcon: false//不显示图标
+				},
+				edit: {
+					enable: true,
+					showRemoveBtn: false,
+					showRenameBtn: false,
+				},
+				data: {
+					simpleData: {
+						enable: true,
+						idKey: "id", //自己的id
+						pIdKey: "pId", //父节点id
+						rootPId: 0
+					}
+				}
+			};
+
+
+			$(document).ready(function() {
+				$.fn.zTree.init($("#treeDemo2"), setting, zNodes);
+               //alert(param);
+
+			});
+			//模拟用户自定义标签(树形)
+			
+				var zNodes = [{
+				id: 1,
+				tId: 1,
+				pId: 0,
+				name: "流量",
+				open: true
+			}, {
+				id: 11,
+				tId: 11,
+				pId: 1,
+				name: "● 流量活动1",
+				open: true
+			}, {
+				id: 12,
+				tId: 12,
+				pId: 1,
+				name: "● 流量活动2"
+			}];
+//			}, {
+//				id: 2,
+//				tId: 2,
+//				pId: 0,
+//				name: "宽带",
+//				open: true
+//			}, {
+//				id: 21,
+//				tId: 21,
+//				pId: 2,
+//				name: "● 客户关怀"
+//			}, {
+//				id: 22,
+//				tId: 22,
+//				pId: 2,
+//				name: "● 流失预警"
+//			}, {
+//				id: 3,
+//				tId: 3,
+//				pId: 0,
+//				name: "流量",
+//				open: false
+//			}, {
+//				id: 31,
+//				tId: 31,
+//				pId: 3,
+//				name: "● 流量活动1"
+//			}, 
+//			{
+//				id: 32,
+//				tId: 32,
+//				pId: 3,
+//				name: "● 流量活动2"
+//			}, {
+//				id: 4,
+//				tId: 4,
+//				pId: 0,
+//				name: "ITV",
+//				open: false
+//			}, {
+//				id: 41,
+//				tId: 41,
+//				pId: 4,
+//				name: "● ITV"
+//			}
+
+
+		</script>
+
+	<script type="text/javascript">
+		function delbq(n){
+			$(n).parent().remove();
+		}
+	</script>
+<script type="text/javascript">
+	$(function(){
+		$("#tabZd").click(function(){
+			$("#tabZd").css("display","none");
+			$("#tabZk").css("display","block");
+			$("#Dzd").animate({height:"40px"});
+		});
+		$("#tabZk").click(function(){
+			$("#tabZk").css("display","none");
+			$("#tabZd").css("display","block");
+			$("#Dzd").css({"height":'auto'});
+		});
+		$("#tabZd1").click(function(){
+			$("#tabZd1").css("display","none");
+			$("#tabZk1").css("display","block");
+			$("#Dzd1").animate({height:"40px"});
+		});
+		$("#tabZk1").click(function(){
+			$("#tabZk1").css("display","none");
+			$("#tabZd1").css("display","block");
+			$("#Dzd1").css({"height":'490px'});
+		});
+		$("#tabZd2").click(function(){
+			$("#tabZd2").css("display","none");
+			$("#tabZk2").css("display","block");
+			$("#Dzd2").animate({height:"40px"});
+			$("#Dzdtab2").css("overflow-y","hidden");
+		});
+		$("#tabZk2").click(function(){
+			$("#tabZk2").css("display","none");
+			$("#tabZd2").css("display","block");
+			$("#Dzd2").css({"height":'auto'});
+			$("#Dzdtab2").css({"overflow-y":"scroll","overflow-x":"hidden"});
+		});
+		
+	});
+</script>
+
+<script type="text/javascript">
+	$('.form_datetime').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+</script>
+<script type="text/javascript">
+	$("#ReTr").click(function(){
+		
+		$("#ReTr").parents().find("tr[class='RepeatTr']").remove();
+	});
+	var shtml="<td style=\"padding-bottom: 0;\"><form role=\"form\" style=\"width: 95%;float:left;margin-top:0px;\"><div class=\"form-group\"><select class=\"form-control\"><option>(</option><option>((</option><option>(((</option></select></div></form></td><td class='aa' style=\"padding-bottom: 0;\"><form class=\"bs-example bs-example-form\" role=\"form\" style=\"width: 100%;float: left;margin-top:0px;\"><div class=\"input-group\" style=\"width: 100%;\"><input type=\"text\" class=\"form-control addInput\" style=\"border-radius: 5px;\" value=\"1111\" readonly=\"readonly\"></div></form></td><td style=\"padding-bottom: 0;\"><form role=\"form\" style=\"width: 95%;float: left;margin-top:0px;\"><div class=\"form-group\"><select class=\"form-control\"><option>小于等于</option><option>等于</option><option>小于</option><option>大于</option><option>大于等于</option></select></div></form></td><td style=\"padding-bottom: 0;\"><form role=\"form\" style=\"width: 95%;float:left;margin-top:0px;\"><div class=\"form-group\"><select class=\"form-control\"><option>奢侈型</option><option>豪华型</option><option>聚划算</option></select></div></form></td><td style=\"padding-bottom: 0;\"><form role=\"form\" style=\"width: 95%;float:left;margin-top:0px;\"><div class=\"form-group\"><select class=\"form-control\"><option>)</option><option>))</option><option>)))</option></select></div></form></td><td style=\"padding-bottom: 0;\"><form role=\"form\" style=\"width: 95%;float: left;margin-top:0px;\"><div class=\"form-group\"><select class=\"form-control\"><option>并且</option><option>或者</option></select></div></form></td><td style=\"padding-bottom: 0;\"><img src=\"../../../images/deleat.png\" width=\"35px\" class=\"tabDel\" style=\"cursor: pointer;\" /></td>";
+	$(".AddTr").click(function(){
+		var t=new Date();
+		$(".AddTr").parents().find("table[id='TabAddTr']").append("<tr class=\"RepeatTr\" arrindex="+t.getMilliseconds()+">"+shtml+"</tr>");
+		
+		var subTd=$(this).parent().parent().find("td[class='addTd']").html();
+		$(this).parents().find("table[id='TabAddTr'] tr td[class='aa'] input").val(subTd);
+		$(this).parents().find("table[id='TabAddTr'] tr td").removeClass("aa");
+	});
+</script>
+
+<script type="text/javascript">
+	var sublistarr=[];
+	
+	
+	function AddInput(n){
+          var AddtdInput=$(n).parent().parent().find("div[class='modal-body'] table tr td[class='TdInput'] form div input").val();
+          if(AddtdInput!='')subTabTr(AddtdInput);
+	}
+	function subTabTr(nam){
+		var t=new Date();
+		var len=$("#subTab").find("tr").length;
+		var htm="<td style=\"line-height:35px;\">"+len+"</td><td style=\"line-height:35px;\">"+nam+"</td><td style=\"line-height:35px;\">56854</td><td style=\"line-height:35px;\">口径1</td><td><form role=\"form\" style=\"width: 95%;float: left;margin:0px;border: 0px solid red;padding: 0;\"><div class=\"form-group\" style=\"margin: 0;padding: 0;\"><select class=\"form-control\"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></div></form></td>";
+		$("#subTab").append("<tr class=\"tabsubtr\" id='sublist_'"+t.getMilliseconds()+">"+htm+"</tr>");
+		
+		var subobj={};
+		var arr=[];
+		var tr=$("#TabAddTr").find("tr");
+		for(var j=2;j<tr.length;j++){
+			var arrindex=tr.eq(j).attr("arrindex");
+			var obj={};
+			obj.leftkh=1;//$("#flag_name_"+arrindex).val();
+			//obj.cond_name=$("#").val();
+			//obj.rela_char=$("#").val();
+			arr.push(obj);
+		}
+		alert(JSON.stringify(arr));
+		subobj.condition=arr;
+		subobj.id="sublist_"+t.getMilliseconds();
+		sublistarr.push(subobj);
+		$("body").data("subactlist",sublistarr);
+		$(".tabsubtr").click(function(e){
+			e.preventDefault();
+			$(this).css("background","#ddd");
+			$(this).siblings("tr[ class='tabsubtr']").each(function(i,n){
+				$(n).css("background","none");
+			});
+			initSubActData("sublist_"+t.getMilliseconds());
+		});
+	}
+	
+</script>
+
+
+<script type="text/javascript">
+	$(function(){
+		
+		$(".tabDel").click(function(){
+			//alert("aaa");
+			retr($(this));
+		});
+		
+	});
+	function retr(n){
+		$(n).parents("tr").remove();
+	}
+</script>
+<script type="text/javascript">
+	function getQueryString(name) { 
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); 
+			var r = window.location.search.substr(1).match(reg); 
+			if (r != null) return unescape(r[2]); return null; 
+		} 
+		
+	param=getQueryString("sceneid");
+	
+	function initSubActData(subObjID){
+		var subobjlist=$("body").data("subactlist");
+		for(var i=0;i<subobjlist.length;i++){
+			var subObj=subobjlist[i];
+			alert(subobjlist.length+" "+subObj.id + "      " +subObjID);
+			if(subObj.id==subObjID){
+			 	initConditionHtml(subObj.condition);
+			 	break;
+			}
+		}
+	}
+	function initConditionHtml(conditions){
+		$("#TabAddTr").find("tr").eq(1).nextAll().remove();
+		for(var i=0;i<conditions.length;i++){
+			var conditonsobj=conditions[i];
+			var shtm1="";
+			
+			shtm1+="<td style=\"padding-bottom: 0;\">";
+			shtm1+="	<form role=\"form\" style=\"width: 95%;float:left;margin-top:0px;\">";
+			shtm1+="		<div class=\"form-group\">";
+			shtm1+="			<select class=\"form-control\" id=leftkh_1><option value='(' selected>(</option><option value='(('>((</option><option value='((('>";
+			shtm1+="			(((</option></select>";
+			shtm1+="</div></form></td>";
+			shtm1+="<td style=\"padding-bottom: 0;\">";
+			shtm1+="	<form class=\"bs-example bs-example-form\" role=\"form\" style=\"width: 100%;float: left;margin-top:0px;\">";
+			shtm1+="		<div class=\"input-group\" style=\"width: 100%;\">";
+			shtm1+="			<input id=flag_name_1 type=\"text\" class=\"form-control addInput\" style=\"border-radius: 5px;\" value="+conditonsobj.flag_name+" readonly=\"readonly\">";
+			shtm1+="</div></form></td>";
+			
+			shtm1+="<td style=\"padding-bottom: 0;\">";
+			shtm1+="<div class=\"form-group\">";
+			shtm1+="	<select class=\"form-control\"><option value='<='>小于等于</option><option value='='>等于</option><option value='<'>小于</option>";
+			shtm1+="<option value='>'>大于</option><option value='>='>大于等于</option></select></div></form></td>";
+			
+			shtm1+="<td style=\"padding-bottom: 0;\"><form role=\"form\" style=\"width: 95%;float:left;margin-top:0px;\">";
+			shtm1+="<div class=\"form-group\"><select class=\"form-control\"><option>奢侈型</option><option>豪华型</option>";
+			shtm1+="<option>聚划算</option></select></div></form></td>";
+			shtm1+="<td style=\"padding-bottom: 0;\"><form role=\"form\" style=\"width: 95%;float:left;margin-top:0px;\">";
+			shtm1+="<div class=\"form-group\"><select class=\"form-control\"><option>)</option><option>))</option><option>)))</option></select></div></form></td>";
+			shtm1+="<td style=\"padding-bottom: 0;\"><form role=\"form\" style=\"width: 95%;float: left;margin-top:0px;\">";
+			shtm1+="<div class=\"form-group\"><select class=\"form-control\"><option value='and'>并且</option><option value='or'>或者</option></select></div></form></td>";
+			shtm1+="<td style=\"padding-bottom: 0;\"><img src=\"../../../images/deleat.png\" width=\"35px\" class=\"tabDel\" style=\"cursor: pointer;\" /></td>";
+			var t=new Date();
+			$("#TabAddTr").find("tbody").append("<tr class=\"tabsubtr\" arrindex="+t.getMilliseconds()+">"+shtm1+"</tr>");
+			changebg();
+		}
+	}
+	function changebg(){
+		$(".tabsubtr").click(function(){
+			$(this).css("background","#ddd");
+			$(this).siblings("tr[ class='tabsubtr']").each(function(i,n){
+				$(n).css("background","none");
+			});
+		});
+	}
+	
+</script>
+
+<script type="text/javascript">
+	function Numact(){
+		if($("#actNum").val()=='subact1'){
+			$("#actNum").parents("tr").find("td[id='subactnum'] b").html(32546);
+			$("#subactbq").find("div").remove();
+			var htmsub="<div style=\"width: 10%;height: 65px;border: 0px solid red;line-height:25px;float: left;padding: 5px;\">展示字段:</div><div style=\"margin-right: 10px;padding:4px 5px 4px;width:auto;height:auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam=\"1\">本地网ID&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div style=\"margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam=\"3\">是否无线宽带&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div style=\"margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam=\"5\">用户名ID&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div style=\"margin-right:10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam=\"7\">号码&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div>";
+			$("#subactbq").append(htmsub);
+		}else if($("#actNum").val()=='subact2'){
+			$("#actNum").parents("tr").find("td[id='subactnum'] b").html(52376);
+			$("#subactbq").find("div").remove();
+			var htmsub="<div style=\"width: 10%;height: 65px;border: 0px solid red;line-height:25px;float: left;padding: 5px;\">展示字段:</div><div style=\"margin-right: 10px;padding:4px 5px 4px;width:auto;height:auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam='2'>营业部标签&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div style=\"margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam='4'>套餐内可用流量&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div style=\"margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam='6'>付费模式&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div style=\"margin-right:10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam='7'>号码&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div>";
+			$("#subactbq").append(htmsub);
+		}else if($("#actNum").val()=='subact3'){
+			$("#actNum").parents("tr").find("td[id='subactnum'] b").html(42547);
+			$("#subactbq").find("div").remove();
+			var htmsub="<div style=\"width: 10%;height: 65px;border: 0px solid red;line-height:25px;float: left;padding: 5px;\">展示字段:</div><div style=\"margin-right: 10px;padding:4px 5px 4px;width:auto;height:auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam='2'>营业部标签&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div style=\"margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam='1'>本地网ID&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div style=\"margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam='5'>用户ID&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div style=\"margin-right:10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\" nam='8'>总可用流量&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div>";
+			$("#subactbq").append(htmsub);
+		}else if($("#actNum").val()=='subactAll'){
+			$("#actNum").parents("tr").find("td[id='subactnum'] b").html(112278);
+			$("#subactbq").find("div").remove();
+			var htmsub="<div style=\"width: 10%;height: 65px;border: 0px solid red;line-height:25px;float: left;padding: 5px;\">展示字段:</div><div nam=\"1\" style=\"margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width:auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\">本地网ID&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div nam=\"3\" style=\"margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height:auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\">是否无线宽带&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div nam=\"5\" style=\"margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\">用户名ID&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div nam=\"7\" style=\"margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height:auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\">号码&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div nam=\"2\" style=\"margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height:auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\">营业部标签&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div nam=\"4\" style=\"margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height:auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\">套餐内可用流量&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div nam=\"6\" style=\"margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height: auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\">付费模式&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div><div nam=\"8\" style=\"margin-bottom: 5px;margin-right: 10px;padding:4px 5px 4px;width: auto;height:auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\">总可用流量&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\" class=\"close\">&times;</button></div>";
+			$("#subactbq").append(htmsub);
+		}
+	}
+	/*数据预览统计图表子活动的用户数*/
+	function SubactNum(){
+		if($("#SelectSh").val()=='subactall'){
+		$("#SelectSh").parent().parent().parent().parent().find("td[id='actsubNum'] b").html(112278);
+	}else if($("#SelectSh").val()=='subact1'){
+		$("#SelectSh").parent().parent().parent().parent().find("td[id='actsubNum'] b").html(32546);
+	}
+	else if($("#SelectSh").val()=='subact2'){
+		$("#SelectSh").parent().parent().parent().parent().find("td[id='actsubNum'] b").html(52376);
+	}else if($("#SelectSh").val()=='subact3'){
+		$("#SelectSh").parent().parent().parent().parent().find("td[id='actsubNum'] b").html(42547);
+	}
+	}
+	/*数据预览新增字段*/
+	$("#actaddzd").click(function(){
+		$("#actaddzd").css("display","none");
+		$("#actdelzd").css("display","block");
+		$("#subactrow").animate({height:"459px"});
+	});
+	$("#actdelzd").click(function(){
+		$("#actaddzd").css("display","block");
+		$("#actdelzd").css("display","none");
+		$("#subactrow").animate({height:"0"});
+	})
+	
+	$(".Addsubactzd").click(function(){
+		var subactzd=$(this).parent().parent().find("td[class='addTd']").html();
+		var nn=$(this).parent().parent().find("td[class='addTd']").attr("nam");
+		$("#subactbq").find("div").each(function(i,n){
+			if($(n).attr("nam")==nn){
+				$(n).remove();
+			}
+		});
+		actzd(subactzd,nn);
+	});
+	
+	function actzd(zd,n){
+		var htm="<div nam="+n+" style=\"margin:0 10px 5px 0;padding:4px 5px 4px;width:auto;height:auto;border: 1px solid #9C9C9C;float: left;border-radius: 5px;\">"+zd+"&nbsp;&nbsp;<button onclick=\"delbq(this)\" style=\"margin-top:1px\"class=\"close\">&times;</button></div>";
+		
+		$("#subactbq").append(htm);
+	}
+	/*数据预览用户清单*/
+	$(".userlist").click(function(){
+		$("#userlistrow").animate({height:"256px"});
+		$("#userlistrow").find("div").remove();
+		var userNum=$(this).attr("showuserlist");
+		if(userNum==1){
+			var userhtm="<div class=\"col-lg-12\" id=\"showuserlist\" style=\"height: 256px\"><div style=\"width: 100%;height: auto;\"><table class=\"table\" style=\"margin: 0;\"><tr class=\"active\"><td style=\"padding-left: 0\">付费模式</td><td>号码</td><td style=\"padding-left: 0;\">年龄</td><td>新装日期</td><td>营业部名称</td><td style=\"padding-left: 0;\">性别</td><td>县局名</td><td>是否员工</td><td>客户名称 <button onclick=\"delusertab(this)\" class=\"close\" style=\"float: right;\">&times;</button></td></tr></table></div><div style=\"width: 100%;height: 220px;overflow-y: auto;border:1px solid #ddd;border-radius: 5px;border-top:none\"><table class=\"table\"><tbody><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr></tbody></table></div></div>"
+			$("#userlistrow").append(userhtm);
+		}else if(userNum==2){
+			var userhtm="<div class=\"col-lg-12\" id=\"showuserlist\" style=\"height: 256px\"><div style=\"width: 100%;height: auto;\"><table class=\"table\" style=\"margin: 0;\"><tr class=\"active\"><td style=\"padding-left: 0\">付费模式</td><td>号码</td><td style=\"padding-left: 0;\">年龄</td><td>新装日期</td><td>营业部名称</td><td style=\"padding-left: 0;\">性别</td><td>县局名</td><td>是否员工</td><td>客户名称 <button onclick=\"delusertab(this)\" class=\"close\" style=\"float: right;\">&times;</button></td></tr></table></div><div style=\"width: 100%;height: 220px;overflow-y: auto;border:1px solid #ddd;border-radius: 5px;border-top:none\"><table class=\"table\"><tbody><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr></tbody></table></div></div>"
+			$("#userlistrow").append(userhtm);
+		}else if(userNum==3){
+			var userhtm="<div class=\"col-lg-12\" id=\"showuserlist\" style=\"height: 256px\"><div style=\"width: 100%;height: auto;\"><table class=\"table\" style=\"margin: 0;\"><tr class=\"active\"><td style=\"padding-left: 0\">付费模式</td><td>号码</td><td style=\"padding-left: 0;\">年龄</td><td>新装日期</td><td>营业部名称</td><td style=\"padding-left: 0;\">性别</td><td>县局名</td><td>是否员工</td><td>客户名称 <button onclick=\"delusertab(this)\" class=\"close\" style=\"float: right;\">&times;</button></td></tr></table></div><div style=\"width: 100%;height: 220px;overflow-y: auto;border:1px solid #ddd;border-radius: 5px;border-top:none\"><table class=\"table\"><tbody><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr></tbody></table></div></div>"
+			$("#userlistrow").append(userhtm);
+		}else if(userNum==4){
+			var userhtm="<div class=\"col-lg-12\" id=\"showuserlist\" style=\"height: 256px\"><div style=\"width: 100%;height: auto;\"><table class=\"table\" style=\"margin: 0;\"><tr class=\"active\"><td style=\"padding-left: 0\">付费模式</td><td>号码</td><td style=\"padding-left: 0;\">年龄</td><td>新装日期</td><td>营业部名称</td><td style=\"padding-left: 0;\">性别</td><td>县局名</td><td>是否员工</td><td>客户名称 <button onclick=\"delusertab(this)\" class=\"close\" style=\"float: right;\">&times;</button></td></tr></table></div><div style=\"width: 100%;height: 220px;overflow-y: auto;border:1px solid #ddd;border-radius: 5px;border-top:none\"><table class=\"table\"><tbody><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr><tr><td>10</td><td>18156522654</td><td></td><td>1472405165000</td><td>临空工业园营业部(筹)</td><td></td><td>南昌市</td><td align=\"center\">否</td><td>江西鸿利光有限公司</td></tr></tbody></table></div></div>"
+			$("#userlistrow").append(userhtm);
+		}
+	});
+	function delusertab(th){
+		$("#showuserlist").remove();
+	}
+</script>
+
+<script type="text/javascript">
+      // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/bar', // 使用柱状图就加载bar模块，按需加载
+               //'echarts/chart/funnel' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainBenDiW'));
+                
+                
+                var option = {
+    title : {
+        text: '江西省11个本地网统计网',
+         x:'center'
+        
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['人数'],
+        x:'left',
+    },
+    
+    
+    xAxis : [
+        {
+            type : 'category',
+            data : ['南昌','九江','赣州','吉安','萍乡','鹰潭','新余','宜春','上饶','景德镇','抚州']
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'人数',
+            type:'bar',
+            data:[12341, 31234, 65223, 32123, 34523, 43235,54234, 64233, 42345, 45686,45672],
+            barWidth:30,
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            }
+           
+        }
+    ]
+};
+                    
+                // 为echarts对象加载数据
+                myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+</script>
+<script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie', // 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/funnel' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainFenKefuq'));
+                
+                
+                var option = {
+    title : {
+        text: '用户数',
+//      subtext: '纯属虚构',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'left',
+        data:['城市','农村','政企']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+           
+          
+            magicType : {
+                show: true, 
+                type: ['pie', 'funnel'],
+                option: {
+                    funnel: {
+                        x: '25%',
+                        width: '50%',
+                        funnelAlign: 'left',
+                        max: 1548
+                    }
+                }
+            },
+        }
+    },
+    calculable : true,
+    series : [
+        {
+            name:'用户数',
+            type:'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:[
+                {value:335, name:'城市'},
+                {value:310, name:'农村'},
+                
+                {value:1548, name:'政企'}
+            ]
+        }
+    ]
+};
+                    
+                // 为echarts对象加载数据
+                myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+</script>
+<script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/pie', // 使用柱状图就加载bar模块，按需加载
+                'echarts/chart/funnel' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainYiYpd'));
+                
+                
+                var option = {
+    title : {
+        text: '用户数',
+//      subtext: '纯属虚构',
+        x:'center'
+    },
+    tooltip : {
+        trigger: 'item',
+        formatter: "{a} <br/>{b} : {c} ({d}%)"
+    },
+    legend: {
+        orient : 'vertical',
+        x : 'left',
+        data:['0个','1-2个','3个以上']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+           
+          
+            magicType : {
+                show: true, 
+                type: ['pie', 'funnel'],
+                option: {
+                    funnel: {
+                        x: '25%',
+                        width: '50%',
+                        funnelAlign: 'left',
+                        max: 1548
+                    }
+                }
+            },
+        }
+    },
+    calculable : true,
+    series : [
+        {
+            name:'用户数',
+            type:'pie',
+            radius : '55%',
+            center: ['50%', '60%'],
+            data:[
+                {value:335, name:'0个'},
+                {value:310, name:'1-2个'},
+                
+                {value:1548, name:'3个以上'}
+            ]
+        }
+    ]
+};
+                    
+                // 为echarts对象加载数据
+                myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+</script>
+<script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/gauge'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainXinaShang'));
+                
+                
+                var option = option = {
+				    tooltip : {
+				        formatter: "{a} <br/>{b} : {c}%"
+				    },
+				    toolbox: {
+				        show : true,
+				        feature : {
+				          
+				 
+				        }
+				    },
+				    series : [
+				        {
+				            name:'到达率',
+				            center : ['50%', '60%'], 
+				            type:'gauge',
+				            radius : [0, '99%'],
+				            splitNumber:0,
+				            detail : {formatter:'{value}%'},
+				            data:[{value: 73, name: '线上'}],
+				            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+				                show: false,
+				                
+				                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				                    color: '#333'
+				                }
+				            },
+				            axisLine:{
+									    show: true,
+									    lineStyle: {
+									        color: [
+									            [0.2, '#228b22'],
+									            [0.8, '#48b'],
+									            [1, '#ff4500']
+									        ],
+									        width: 10
+									    }
+									} ,
+							pointer : {
+				                length : '90%',
+				                width :8,
+				                color : 'auto'
+				            },
+				            title : {
+				                show : true,
+				                offsetCenter: ['0', -38],       // x, y，单位px
+				                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				                    color: '#000',
+				                    fontSize : 12
+				                }
+				            },
+				            
+				        }
+				    ]
+				};
+                    
+                // 为echarts对象加载数据
+                myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+
+</script>
+<script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/gauge'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainXinaXia'));
+                
+                
+                var option = option = {
+				    tooltip : {
+				        formatter: "{a} <br/>{b} : {c}%"
+				    },
+				    toolbox: {
+				        show : true,
+				        feature : {
+				          
+				 
+				        }
+				    },
+				    series : [
+				        {
+				            name:'到达率',
+				            center : ['50%', '60%'], 
+				            type:'gauge',
+				            radius : [0, '99%'],
+				            splitNumber:0,
+				            detail : {formatter:'{value}%'},
+				            data:[{value: 90, name: '线下'}],
+				            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+				                show: false,
+				                
+				                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				                    color: '#333'
+				                }
+				            },
+				             axisLine:{
+									    show: true,
+									    lineStyle: {
+									        color: [
+									            [0.2, '#228b22'],
+									            [0.8, '#48b'],
+									            [1, '#ff4500']
+									        ],
+									        width: 10
+									    }
+									} ,
+				            pointer : {
+				                length : '90%',
+				                width :8,
+				                color : 'auto'
+				            },
+				            title : {
+				                show : true,
+				                offsetCenter: ['0', -38],       // x, y，单位px
+				                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				                    color: '#000',
+				                    fontSize : 12
+				                }
+				            },
+				            
+				        }
+				    ]
+				};
+                    
+                // 为echarts对象加载数据
+                myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+
+</script>
+<script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/gauge'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainYueChu'));
+                
+                
+                var option = option = {
+				    tooltip : {
+				        formatter: "{a} <br/>{b} : {c}%"
+				    },
+				    toolbox: {
+				        show : true,
+				        feature : {
+				          
+				 
+				        }
+				    },
+				    series : [
+				        {
+				            name:'到达率',
+				            center : ['50%', '60%'], 
+				            type:'gauge',
+				            radius : [0, '99%'],
+				            splitNumber:0,
+				            detail : {formatter:'{value}%'},
+				            data:[{value: 90, name: '月初'}],
+				            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+				                show: false,
+				                
+				                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				                    color: '#333'
+				                }
+				            },
+				            pointer : {
+				                length : '90%',
+				                width :8,
+				                color : 'auto'
+				            },
+				             axisLine:{
+									    show: true,
+									    lineStyle: {
+									        color: [
+									            [0.2, '#228b22'],
+									            [0.8, '#48b'],
+									            [1, '#ff4500']
+									        ],
+									        width: 10
+									    }
+									} ,
+				            title : {
+				                show : true,
+				                offsetCenter: ['0', -38],       // x, y，单位px
+				                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				                    color: '#000',
+				                    fontSize : 12
+				                }
+				            },
+				            
+				        }
+				    ]
+				};
+                    
+                // 为echarts对象加载数据
+                myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+
+</script>
+<script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/gauge'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainYueZhong'));
+                
+                
+                var option = option = {
+				    tooltip : {
+				        formatter: "{a} <br/>{b} : {c}%"
+				    },
+				    toolbox: {
+				        show : true,
+				        feature : {
+				          
+				 
+				        }
+				    },
+				    series : [
+				        {
+				            name:'到达率',
+				            center : ['50%', '60%'], 
+				            type:'gauge',
+				            radius : [0, '99%'],
+				            splitNumber:0,
+				            detail : {formatter:'{value}%'},
+				            data:[{value: 90, name: '月中'}],
+				            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+				                show: false,
+				                
+				                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				                    color: '#333'
+				                }
+				            },
+				            pointer : {
+				                length : '90%',
+				                width :8,
+				                color : 'auto'
+				            },
+				             axisLine:{
+									    show: true,
+									    lineStyle: {
+									        color: [
+									            [0.2, '#228b22'],
+									            [0.8, '#48b'],
+									            [1, '#ff4500']
+									        ],
+									        width: 10
+									    }
+									} ,
+				            title : {
+				                show : true,
+				                offsetCenter: ['0', -38],       // x, y，单位px
+				                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				                    color: '#000',
+				                    fontSize : 12
+				                }
+				            },
+				            
+				        }
+				    ]
+				};
+                    
+                // 为echarts对象加载数据
+                myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+
+</script>
+<script type="text/javascript">
+        // 路径配置
+        require.config({
+            paths: {
+                echarts: '../../../resources/echarts/js'
+            }
+        });
+
+        // 使用
+        require(
+            [
+                'echarts',
+                'echarts/chart/gauge'// 使用柱状图就加载bar模块，按需加载
+                //'echarts/chart/line' // 使用柱状图就加载bar模块，按需加载
+            ],
+            function (ec) {
+                // 基于准备好的dom，初始化echarts图表
+                var myChart = ec.init(document.getElementById('mainYueMo'));
+                
+                
+                var option = {
+				    tooltip : {
+				        formatter: "{a} <br/>{b} : {c}%"
+				    },
+				    toolbox: {
+				        show : true,
+				        feature : {
+				          
+				 
+				        }
+				    },
+				    series : [
+				        {
+				            name:'到达率',
+				            center : ['50%', '60%'], 
+				            type:'gauge',
+				            radius : [0, '99%'],
+				            splitNumber:0,
+				            detail : {formatter:'{value}%'},
+				            data:[{value: 90, name: '月底'}],
+				            axisLabel: {           // 坐标轴文本标签，详见axis.axisLabel
+				                show: false,
+				                
+				                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				                    color: '#333'
+				                }
+				            },
+				            pointer : {
+				                length : '90%',
+				                width :8,
+				                color : 'auto'
+				            },
+				            axisLine:{
+									    show: true,
+									    lineStyle: {
+									        color: [
+									            [0.2, '#228b22'],
+									            [0.8, '#48b'],
+									            [1, '#ff4500']
+									        ],
+									        width: 10
+									    }
+									} ,
+				            title : {
+				                show : true,
+				                offsetCenter: ['0', -38],       // x, y，单位px
+				                textStyle: {       // 其余属性默认使用全局文本样式，详见TEXTSTYLE
+				                    color: '#000',
+				                    fontSize : 12
+				                }
+				            },
+				            
+				        }
+				    ]
+				};
+                    
+                // 为echarts对象加载数据
+                myChart.setOption(option,true);
+                $(window).resize(myChart.resize);
+            }
+        );
+
+</script>

@@ -1,0 +1,302 @@
+/*
+    存放自己设计的内容
+*/
+/*
+   bg-ex 系列
+   主要是想要一个边框围绕的突出内容
+
+*/
+
+.bg-ex {
+    border-radius: 4px;
+    padding: 15px;
+    border: 1px solid #DEDEDE;
+    -webkit-box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+}
+
+.bg-ex > h4:first-child {
+    margin-top: 0;
+}
+
+.bg-ex-border {
+    border-radius: 4px;
+    border: 1px solid #DEDEDE;
+    box-shadow: inset 0 3px 6px rgba(0, 0, 0, .05);
+}
+
+.bg-ex-no-border {
+    border-width: 0px;
+    border-radius: 0;
+    -webkit-box-shadow: inset 0 0 0;
+    box-shadow: inset 0 0 0;
+}
+
+.bg-ex-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #eee;
+    color: #000000;
+}
+
+.bg-ex-success {
+    background-color: #50B482;
+    color: #ffffff;
+}
+
+.bg-ex-info {
+    background-color: #65A3BC;
+    color: #ffffff;
+}
+
+.bg-ex-purple {
+    background-color: #876B9C;
+    color: #ffffff;
+}
+
+.bg-ex-white {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.bg-ex-white-half {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #000000;
+}
+
+.bg-ex-white-seven {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #000000;
+}
+
+/* 参考btn-group */
+.bg-ex-group .bg-ex + .bg-ex {
+    margin-left: -1px;
+}
+
+.bg-ex-group > .bg-ex:not(:first-child):not(:last-child) {
+    border-radius: 0;
+}
+
+.bg-ex-group > .bg-ex:first-child:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.bg-ex-group > .bg-ex:last-child:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/*
+       手风琴样式,原型参考是ztree的demo
+   */
+.panel-group-collapse .panel {
+    border-radius: 0;
+    margin-top: 0 !important;
+}
+
+.panel-group-collapse .panel .panel-heading {
+    background-color: rgb(91, 165, 203);
+    color: #fff;
+    font-weight: bolder;
+    padding: 5px 15px;
+}
+
+.panel-group-collapse .panel {
+    border: 0;
+    border-bottom: 1px solid transparent;
+}
+
+.panel-group-collapse .panel:first-child {
+    border-radius: 4px 4px 0 0;
+}
+
+.panel-group-collapse .panel:last-child {
+    border-radius: 0 0 4px 4px;
+    border-bottom: 0;
+}
+
+.panel-group-collapse .panel .panel-title {
+    cursor: default;
+    font-size: 12px;
+}
+
+/*
+    手风琴下，想到的新建的简单的li列表
+*/
+ul.simple-ul {
+    width: 100%;
+    padding: 5px 0;
+    text-align: left;
+    list-style: none;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0, 0, 0, .15);
+    border-radius: 4px;
+    -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+ul.simple-ul > li > a {
+    display: block;
+    padding: 3px 20px;
+    clear: both;
+    font-weight: 400;
+    line-height: 1.42857143;
+    color: #333;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+ul.simple-ul > li:hover {
+    background-color: #eee;
+}
+
+/*
+    给添加的小东西的样式，如已经添加的数据模型等
+
+*/
+.add-panel {
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    display: inline-block;
+    font-size: 15px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/*
+    自制的一个展开关闭内容的标签，配合global.js
+*/
+[name='extend-toggle'] {
+    background-color: rgb(230, 230, 230);
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+[name='extend-toggle'] i {
+    margin-right: 5px;
+    margin-left: 5px;
+    width: 10px;
+}
+
+/* 横向的列表 */
+.xAis-ul li {
+    margin-right: -3px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    position: relative;
+    display: block;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-weight: bolder;
+}
+
+.xAis-ul-dark li {
+    background-color: #354C52;
+    border-color: #222B2D;
+    color: #fff;
+}
+
+.xAis-ul-light li {
+    background-color: #ADEFFF;
+    border-color: #358293;
+    color: #030303;
+}
+
+.xAis-ul li:first-child {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.xAis-ul li:last-child {
+    margin-right: 0;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/*
+   数字滚动样式
+*/
+.num-container {
+    margin: 0;
+    padding: 0;
+}
+
+.num-container .num-mark, .num-container .num-num,
+.num-container .num-CNY, .num-container .num-numbers, .num-container .num-numbers {
+    float: left;
+}
+
+/*
+    文件上传，参考了bootstrap的fileinput
+*/
+
+.uploaded-container {
+    border: 1px solid #ddd;
+    width: 100%;
+    margin-bottom: 5px;
+    padding: 15px 5px 5px 5px;
+}
+
+.uploaded-container .uploaded-container-title {
+    position: absolute !important;
+    left: 25px;
+    top: 3px;
+    font-size: 10px;
+    color: #46AB4A;
+}
+
+.uploaded-container .uploaded-file {
+    width: 180px;
+    height: 55px;
+    margin: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 1px 1px 5px 0 #a2958a;
+    padding: 5px;
+    float: left;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.uploaded-file .uploaded-img-text {
+    width: 140px;
+    padding-left: 5px;
+    float: left;
+}
+
+.uploaded-file .uploaded-text {
+    width: 95px;
+    word-break: break-all;
+    overflow: hidden;
+    height: 50px;
+    margin-top: -4px;
+    font-size: 10px;
+}
+
+.v-Select span:first-child {
+    margin-left: 0;
+}
+
+.v-Select span {
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.v-Select span.selected:after {
+    content: "已激活";
+    font-size: 12px;
+    color: #8BF38B;
+    font-weight: normal;
+    margin-left: 5px;
+}
+

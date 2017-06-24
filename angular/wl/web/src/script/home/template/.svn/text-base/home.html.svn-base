@@ -1,0 +1,14 @@
+<div id="middle">
+	<div class="container">
+		<p id="logo"></p>
+		<div id="homeSearch">
+			<span></span>
+			<input type="text" ng-model="searchNum" placeholder="请输入用户号码" />
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<p>首页要显示的内容</p>
+    <a ui-sref="userInfo">用户洞察页面</a>
+</div>

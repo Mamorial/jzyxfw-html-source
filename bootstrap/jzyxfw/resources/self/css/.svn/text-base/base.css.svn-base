@@ -1,0 +1,541 @@
+/**
+ 	去除所有margin padding,会有冲突，去掉
+
+body, form, frame, iframe, blockquote, p, pre, sup, sub, table, caption, ol, dl, ul, li, dl, dd, dt, div, span, a, input, textarea, fieldset, legend, b, strong, em, i, h1, h2, h3, h4, h5, h6, img, label {
+    margin: 0;
+    padding: 0;
+}
+* :focus {
+	outline: none;
+}
+
+*/
+
+/**
+ 	修改默认字体
+    bootstrap 弹窗字体
+    加了 div,span太烦
+*/
+body, button, input, pre, select, textarea, h1, h2, h3, h4, h5, h6, .base-font, .popover, .tooltip,.ui-widget {
+    font-family: Microsoft YaHei, '宋体', Tahoma, Helvetica, Arial,
+    "\5b8b\4f53", sans-serif !important;
+}
+
+/*
+    常用组
+*/
+.ds-none {
+    display: none;
+}
+
+.cursor-p {
+    cursor: pointer;
+}
+
+.over-h {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/*
+    不常用组
+*/
+.inline-b {
+    display: inline-block;
+}
+
+.no-wrap {
+    margin: 0;
+    padding: 0;
+}
+
+.word-b {
+    word-break: break-all;
+}
+
+.font-b {
+    font-weight: bold;
+}
+
+/* 绝对居中，貌似废弃了？*/
+/*.Absolute-Center {
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}*/
+
+/** equals to center-block by bootstrap 废弃  */
+/*.line_center {
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+}*/
+
+/*
+    margin，padding，height组
+*/
+.mg-l-150 {
+    margin-left: 150px;
+}
+
+.mg-l-100 {
+    margin-left: 100px;
+}
+
+.mg-l-50 {
+    margin-left: 50px;
+}
+
+.mg-l-20 {
+    margin-left: 20px;
+}
+
+.mg-l-10 {
+    margin-left: 10px;
+}
+
+.mg-l-5 {
+    margin-left: 5px;
+}
+
+.mg-l-2 {
+    margin-left: 2px;
+}
+
+.mg-l-0 {
+    margin-left: 0px;
+}
+
+.mg-b-150 {
+    margin-bottom: 150px;
+}
+
+.mg-b-100 {
+    margin-bottom: 100px;
+}
+
+.mg-b-50 {
+    margin-bottom: 50px;
+}
+
+.mg-b-20 {
+    margin-bottom: 20px;
+}
+
+.mg-b-10 {
+    margin-bottom: 10px;
+}
+
+.mg-b-5 {
+    margin-bottom: 5px;
+}
+
+.mg-b-2 {
+    margin-bottom: 2px;
+}
+
+.mg-b-0 {
+    margin-bottom: 0px;
+}
+
+.mg-r-150 {
+    margin-right: 150px;
+}
+
+.mg-r-100 {
+    margin-right: 100px;
+}
+
+.mg-r-70 {
+    margin-right: 70px;
+}
+
+.mg-r-50 {
+    margin-right: 50px;
+}
+
+.mg-r-30 {
+    margin-right: 30px;
+}
+
+.mg-r-20 {
+    margin-right: 20px;
+}
+
+.mg-r-10 {
+    margin-right: 10px;
+}
+
+.mg-r-5 {
+    margin-right: 5px;
+}
+
+.mg-r-2 {
+    margin-right: 2px;
+}
+
+.mg-r-0 {
+    margin-right: 0px;
+}
+
+.mg-t-150 {
+    margin-top: 150px;
+}
+
+.mg-t-100 {
+    margin-top: 100px;
+}
+
+.mg-t-50 {
+    margin-top: 50px;
+}
+
+/* 为了按钮了表单在同一水平*/
+.mg-t-25 {
+    margin-top: 25px;
+}
+
+.mg-t-20 {
+    margin-top: 20px;
+}
+
+.mg-t-15 {
+    margin-top: 15px;
+}
+
+.mg-t-10 {
+    margin-top: 10px;
+}
+
+.mg-t-5 {
+    margin-top: 5px;
+}
+
+.mg-t-3 {
+    margin-top: 3px;
+}
+
+.mg-t-2 {
+    margin-top: 2px;
+}
+
+.mg-t-0 {
+    margin-top: 0px;
+}
+
+.mg-0 {
+    margin: 0;
+}
+.pd-0 {
+    padding: 0 !important;
+}
+.pd-5 {
+    padding: 5px !important;
+}
+
+.pd-10 {
+    padding: 10px !important;
+}
+
+.pd-20 {
+    padding: 20px !important;
+}
+.pd-r-0 {
+    padding-right: 0;
+}
+.pd-r-5 {
+    padding-right: 5px;
+}
+.pd-r-10 {
+    padding-right: 10px;
+}
+.pd-r-20 {
+    padding-right: 20px;
+}
+.pd-r-50 {
+    padding-right: 50px;
+}
+.pd-l-0 {
+    padding-left: 0;
+}
+.pd-l-5 {
+    padding-left: 5px;
+}
+.pd-l-10 {
+    padding-left: 10px;
+}
+.pd-l-20 {
+    padding-left: 20px;
+}
+.pd-l-50 {
+    padding-left: 50px;
+}
+.pd-t-0 {
+    padding-top: 0;
+}
+.pd-t-5 {
+    padding-top: 5px;
+}
+.pd-t-10 {
+    padding-top: 10px;
+}
+.pd-t-20 {
+    padding-top: 20px;
+}
+.pd-t-50 {
+    padding-top: 50px;
+}
+.pd-b-0 {
+    padding-bottom: 0;
+}
+.pd-b-5 {
+    padding-bottom: 5px;
+}
+.pd-b-10 {
+    padding-bottom: 10px;
+}
+.pd-b-20 {
+    padding-bottom: 20px;
+}
+.pd-b-50 {
+    padding-bottom: 50px;
+}
+.wd-10 {
+    width: 10%;
+}
+
+.wd-20 {
+    width: 20%;
+}
+
+.wd-30 {
+    width: 30%;
+}
+
+.wd-40 {
+    width: 40%;
+}
+
+.wd-50 {
+    width: 50%;
+}
+
+.wd-60 {
+    width: 60%;
+}
+
+.wd-80 {
+    width: 80%;
+}
+
+.wd-90 {
+    width: 90%;
+}
+
+.wd-100 {
+    width: 100%;
+}
+
+.wd-a-100 {
+    width: 100px;
+}
+
+.ht-10 {
+    height: 10%;
+}
+
+.ht-20 {
+    height: 20%;
+}
+
+.ht-30 {
+    height: 30%;
+}
+
+.ht-40 {
+    height: 40%;
+}
+
+.ht-50 {
+    height: 50%;
+}
+
+.ht-60 {
+    height: 60%;
+}
+
+.ht-70 {
+    height: 70%;
+}
+
+.ht-80 {
+    height: 80%;
+}
+
+.ht-90 {
+    height: 90%;
+}
+
+.ht-100 {
+    height: 100%;
+}
+
+.min-h-500 {
+    min-height: 500px;
+}
+.min-h-450 {
+    min-height: 450px;
+}
+.min-h-200 {
+    min-height: 200px;
+}
+.min-h-100 {
+    min-height: 100px;
+}
+
+.min-w-100 {
+    min-width: 100px;
+}
+
+.min-w-150 {
+    min-width: 150px;
+}
+
+.min-w-200 {
+    min-width: 200px;
+}
+
+.min-w-250 {
+    min-width: 250px;
+}
+
+.border-0 {
+    border: 0 !important;
+}
+
+/*
+    字体颜色组
+*/
+.font-16 {
+    font-size: 16px !important;
+}
+.font-15 {
+    font-size: 15px !important;
+}
+
+.font-14 {
+    font-size: 14px !important;
+}
+
+.font-13 {
+    font-size: 13px !important;
+}
+
+.font-12 {
+    font-size: 12px !important;
+}
+
+.font-10 {
+    font-size: 10px !important;
+}
+
+.color-black {
+    color: #000;
+}
+
+.color-w {
+    color: #fff;
+}
+
+.color-bg-w {
+    background-color: #fff !important;;
+}
+
+.color-bg-b {
+    background-color: rgb(0, 149, 255);
+}
+
+.color-b {
+    color: rgb(0, 149, 255);
+}
+
+.color-pur {
+    color: #852b99;
+}
+
+.color-bg-pur {
+    background-color: #852b99;
+}
+
+.color-g {
+    color: #5cb85c;
+}
+
+.color-bd-g {
+    border-color: #5cb85c !important;
+}
+
+.color-bg-g {
+    background-color: #5cb85c;
+}
+
+.color-r {
+    color: #EC6148;
+}
+
+.color-bd-r {
+    border-color: #EC6148 !important;
+}
+
+.color-dx {
+    color: #0156A7;
+}
+
+.color-bg-dx {
+    background-color: #0156A7;
+}
+
+.color-bg-gray {
+    background-color: #666666;
+}
+
+.color-gray {
+    color: #666666;
+}
+
+/*
+    hr 类型的边框
+*/
+.bd-hr-left {
+    border-left: 1px solid #eee;
+}
+
+.bd-hr-right {
+    border-right: 1px solid #eee;
+}
+
+.bd-hr-top {
+    border-top: 1px solid #eee;
+}
+
+.bd-hr-bottom {
+    border-bottom: 1px solid #eee;
+}
+
+.bd-shadow {
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+
+
+
+

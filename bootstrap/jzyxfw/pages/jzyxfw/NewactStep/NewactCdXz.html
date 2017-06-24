@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--引用样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<!--自定义样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		<!--引用js-->
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../../resources/echarts/js/echarts.js"></script>
+		<style>
+		html{overflow-x:hidden;}
+			* {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			
+			ul li,
+			span {
+				display: block;
+			}
+			
+			
+			.Menu {
+				width: 100%;
+				height: 100px;
+				border: 0px solid red;
+				padding-bottom: 30px;
+				margin-top: -10px;
+				margin-top: 0px;
+			}
+			
+			.Menu table {
+				width: 100%;
+				height: 100%;
+				background: #E3EEFF;
+				padding: 5px
+			}
+			
+			.Menu table tr td {
+				text-align: center;
+				color: #999999;
+				padding-bottom: 5px;
+			}
+			
+			.Menu table tr td:nth-child(odd) {
+				width: 60px;
+			}
+			
+			.Menu table tr td span {
+				display: block;
+				width: 90%;
+				height: 2px;
+				background: #8D95CE;
+			}
+			.cdPztab tbody tr td{border: none;}
+		</style>
+	</head>
+
+	<body style="padding-top: 108px;">
+		<div class="container-fluid navbar-fixed-top">
+			<div class="row" style="padding: 0 15px;">
+				<div class="Menu">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr height="30">
+							<td colspan="3">创建活动</td>
+							<td>目标筛选</td>
+							<td></td>
+							<td>数据预览</td>
+							<td></td>
+							<td style="color:#0163AC">触点选择</td>
+							<td></td>
+							<td>触点配置</td>
+							<td></td>
+							
+							<td>评估</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td style="padding-left:10px"><span></span></td>
+							<td width="70px"><img src="../../../images/img/1.png" width="70px" height="70px"></td>
+							<td><span></span></td>
+							<td width="70px"><img src="../../../images/img/3.png" width="70px" height="70px"></td>
+							<td><span></span></td>
+							<td width="70px"><img src="../../../images/img/4.png" width="70px" height="70px"></td>
+							<td><span></span></td>
+							<td width="70px"><img src="../../../images/img/9.png" width="70px" height="70px"></td>
+							<td><span></span></td>
+							<td width="70px"><img src="../../../images/img/5.png" width="70px" height="70px"></td>
+							<td><span></span></td>
+							
+							<td width="70px"><img src="../../../images/img/7.png" width="70px"></td>
+							<td><span></span></td>
+						</tr>
+					</table>
+				</div>
+					</div>
+					</div>
+					<div class="container-fluid">
+						
+						<div class="row" style="padding: 0 15px;margin-top:10px">
+							<div class="col-lg-6 col-md-6 col-xs-12" style="border: 0px solid red;height: auto;">
+								<div class="NewactChuDianpz" style="width: 100%;height: 30px;border: 0px solid red;margin-top:20px">
+								<ul>
+									<li></li>
+									<li>活动选择</li>
+								</ul>
+								</div>
+								<div style="width: 100%;height: 5px;background: #737CDC;margin-top:10px"></div>
+								<div style="width: 100%;height: 165px;overflow-y: auto">
+									<table class="table" style="height:100% ;">
+										<tbody>
+											<tr class="active">
+												<td>子活动序号</td>
+												<td>子活动名称</td>
+												<td>目标用户数</td>
+											</tr>
+											<tr>
+												<td>1</td>
+												<td>活动名称一</td>
+												<td>55166</td>
+												<!--<td align="center"><input id="act_sn" class="tabCheck" type="checkbox" name="check" style="cursor: pointer;" /></td>-->
+											</tr>
+											<tr>
+												<td>2</td>
+												<td>活动名称二</td>
+												<td>684163</td>
+												<!--<td align="center"><input id="act_gn" class="tabCheck" type="checkbox" name="check" style="cursor: pointer;" /></td>-->
+											</tr>
+											<tr>
+												<td>3</td>
+												<td>活动名称三</td>
+												<td>68460</td>
+												<!--<td align="center"><input id="act_md" class="tabCheck" type="checkbox" name="check" style="cursor: pointer;" /></td>-->
+											</tr>
+											
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="col-lg-6 col-md-6 col-xs-12" style="border:0px solid red;padding-bottom: 40px;">
+								<div class="NewactChuDianpz" style="width: 100%;height: 30px;border: 0px solid red;margin-top:20px">
+								<ul>
+									<li></li>
+									<li>触点选择</li>
+								</ul>
+								</div>
+								<div style="width: 100%;height: 5px;background: #737CDC;margin-top:10px"></div>
+								<div style="width: 100%;height: auto;margin-top:10px;border: 1px solid #F6F6F6;">
+								<table class="table" style="width: auto">
+									<tbody>
+										<tr>
+											<td width="80px"><font color="#757BDE">⊙</font> <b>线上:</b></td>
+											<td width="100px"><span style="width: 80%;height: 30px;line-height: 30px;text-align: center;background: #737ADD; color: #fff;border-radius: 15px;cursor: pointer;" class="xianshang">短信</span></td>
+											<td width="100px"><span title="此功能还未开通" style="width: 80%;height: 30px;line-height: 30px;text-align: center;border-radius: 15px;cursor: pointer;" class="xianshang">DNS</span></td>
+											<td width="100px"><span title="此功能还未开通" style="width: 80%;height: 30px;line-height: 30px;text-align: center;border-radius: 15px;cursor: pointer;" class="xianshang">Toolbar</span></td>
+										</tr>
+										<tr>
+											<td style="border: none;"><font color="#757BDE">⊙</font> <b>线下:</b></td>
+											<td style="border: none;"><span style="width: 80%;height: 30px;line-height: 30px;text-align: center;border-radius: 15px;cursor: pointer;" class="xianxia">派单</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							</div>
+						</div>
+					
+					
+					   <div class="row" style="padding: 0 15px;height: auto;border: 0px solid red;margin-top:5px">
+							<div class="col-lg-12 col-md-12 col-xs-12" id="tabCol" style="padding-right: 0;">
+								<div style="width: 100%;height: auto;border: 0px solid red;">
+									<table id="Tab" class="table cdPztab" style="margin-bottom: 0;">
+										<tbody>
+											
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					
+					
+					
+											
+											<div class="row" style="padding-bottom: 50px;margin-top:100px">
+												<div style="width: 100%;height: 40px;border: 0px solid red;text-align: center; ">
+													<a href="NewactStepyl.html" style="text-decoration: none;"><div style="cursor:pointer;border-radius:5px;line-height:40px;margin:0 20px 0 40%;width: 100px;height: 100%;background: #8D95CE;color: #fff;float: left;" data-dismiss="modal">
+														上一步
+													</div></a>
+													<a href="NewactCdPz.html" style="text-decoration: none;"><div style="cursor:pointer;border-radius:5px;line-height:40px;float:left;width: 100px;height: 100%;background: #8D95CE;color: #fff;" data-dismiss="modal" data-toggle="modal" data-target=".mubiao_modal">
+														下一步
+													</div></a>
+												</div>
+											</div>
+		</div>
+	</body>
+
+</html>
+<script type="text/javascript">
+	$(function(){
+		$xianshang=$(".xianshang");
+		$xianshang.click(function (){
+			$(this).css({"background":"#757BDE","color":"#fff"});
+			$(this).addClass("btn").css({"line-height":"15px","backgronud":"#A5A9E9"});
+			$(this).addClass("disabled");
+			$(this).parent().siblings().each(function (i,n){
+				$(n).find("span").css({"color":"#000"});
+			});
+			var $tabTd=$(this).html();
+			//return tabTd;
+			addTabTd($tabTd);
+		});
+		$(".xianxia").click(function(){
+			addTabTd($(this).html());
+		})
+		
+		var $tabCheck=$(".tabCheck");
+		$tabCheck.click(function(){
+			$xianshang.parent().siblings().each(function(i,n){
+				$(n).find("span").css({"background":"none","color":"#000"});
+			});
+			$(".xianxia").css({"background":"none","color":"#000"});
+			if($(this).is(':checked')){
+			addTabTr($(this).attr("id"));
+		   }else{
+		   	delTabTr($(this).attr("id"));
+		   }
+		   addCol();
+		});
+		
+	});
+	
+	
+	function addTabTr(id){
+		//alert(id);
+		if(id=="act_sn"){
+			var tabTr="<tr AdTr='act_sn'><td style='padding-right: 0;'>省内流量包：</td></tr>";
+			$("#Tab").append(tabTr);
+		}else if(id=="act_gn"){
+			var tabTr="<tr AdTr='act_gn'><td style='padding-right: 0;'>国内流量包：</td></tr>";
+			$("#Tab").append(tabTr);
+		}else if(id=="act_md"){
+			var tabTr="<tr AdTr='act_md'><td style='padding-right: 0;'>懵懂流量包：</td></tr>";
+			$("#Tab").append(tabTr);
+		}
+		
+	}
+	function delTabTr(id){
+		if(id=='act_sn'){
+			$("#Tab").find("tr[AdTr='act_sn']").remove();
+		}else if(id=='act_gn'){
+			$("#Tab").find("tr[AdTr='act_gn']").remove();
+		}else if(id=="act_md"){
+			$("#Tab").find("tr[AdTr='act_md']").remove();
+		}
+	}
+	
+	
+	function addTabTd(htm){
+		
+		//alert(htm);
+		//alert($("#tabCo$("l").attr("class"));
+		var shtml="<td><div style=\"width: 100%;height: 25px;border: 1px solid #9C9C9C;border-radius:5px;line-height: 25px;padding:0 5px;\" msgtype='1'>"+htm+"<button class=\"close\">&times;</button></div></td>";
+		$("#Tab tr").append(shtml);
+//		$("#tabCol").append("<tr></tr");
+
+				
+				
+				addCol();
+				
+	}
+	function addCol(){
+//		var len=$("#Tab").rows.item(0).cells.length;
+		//alert(num);
+		var num=$("#Tab tr").eq(0).find("td").length;
+		var Col="col-lg-"+num+" col-md-"+num+" col-xs-12";
+		//alert(Col);
+		$("#tabCol").attr("class",Col);
+		
+		
+	}
+</script>
+<script type="text/javascript">
+	$(function(){
+		$(".xianxia").click(function (){
+			$(this).css({"background":"#757BDE","color":"#fff"});
+			$(this).parent().siblings().each(function (i,n){
+				$(n).find("span").css({"background":"none","color":"#000"});
+			})
+		});
+		
+		
+		
+		
+	});
+	
+</script>
+
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        pickerPosition: "bottom-left"
+    });
+</script> 

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<!-- 外部控件 -->
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/shouye.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css"/>
+		<link href="../../../resources/jquery-treegrid-0.3.0-3/css/jquery.treegrid.css" rel="stylesheet" type="text/css" />
+		<link href="../../../resources/jquery-treegrid-0.3.0-3/css/styles.css" rel="stylesheet" type="text/css" />
+		
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery-treegrid-0.3.0-3/js/jquery.treegrid.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery-treegrid-0.3.0-3/js/jquery.treegrid.bootstrap3.js"></script>
+		
+		<!-- 系统公用 -->
+		
+		<!-- 页面私有 -->
+		<style>
+			html{overflow-x:hidden;}
+		</style>
+		
+		<title>接触评估</title>
+	</head>
+
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('.tree').treegrid({
+				initialState: 'expanded',
+				saveState: false,
+				saveStateMethod: 'cookie',
+				saveStateName: 'tree-grid-state',
+				expanderTemplate: '<span class="treegrid-expander"></span>',
+				indentTemplate: '<span class="treegrid-indent"></span>',
+				expanderExpandedClass: 'treegrid-expander-expanded',
+				expanderCollapsedClass: 'treegrid-expander-collapsed',
+				treeColumn: 0,
+				getExpander: function() {
+					return $(this).find('.treegrid-expander');
+				},
+				getNodeId: function() {
+					var template = /treegrid-([A-Za-z0-9_-]+)/;
+					if(template.test($(this).attr('class'))) {
+						return template.exec($(this).attr('class'))[1];
+					}
+					return null;
+				},
+				getParentNodeId: function() {
+					var template = /treegrid-parent-([A-Za-z0-9_-]+)/;
+					if(template.test($(this).attr('class'))) {
+						return template.exec($(this).attr('class'))[1];
+					}
+					return null;
+				},
+				getNodeById: function(id, treegridContainer) {
+					var templateClass = "treegrid-" + id;
+					return treegridContainer.find('tr.' + templateClass);
+				},
+				getChildNodes: function(id, treegridContainer) {
+					var templateClass = "treegrid-parent-" + id;
+					return treegridContainer.find('tr.' + templateClass);
+				},
+				getTreeGridContainer: function() {
+					return $(this).closest('table');
+				},
+				getRootNodes: function(treegridContainer) {
+					var result = $.grep(treegridContainer.find('tr'), function(element) {
+						var classNames = $(element).attr('class');
+						var templateClass = /treegrid-([A-Za-z0-9_-]+)/;
+						var templateParentClass = /treegrid-parent-([A-Za-z0-9_-]+)/;
+						return templateClass.test(classNames) && !templateParentClass.test(classNames);
+					});
+					return $(result);
+				},
+				getAllNodes: function(treegridContainer) {
+					var result = $.grep(treegridContainer.find('tr'), function(element) {
+						var classNames = $(element).attr('class');
+						var templateClass = /treegrid-([A-Za-z0-9_-]+)/;
+						return templateClass.test(classNames);
+					});
+					return $(result);
+				},
+				onCollapse: null,
+				onExpand: null,
+				onChange: null
+
+			});
+		});
+	</script>
+	<style>
+		.blankButton {
+			width: 80px;
+			height: 40px;
+			margin-left: 10px;
+			margin-right: 10px;
+			text-align: "center";
+			line-height: "30px";
+		}
+		
+		.innerDIVTitle {
+			color: white;
+			float: left;
+			height: 100%;
+			width: 120px;
+			padding-left: 30px;
+			padding-top: 15px;
+			padding-right: 30px;
+			border: 0px solid red;
+		}
+		
+		.innerDIVTitle:hover {
+			background: rgba(139, 181, 191, 1);
+			cursor: pointer;
+		}
+		
+		.innerDIVTitle-active {
+			background: rgba(139, 181, 191, 1);
+		}
+	</style>
+
+	<body>
+		<script type="text/javascript">
+			$(function() {
+				$(".form_datetime").datetimepicker({
+					format: "yyyy年mm月dd日 - P HH:ii:ss",
+					showMeridian: true,
+					autoclose: true,
+					todayBtn: true,
+					language: 'zh-CN'
+				});
+			});
+		</script>
+		<div class="container">
+
+			<!--主题内容-->
+			<div class="row col-lg-12">
+				<div class="tab-content">
+					<!--业务-->
+					<div id="con1" class="tab-pane active">
+						<div class="row">
+							
+							<div style="float: left;" class="input-append date form_datetime">
+								<span class="add-on">开始时间:</span>
+								<input size="16" type="text" readonly>
+								<span class="add-on"><i class="icon-th"></i></span>
+							</div>
+							
+							<div style="float:left;">&nbsp;&nbsp;&nbsp;</div>
+							<div style="float: left;" class="input-append date form_datetime">
+								<span class="add-on"> 结束时间:</span>
+								<input size="16" type="text" readonly>
+								<span class="add-on"><i class="icon-th"></i></span>
+							</div>
+							
+							<div style="float:left;">&nbsp;&nbsp;&nbsp;</div>
+							<div style="float: left;"><span>用户:</span></div>
+							<div class="col-sm-4">
+								<div class="input-group input-group-sm">
+									<input type="text" class="form-control">
+									<span class="input-group-addon">查找</span>
+								</div>
+							</div>
+							
+						</div>
+
+						<div class="row huodZt" id="gongyong">
+							<table class="tree">
+								<thead>
+									<tr>
+										<td>名称</td>
+										<td>接触类型</td>
+										<td>发送量</td>
+										<td>办理量</td>
+										<td>到达量</td>
+										<td>达到率</td>
+										<td>办理率</td>
+										<!--<td>场景类型</td>-->
+										<td>发送人</td>
+										<td>发送时间</td>
+										<td>口径</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="treegrid-1">
+										<td>宽带</td>
+										<td>微信</td>
+										<td>100</td>
+										<td>100</td>
+										<td>98</td>
+										<td>100</td>
+										<td>56</td>
+										<td>公用</td>
+										<td>2016-12-29</td>
+										<td>1</td>
+									</tr>
+									<tr class="treegrid-2 treegrid-parent-1">
+										<td>低零用户</td>
+										<td>微信</td>
+										<td>100</td>
+										<td>100</td>
+										<td>90</td>
+										<td>100</td>
+										<td>56</td>
+										<td>李四</td>
+										<td>2016-12-29</td>
+										<td>1</td>
+									</tr>
+									<tr class="treegrid-3 treegrid-parent-1">
+										<td>懵懂型</td>
+										<td>短信</td>
+										<td>100</td>
+										<td>100</td>
+										<td>99</td>
+										<td>100</td>
+										<td>56</td>
+										<td>张三</td>
+										<td>2016-12-29</td>
+										<td>1</td>
+									</tr>
+									<tr class="treegrid-4">
+										<td>流量</td>
+										<td>短信</td>
+										<td>100</td>
+										<td>100</td>
+										<td>96</td>
+										<td>100</td>
+										<td>56</td>
+										<td>张三</td>
+										<td>2016-12-29</td>
+										<td>1</td>
+									</tr>
+									<tr class="treegrid-5 treegrid-parent-4">
+										<td>懵懂型</td>
+										<td>微信</td>
+										<td>100</td>
+										<td>100</td>
+										<td>92</td>
+										<td>100</td>
+										<td>56</td>
+										<td>李四</td>
+										<td>2016-12-29</td>
+										<td>1</td>
+									</tr>
+									<tr class="treegrid-6 treegrid-parent-5">
+										<td>模板一</td>
+										<td>短信</td>
+										<td>100</td>
+										<td>100</td>
+										<td>93</td>
+										<td>100</td>
+										<td>56</td>
+										<td>王二</td>
+										<td>2016-12-29 </td>
+										<td>1</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</body>
+
+</html>

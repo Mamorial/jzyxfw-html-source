@@ -1,0 +1,12 @@
+.modal-header {
+    background-color: rgba(66, 179, 249, 0.1);
+}
+
+#page_indexContentYsjh [name='indexNotice'] pre{
+    background-color: transparent;
+    border: 0;
+    font-size: 14px;
+}
+table{
+    font-size: 12px;
+}

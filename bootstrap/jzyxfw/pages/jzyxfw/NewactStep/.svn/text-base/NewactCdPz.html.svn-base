@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<!--引用样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<!--自定义样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		<!--引用js-->
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+		<script type="text/javascript" src="../../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../../resources/echarts/js/echarts.js"></script>
+		<script type="text/javascript" src="../../../resources/self/js/commonJs.js"></script>
+		<style>
+		html{overflow-x:hidden;}
+			* {
+				margin: 0px;
+				padding: 0px;
+				list-style: none;
+			}
+			
+			ul li,
+			span {
+				display: block;
+			}
+			
+			
+			.Menu {
+				width: 100%;
+				height: 100px;
+				border: 0px solid red;
+				padding-bottom: 30px;
+				margin-top: -10px;
+				margin-top: 0px;
+			}
+			
+			.Menu table {
+				width: 100%;
+				height: 100%;
+				background: #E3EEFF;
+				padding: 5px
+			}
+			
+			.Menu table tr td {
+				text-align: center;
+				color: #999999;
+				padding-bottom: 5px;
+			}
+			
+			.Menu table tr td:nth-child(odd) {
+				width: 60px;
+			}
+			
+			.Menu table tr td span {
+				display: block;
+				width: 90%;
+				height: 2px;
+				background: #8D95CE;
+			}
+			.add-on{float: right;display: block;margin-right: 5px;}
+			.cdPztab tbody tr td{border: none;}
+			.control-group{
+				 width: 100%;height: 30px;border: 1px solid #CCCCCC;border-radius: 5px;padding: 3px;"
+			}
+			.control-group span{float: right;}
+			.control-group input{border: none;outline: none;}
+		</style>
+	</head>
+
+	<body style="padding-top: 108px;">
+		<div class="container-fluid navbar-fixed-top">
+			<div class="row" style="padding: 0 15px;">
+				<div class="Menu">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr height="30">
+							<td colspan="3">创建活动</td>
+							<td>目标筛选</td>
+							<td></td>
+							<td style="color:#0163AC">策略配置</td>
+							<td></td>
+							
+							<td>评估</td>
+							<td></td>
+						</tr>
+						<tr>
+							
+							<td style="padding-left:10px"><span></span></td>
+							<td width="70px"><a href="NewActStepActlx.html"><img src="../../../images/img/1.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewactStepCl.html"><img src="../../../images/img/3.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewactCdPz.html"><img src="../../../images/img/12.png" width="70px" height="70px"></a></td>
+							<td><span></span></td>
+							<td width="70px"><a href="NewactStepHDpg.html"><img src="../../../images/img/7.png" width="70px"></a></td>
+							<td><span></span></td>
+						</tr>
+					</table>
+				</div>
+					</div>
+					</div>
+				<div class="container-fluid">
+					
+					<div class="row" style="padding: 0 15px;margin-top:10px">
+							<div class="col-lg-7 col-md-7 col-xs-12" style="border: 0px solid red;height: auto;overflow-x: auto;">
+								<div class="NewactChuDianpz" style="width: 100%;height: 30px;border: 0px solid red;margin-top:20px">
+								<ul>
+									<li></li>
+									<li>活动选择</li>
+								</ul>
+								</div>
+								<div style="width: 100%;height: 5px;background: #737CDC;margin-top:10px"></div>
+								<div style="width: auto;height: 165px;overflow-y: auto">
+									<table class="table table-bordered" style="width: 100%;z-index: 99;border: 0px solid red;height:auto ;font-size: 15px;" id="subacttab">
+										<tbody>
+											<tr class="active">
+												<td height="48" width="100">子活动序号</td>
+												<td width="120">子活动名称</td>
+												<td width="100">目标用户数</td>
+												<td align="center" style="">已选触点</td>
+												<td width="100" align="center">操作</td>
+											</tr>
+											<tr class="AddTrBg" id="TrSn" actid=123456 iscurrent=0>
+												<td>1</td>
+												<td>活动名称一</td>
+												<td>55166</td>
+												<td class="AddCd" style="padding-right: 0;padding-left: 0;"></td>
+												<td align="center"><button onclick="subactinit(this)" class="btn btn-danger btn-sm" data-toggle="modal"  data-target=".mymodal_del"><b><i class="icon-remove"></i></b> 删除</button></td>
+												<!--<td align="center"><input id="act_sn" class="tabCheck" type="checkbox" name="check" style="cursor: pointer;" /></td>-->
+											</tr>
+											<tr class="AddTrBg" id="TrGn" actid=12345623 iscurrent=0>
+												<td>2</td>
+												<td>活动名称二</td>
+												<td>684163</td>
+												<td class="AddCd" style="padding-right: 0;padding-left: 0;"></td>
+												<td align="center"><button onclick="subactinit(this)" class="btn btn-danger btn-sm"   data-toggle="modal" data-target=".mymodal_del"><b><i class="icon-remove"></i></b> 删除</button></td>
+												<!--<td align="center"><input id="act_gn" class="tabCheck" type="checkbox" name="check" style="cursor: pointer;" /></td>-->
+											</tr>
+											<tr class="AddTrBg" actid=123623 iscurrent=0>
+												<td>3</td>
+												<td>活动名称三</td>
+												<td>68460</td>
+												<td class="AddCd" style="padding-right: 0;padding-left: 0;"></td>
+												<td align="center"><button onclick="subactinit(this)" class="btn btn-danger btn-sm"   data-toggle="modal" data-target=".mymodal_del"><b><i class="icon-remove"></i></b> 删除</button></td>
+												<!--<td align="center"><input id="act_md" class="tabCheck" type="checkbox" name="check" style="cursor: pointer;" /></td>-->
+											</tr>
+											
+										</tbody>
+									</table>
+								</div>
+							</div>
+							<div class="col-lg-5 col-md-5 col-xs-12" style="border:0px solid red;padding-bottom: 40px;">
+								<div class="NewactChuDianpz" style="width: 100%;height: 30px;border: 0px solid red;margin-top:20px">
+								<ul>
+									<li></li>
+									<li>触点选择</li>
+								</ul>
+								</div>
+								<div style="width: 100%;height: 5px;background: #737CDC;margin-top:10px"></div>
+								<div style="width: 100%;height: auto;margin-top:10px;border: 1px solid #F6F6F6;">
+								<table class="table" style="width: auto">
+									<tbody>
+										<tr>
+											<td width="80px"><b>线上:</b></td>
+											<td width="100px"><span iscd=1 class="btn xianshang"  style="width: 80%;height: 30px;text-align: center;background: #737ADD; color: #fff;border-radius: 15px;cursor: pointer;">短信</span></td>
+											<td width="100px"><span iscd=2 class="btn xianshang" title="此功能还未开通" style="width: 80%;height: 30px;text-align: center;border-radius: 15px;cursor: pointer;">DNS</span></td>
+											<td width="100px"><span iscd=3 class="btn xianshang" title="此功能还未开通" style="width: 80%;height: 30px;text-align: center;border-radius: 15px;cursor: pointer;">Toolbar</span></td>
+										</tr>
+										<tr>
+											<td style="border: none;"><b>线下:</b></td>
+											<td style="border: none;"><span iscd=4 class="btn xianxia" style="width: 80%;height: 30px;text-align: center;border-radius: 15px;cursor: pointer;">派单</span></td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							</div>
+						</div>
+					<div id="showCon" class="row" style="padding: 0 15px;border: 0px solid red;">
+				        		
+					</div>
+				</div>
+											
+											<div class="row" style="padding-bottom: 50px;margin-top:20px">
+												<div style="width: 100%;height: 40px;border: 0px solid red;text-align: center; ">
+													<a href="NewactStepCl.html" style="text-decoration: none;"><div style="cursor:pointer;border-radius:5px;line-height:40px;margin:0 20px 0 40%;width: 100px;height: 100%;background: #8D95CE;color: #fff;float: left;" data-dismiss="modal">
+														上一步
+													</div></a>
+													<a href="../actManager/actManmge.html" style="text-decoration: none;"><div style="cursor:pointer;border-radius:5px;line-height:40px;float:left;width: 100px;height: 100%;background: #8D95CE;color: #fff;" data-dismiss="modal" data-toggle="modal" data-target=".mubiao_modal">
+														提交审核
+													</div></a>
+												</div>
+											</div>
+											
+											
+											
+											
+											
+											
+<div class="modal fade" id="comfrim_modal" tabindex="-1" role="dialog" aria-labelledby="提示信息" aria-hidden="true"
+        style="z-index: 1056">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">提示信息</h4>
+            </div>
+            <div class="modal-body">
+                <strong class="text-danger ">确定要删除么？</strong>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"  onclick="deleterow()" data-dismiss="modal" name="confrim">确定</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal -->
+</div>											
+											
+											
+	</body>
+
+</html>
+<script type="text/javascript">
+	$('.form_date').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 1,
+		forceParse: 0
+    });
+    $('.form_mouth').datetimepicker({
+        language:  'zh-CN',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+</script>
+<script type="text/javascript">
+	$(function(){
+		$(".AddTrBg").click(function(){
+			$(this).css({"background":"#737CDC","color":"#fff"}).attr("iscurrent",1);
+			$(this).siblings().css({"background":"none","color":"#000"}).attr("iscurrent",0);
+			czcd();
+		});
+		$(".xianshang").click(function (){
+			$(this).css({"background":"#757BDE","color":"#fff"});
+			var labeltxt=$(this).html();
+			var iscd=$(this).attr("iscd");
+			//alert(iscd);
+			$(this).addClass("disabled").css("color","#fff");
+			var shtml="<div class='cdbiaoqian' triscd="+iscd+" style=\"cursor:pointer;white-space: nowrap;float:left;margin-right:3px;background:#DB524E;color:#fff;width:auto;height: 25px;border: 1px solid #9C9C9C;border-radius:5px;line-height: 25px;padding:0 5px;\" msgtype='1'><span onclick='showcdcon(this)' style='display;border:0px solid blue;float:left;height:100%' onclick='showcdcon(this)'>"+labeltxt+"</span>&nbsp;<button onclick='deldel(this)' class=\"close\">&times;</button></div>";
+			var tabletxtobj=$("#subacttab").find("tr[iscurrent=1] td[class='AddCd']"); 
+			var TrSub=tabletxtobj.find("div");
+			var len=TrSub.length;
+			  TrSub.each(function(i,n){
+//			  	alert($(n).attr("triscd"));
+                 if($(n).attr("triscd")==iscd){
+                 //	alert("aa");
+                 $(n).attr("triscd")/remove();
+                 }
+			  });
+			if(tabletxtobj.html()=='')tabletxtobj.append(shtml);
+			else {
+				tabletxtobj.append(" "+shtml);
+			};
+		});
+		$(".xianxia").click(function (){
+			$(this).css({"background":"#757BDE","color":"#fff"});
+			var labeltxt=$(this).html();
+			var iscd=$(this).attr("iscd");
+			//alert(iscd);
+			$(this).addClass("disabled").css("color","#fff");
+			var shtml="<div triscd="+iscd+" style=\"cursor:pointer;float:left;margin-right:3px;background:#DB524E;color:#fff;width:auto;height: 25px;border: 1px solid #9C9C9C;border-radius:5px;line-height: 25px;padding:0 5px;\" msgtype='1'><span style='display;border:0px solid blue;float:left;height:100%' onclick='showcdcon(this)'>"+labeltxt+"</span>&nbsp;<button onclick='deldel(this)' class=\"close\">&times;</button></div>";
+			var tabletxtobj=$("#subacttab").find("tr[iscurrent=1] td[class='AddCd']"); 
+			var TrSub=tabletxtobj.find("div");
+			var len=TrSub.length;
+			  TrSub.each(function(i,n){
+//			  	alert($(n).attr("triscd"));
+                 if($(n).attr("triscd")==iscd){
+                 //	alert("aa");
+                 $(n).attr("triscd")/remove();
+                 }
+			  });
+			if(tabletxtobj.html()=='')tabletxtobj.append(shtml);
+			else {
+				tabletxtobj.append(" "+shtml);
+			};
+		});
+		
+	});
+	function showcdcon(n){
+		$("#showCon").find("div").remove();
+		var showcdconNum=$(n).parent().attr("triscd");
+		if(showcdconNum==1){
+			var n=showcdconNum;
+			var Conhtm="<div style=\"width: 100%;height: auto;border: 0px solid blue;\"><div style=\"width: 100%;height: auto;border: 0px solid red;margin-top:5px\"><div style=\"width: 100%;height: auto;border: 0px solid red;margin-top:20px;\"><div style=\"width: 100%;height: 30px;line-height: 30px;\">内容模板：</div><div style=\"width: 100%;height: auto;\"><textarea style=\"width: 100%;height: 100px;resize: none;padding: 5px;\"></textarea></div></div><div style=\"width: 100%;height: auto;border: 0px solid red;margin-top:20px;\"><div style=\"width: 100%;height: 30px;line-height: 30px;\">短信抄送人：</div><div style=\"width: 100%;height: auto;\"><textarea placeholder=\"举例：187xxxxxxxx\" style=\"width: 100%;height: 100px;resize: none;padding: 5px;\"></textarea></div></div></div><div class=\"row\" style=\"padding: 0 15px;\"><div class=\"col-lg-12 col-md-12 col-xs-12\" style=\"padding-left: 0;\"><div style=\"width: 100%;height: 40px;line-height: 40px;color: #FF0800;\"><b>*已自动为您过滤黑名单打扰等用户</b></div></div></div><div class=\"row\" style=\"padding: 0 15px;border:0px solid red\"><div class=\"col-lg-1 col-md-1 col-xs-3\" style=\"padding:5px 0 0 0\">测试验证码:</div><div class=\"col-lg-1 col-md-1 col-xs-3\" style=\"padding-left: 0;\"><form class=\"bs-example bs-example-form\" role=\"form\"><div class=\"input-group\" style=\"width: 100%;\"><input type=\"text\" class=\"form-control\" style=\"border-radius: 5px;\" placeholder=\"请输入测试验证码\"></div></form></div><div class=\"col-lg-1 col-md-1 col-xs-3\" style=\"padding:5px 0 0 0\">推送周期:</div><div class=\"col-lg-1 col-md-1 col-xs-3\" style=\"padding-left: 0;\"><form role=\"form\" style=\"width: 95%;float: left;margin-top:0px;padding-left: 0;\"><div class=\"form-group\"><select id=\"SelectSh\" onchange=\"test()\" class=\"form-control\" style=\"padding-left: 5px;\"><option value=\"Day\">每日</option><option value=\"Week\">每周</option><option value=\"Mouth\">每月</option></select></select></div></form></div><div class=\"col-lg-3 col-md-3 col-xs-6\" style=\"border: 0px solid red;padding-left: 0;\"><div style=\"width: 100%;height: 30px;border: 0px solid blue;position: relative;\"><div id=\"DaySh\" style=\"width: 40%;height: 100%;border: 0px solid red;position: absolute;display: block;\"><div class=\"control-group\"><div class=\"controls input-append date form_date\" data-date=\"\" data-date-format=\"hh:ii\" data-link-field=\"dtp_input2\" data-link-format=\"yyyy-mm-dd\"><input size=\"6\"  placeholder=\"请输入时间\" type=\"text\" value=\"\" readonly><span style=\"float: right;\" class=\"add-on\"><i class=\"icon-th\"></i></span></div></div></div><div id=\"WeekSh\" style=\"width: 95%;height: 30px;border: 0px solid red;position: absolute;display: none;\"><div style=\"width: 15%;height: 30px;border: 0px solid red;float: left;text-align: center;line-height: 30px;\">每周</div><div style=\"width: 30%;height: 30px;border: 0px solid green;float: left;padding-left: 5px;\"><form role=\"form\" style=\"width: 90%;float: left;margin-top:0px;padding-left: 0;height: 30px;\"><div class=\"form-group\"><select class=\"form-control\" style=\"padding-left: 5px;height: 30px;\"><option>一</option><option>二</option><option>三</option><option>四</option><option>五</option><option>六</option><option>日</option></select></select></div></form></div><div class=\"control-group\" style=\"width: 43%;float: left;\"><div class=\"controls input-append date form_date\" data-date=\"\" data-date-format=\"hh:ii\" data-link-field=\"dtp_input2\" data-link-format=\"yyyy-mm-dd\"><input size=\"6\" type=\"text\" value=\"\" placeholder=\"请输入时间\" readonly><span class=\"add-on\"><i class=\"icon-th\"></i></span></div><input type=\"hidden\" id=\"dtp_input2\" value=\"\" /><br/></div></div><div id=\"MouthSh\" style=\"width: 90%;height: 30px;position: absolute;display: none;\"><div class=\"control-group\" style=\"width: 70%;float: left;\"><div class=\"controls input-append date form_mouth\" data-date=\"\" data-date-format=\"yyyy-mm-dd hh:ii\" data-link-field=\"dtp_input2\" data-link-format=\"yyyy-mm-dd\"><input size=\"13\" type=\"text\" value=\"\" placeholder=\"请输入月份\" readonly><span class=\"add-on\"><i class=\"icon-th\"></i></span></div><input type=\"hidden\" id=\"dtp_input2\" value=\"\" /><br/></div></div></div></div><div class='col-lg-1 col-md-1 col-xs-1'></div><div class=\"col-lg-2 col-md-2 col-xs-2\"></div><div class=\"col-lg-1 col-md-1 col-xs-6\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\"><button class=\"btn btn-success\" style=\"width: 90%;\" onclick='ceshi("+n+")'>测试</button></div></div></div></div>";
+			$("#showCon").append(Conhtm);
+		}else if(showcdconNum==2){
+			var n=showcdconNum;
+			var Conhtm="<div style=\"width: 100%;height: auto;border: 0px solid blue;\"><div style=\"width: 100%;height: auto;border: 0px solid red;margin-top:5px\"><div style=\"width: 100%;height: auto;border: 0px solid red;margin-top:20px;\"><div style=\"width: 100%;height: 30px;line-height: 30px;\">DNS模板：</div><div style=\"width: 100%;height: auto;\"><textarea style=\"width: 100%;height: 100px;resize: none;padding: 5px;\"></textarea></div></div><div style=\"width: 100%;height: auto;border: 0px solid red;margin-top:20px;\"><div style=\"width: 100%;height: 30px;line-height: 30px;\">短信抄送人：</div><div style=\"width: 100%;height: auto;\"><textarea placeholder=\"举例：187xxxxxxxx\" style=\"width: 100%;height: 100px;resize: none;padding: 5px;\"></textarea></div></div></div><div class=\"row\" style=\"padding: 0 15px;\"><div class=\"col-lg-12 col-md-12 col-xs-12\" style=\"padding-left: 0;\"><div style=\"width: 100%;height: 40px;line-height: 40px;color: #FF0800;\"><b>*已自动为您过滤黑名单打扰等用户</b></div></div></div><div class=\"row\" style=\"padding: 0 15px;\"><div class=\"col-lg-1 col-md-1 col-xs-3\" style=\"padding:5px 0 0 0\">测试验证码:</div><div class=\"col-lg-1 col-md-1 col-xs-3\" style=\"padding-left: 0;\"><form class=\"bs-example bs-example-form\" role=\"form\"><div class=\"input-group\" style=\"width: 100%;\"><input type=\"text\" class=\"form-control\" style=\"border-radius: 5px;\" placeholder=\"请输入测试验证码\"></div></form></div><div class=\"col-lg-1 col-md-1 col-xs-3\" style=\"padding:5px 0 0 0\">推送周期:</div><div class=\"col-lg-1 col-md-1 col-xs-3\" style=\"padding-left: 0;\"><form role=\"form\" style=\"width: 95%;float: left;margin-top:0px;padding-left: 0;\"><div class=\"form-group\"><select id=\"SelectSh\" onchange=\"test()\" class=\"form-control\" style=\"padding-left: 5px;\"><option value=\"Day\">每日</option><option value=\"Week\">每周</option><option value=\"Mouth\">每月</option></select></select></div></form></div><div class=\"col-lg-3 col-md-3 col-xs-6\" style=\"border: 0px solid red;padding-left: 0;\"><div style=\"width: 100%;height: 30px;border: 0px solid blue;position: relative;\"><div id=\"DaySh\" style=\"width: 40%;height: 100%;border: 0px solid red;position: absolute;display: block;\"><div class=\"control-group\"><div class=\"controls input-append date form_date\" data-date=\"\" data-date-format=\"hh:ii\" data-link-field=\"dtp_input2\" data-link-format=\"yyyy-mm-dd\"><input size=\"6\"  placeholder=\"请输入时间\" type=\"text\" value=\"\" readonly><span style=\"float: right;\" class=\"add-on\"><i class=\"icon-th\"></i></span></div></div></div><div id=\"WeekSh\" style=\"width: 95%;height: 30px;border: 0px solid red;position: absolute;display: none;\"><div style=\"width: 15%;height: 30px;border: 0px solid red;float: left;text-align: center;line-height: 30px;\">每周</div><div style=\"width: 30%;height: 30px;border: 0px solid green;float: left;padding-left: 5px;\"><form role=\"form\" style=\"width: 90%;float: left;margin-top:0px;padding-left: 0;height: 30px;\"><div class=\"form-group\"><select class=\"form-control\" style=\"padding-left: 5px;height: 30px;\"><option>一</option><option>二</option><option>三</option><option>四</option><option>五</option><option>六</option><option>日</option></select></select></div></form></div><div class=\"control-group\" style=\"width: 43%;float: left;\"><div class=\"controls input-append date form_date\" data-date=\"\" data-date-format=\"hh:ii\" data-link-field=\"dtp_input2\" data-link-format=\"yyyy-mm-dd\"><input size=\"6\" type=\"text\" value=\"\" placeholder=\"请输入时间\" readonly><span class=\"add-on\"><i class=\"icon-th\"></i></span></div><input type=\"hidden\" id=\"dtp_input2\" value=\"\" /><br/></div></div><div id=\"MouthSh\" style=\"width: 90%;height: 30px;position: absolute;display: none;\"><div class=\"control-group\" style=\"width: 70%;float: left;\"><div class=\"controls input-append date form_mouth\" data-date=\"\" data-date-format=\"yyyy-mm-dd hh:ii\" data-link-field=\"dtp_input2\" data-link-format=\"yyyy-mm-dd\"><input size=\"13\" type=\"text\" value=\"\" placeholder=\"请输入月份\" readonly><span class=\"add-on\"><i class=\"icon-th\"></i></span></div><input type=\"hidden\" id=\"dtp_input2\" value=\"\" /><br/></div></div></div></div><div class=\"col-lg-3 col-md-3 col-xs-3\"></div><div class=\"col-lg-1 col-md-1 col-xs-6\" style=\"padding: 0;\"><div style=\"width: 100%;height: 100%;border: 0px solid red;\"><button class=\"btn btn-success\" style=\"width: 90%;\" onclick='ceshi("+n+")'>测试</button></div></div></div></div>";
+			$("#showCon").append(Conhtm);
+		}
+	}
+	function ceshi(n){
+		//alert(n);
+		$(".cdbiaoqian").each(function(i,m){
+			if($(m).attr("triscd")==n){
+				$(m).css("background","green");
+			}
+		});
+	}
+	function deldel(n){
+		$(n).parent().remove();
+		$("#showCon").find("div").remove();
+	}
+	function czcd(){
+		$(".xianshang").css({"background":"none","color":"#000"}).removeClass("disabled");
+		$(".xianxia").css({"background":"none","color":"#000"}).removeClass("disabled");
+	}
+	
+	
+	
+	
+	
+	function deleterow(){
+		alert(subactactiveid);
+		$("#subacttab").find("tr[actid='"+subactactiveid+"']").remove();
+	}
+		function subactinit(obj){
+			
+		    confrimMsg("确定要删除吗？",function (){
+				subactactiveid=$(obj).parent().parent().attr("actid");
+				alert(subactactiveid);
+		})
+	}
+
+</script>
+<!--<script type="text/javascript">
+	$(function(){
+		$xianshang=$(".xianshang");
+		$xianshang.click(function (){
+			$(this).css({"background":"#757BDE","color":"#fff"});
+			$(this).addClass("btn").css({"line-height":"15px","backgronud":"#A5A9E9"});
+			$(this).addClass("disabled");
+			$(this).parent().siblings().each(function (i,n){
+				$(n).find("span").css({"color":"#000"});
+			});
+			var $tabTd=$(this).html();
+			//return tabTd;
+			addTabTd($tabTd);
+		});
+		$(".xianxia").click(function(){
+			addTabTd($(this).html());
+		})
+		
+		var $tabCheck=$(".tabCheck");
+		$tabCheck.click(function(){
+			$xianshang.parent().siblings().each(function(i,n){
+				$(n).find("span").css({"background":"none","color":"#000"});
+			});
+			$(".xianxia").css({"background":"none","color":"#000"});
+			if($(this).is(':checked')){
+			addTabTr($(this).attr("id"));
+		   }else{
+		   	delTabTr($(this).attr("id"));
+		   }
+		   addCol();
+		});
+		
+	});
+	
+	
+	function addTabTr(id){
+		//alert(id);
+		if(id=="act_sn"){
+			var tabTr="<tr AdTr='act_sn'><td style='padding-right: 0;'>省内流量包：</td></tr>";
+			$("#Tab").append(tabTr);
+		}else if(id=="act_gn"){
+			var tabTr="<tr AdTr='act_gn'><td style='padding-right: 0;'>国内流量包：</td></tr>";
+			$("#Tab").append(tabTr);
+		}else if(id=="act_md"){
+			var tabTr="<tr AdTr='act_md'><td style='padding-right: 0;'>懵懂流量包：</td></tr>";
+			$("#Tab").append(tabTr);
+		}
+		
+	}
+	function delTabTr(id){
+		if(id=='act_sn'){
+			$("#Tab").find("tr[AdTr='act_sn']").remove();
+		}else if(id=='act_gn'){
+			$("#Tab").find("tr[AdTr='act_gn']").remove();
+		}else if(id=="act_md"){
+			$("#Tab").find("tr[AdTr='act_md']").remove();
+		}
+	}
+	
+	
+	function addTabTd(htm){
+		
+		//alert(htm);
+		//alert($("#tabCo$("l").attr("class"));
+		var shtml="<td><div style=\"width: 100%;height: 25px;border: 1px solid #9C9C9C;border-radius:5px;line-height: 25px;padding:0 5px;\" msgtype='1'>"+htm+"<button class=\"close\">&times;</button></div></td>";
+		$("#Tab tr").append(shtml);
+//		$("#tabCol").append("<tr></tr");
+
+				
+				
+				addCol();
+				
+	}
+	function addCol(){
+//		var len=$("#Tab").rows.item(0).cells.length;
+		//alert(num);
+		var num=$("#Tab tr").eq(0).find("td").length;
+		var Col="col-lg-"+num+" col-md-"+num+" col-xs-12";
+		//alert(Col);
+		$("#tabCol").attr("class",Col);
+		
+		
+	}
+</script>
+<script type="text/javascript">
+	$(function(){
+		$(".xianxia").click(function (){
+			$(this).css({"background":"#757BDE","color":"#fff"});
+			$(this).parent().siblings().each(function (i,n){
+				$(n).find("span").css({"background":"none","color":"#000"});
+			})
+		});
+		
+		
+		
+		
+	});
+	
+</script>-->
+
+<script type="text/javascript">
+/*发送周期显示与隐藏*/
+	function test(){
+		if($("#SelectSh").val()=='Day'){
+			//alert($("#SelectSh").find("option[value='"+$("#SelectSh").val()+"']").text());
+			
+			$("#DaySh").css("display","block");
+			$("#WeekSh").css("display","none");
+			$("#MouthSh").css("display","none");
+		}else if($("#SelectSh").val()=='Week'){
+			//alert($("#SelectSh").find("option[value='"+$("#SelectSh").val()+"']").text());
+			$("#DaySh").css("display","none");
+			$("#WeekSh").css("display","block");
+			$("#MouthSh").css("display","none");
+		}else if($("#SelectSh").val()=='Mouth'){
+			//alert($("#SelectSh").find("option[value='"+$("#SelectSh").val()+"']").text());
+			$("#DaySh").css("display","none");
+			$("#WeekSh").css("display","none");
+			$("#MouthSh").css("display","block");
+		}
+	}
+test();	
+</script>
+
+
+

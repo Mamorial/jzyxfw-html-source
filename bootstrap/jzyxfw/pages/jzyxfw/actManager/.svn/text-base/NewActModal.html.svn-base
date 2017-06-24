@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/css/bootstrap-datetimepicker.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/table.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/upload/dropzone.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/jquery.ztree/css/zTreeStyle/zTreeStyle.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/bootstrap/Font-Awesome-3.2.1/css/font-awesome.min.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/sb-admin-2.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/metisMenu.css" />
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/font-awesome.css" />
+		<!--自定义样式-->
+		<link rel="stylesheet" type="text/css" href="../../../resources/self/css/index_theme.css" />
+		<!--引用js-->
+		<script type="text/javascript" src="../../../resources/jquery/js/jquery-1.11.2.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap.js"></script>
+		<script type="text/javascript" src="../../../resources/bootstrap/js/bootstrap-datetimepicker.js"></script>
+		<script type="text/javascript" src="../../../resources/jsplumb/js/jquery.jsPlumb-1.7.4.js"></script>
+		<script type="text/javascript" src="../../../resources/jquery.ztree/js/jquery.ztree.all-3.5.js"></script>
+		<script type="text/javascript" src="../../../resources/echarts/js/echarts.js"></script>
+		
+		<style>
+			*{margin: 0px;padding: 0px;list-style: none;}
+			html{overflow-x:hidden;}
+			.celueTab table tr td{
+				line-height: 30px;
+			}
+			.ztree li ul.line {
+				background: url(../../../resources/jquery.ztree/css/zTreeStyle/img/line_conn.gif) 0 0 repeat-y;
+			}
+			
+			.ztree * {
+				padding: 0;
+				margin: 0;
+			}
+			
+			.ztree {
+				margin: 0;
+				padding: 5px;
+				color: #333;
+				border: 0px solid blue;
+			}
+			
+			
+			.ztree li ul.line {
+				background: url(../../../resources/jquery.ztree/css/zTreeStyle/img/line_conn.gif) 0 0 repeat-y;
+			}
+			
+			.ztree li span.button {
+				line-height: 0;
+				margin: 0;
+				width: 16px;
+				height: 16px;
+				display: inline-block;
+				vertical-align: middle;
+				border: 0 none;
+				cursor: pointer;
+				outline: none;
+				background-color: transparent;
+				background-repeat: no-repeat;
+				background-attachment: scroll;
+				background-image: url("../../../resources/jquery.ztree/css/zTreeStyle/img/zTreeStandard.png");
+				*background-image: url("../../../resources/jquery.ztree/css/zTreeStyle/img/zTreeStandard.gif")
+			}
+			
+			.ztree li {
+				padding: 10px 0 0 10px;
+				margin: 0;
+				list-style: none;
+				line-height: 0px;
+				text-align: left;
+				white-space: nowrap;
+				outline: 0;
+				border: 0px solid red;
+			}
+			
+			
+			.ztree li ul.line {
+				background: url(../../../resources/jquery.ztree/css/zTreeStyle/img/line_conn.gif) 0 0 repeat-y;
+			}
+			
+			.ztree li a {
+				padding: 1px 3px 0 0;
+				margin: 0;
+				cursor: pointer;
+				height: 17px;
+				color: #333;
+				background-color: transparent;
+				text-decoration: none;
+				vertical-align: top;
+				display: inline-block;
+				font-size: 15px;
+			}
+			
+			.ztree li span.button.root_open {
+				background-position: -92px -54px
+			}
+			
+			.ztree li span.button.root_close {
+				background-position: -74px -54px
+			}
+			
+			.ztree li span.button.roots_open {
+				background-position: -92px 0
+			}
+			
+			.ztree li span.button.roots_close {
+				background-position: -74px 0
+			}
+			
+			.ztree li span.button.center_open {
+				background-position: -92px -18px
+			}
+			
+			.ztree li span.button.center_close {
+				background-position: -74px -18px
+			}
+			
+			.ztree li span.button.bottom_open {
+				background-position: -92px -36px
+			}
+			
+			.ztree li span.button.bottom_close {
+				background-position: -74px -36px
+			}
+			
+			.ztree li span.button.noline_open {
+				background-position: -92px -72px
+			}
+			
+			.ztree li span.button.noline_close {
+				background-position: -74px -72px
+			}
+			
+			.ztree li span.button.root_docu {
+				background: none;
+			}
+			
+			.ztree li span.button.roots_docu {
+				background-position: -56px 0
+			}
+			
+			.ztree li span.button.center_docu {
+				background-position: -56px -18px
+			}
+			
+			.ztree li span.button.bottom_docu {
+				background-position: -56px -36px
+			}
+			
+			.ztree li span.button.noline_docu {
+				background: none;
+			}
+			
+			.ztree li span.button.ico_open {
+				margin-right: 2px;
+				background-position: -110px -16px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.ico_close {
+				margin-right: 2px;
+				background-position: -110px 0;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.ico_docu {
+				margin-right: 2px;
+				background-position: -110px -32px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.edit {
+				margin-right: 2px;
+				background-position: -110px -48px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			
+			.ztree li span.button.remove {
+				margin-right: 2px;
+				background-position: -110px -64px;
+				vertical-align: top;
+				*vertical-align: middle
+			}
+			.add-on{display: block;float: right;margin-right: 5px;}
+		</style>
+	</head>
+<body>
+<div class="container-fluid" style="border: 0px solid red;background: #fff;">
+	<div class="row" style="padding: 0;border: 0px solid blue;">
+		<div class="col-lg-1 col-md-1 col-xs-1 yw_headCon" style="border: 0px solid red;padding: 0;">
+			<div class="yw_headConLeft"></div>
+ 				活动转模板
+		</div>
+		<div class="col-lg-7 col-md-7 col-xs-7"></div>
+		<div class="col-lg-1 col-md-1 col-xs-2" style="border: 0px solid red;height: auto;padding: 5px 0;">
+			<div class=" yw_headConxinj" data-toggle="modal" data-target=".mymodal_bus" style="width:100%;height:35px;text-align:center;float:left;border: 0px solid red;background: #0163AC;margin-top:0;border-radius: 5px;line-height: 35px;">
+			活动转模板</div>
+		</div>
+		<div class="col-lg-3 col-md-3 col-xs-3" style="border: 0px solid red;padding-top: 5px;">
+			<div class="input-group">
+		      <input type="text" class="form-control" placeholder="请输入关键字">
+		      <span class="input-group-btn">
+		        <button class="btn btn-default" style="background: #ccc;" type="button"><i class="icon-search" style="color: #fff;"></i></button>
+		      </span>
+		    </div>
+		</div>
+	</div>
+	<div class="row" style="margin-top:5px">
+		<div class="col-lg-12 col-md-12 col-xs-12" style="padding: 0;">
+			<div style="width: 100%;height: 5px;background: #747BDD;"></div>
+		</div>
+	</div>
+	<div class="row" style="margin-top:5px">
+		<div class="col-lg-12 col-md-12 col-xs-12" style="padding: 5px;">
+			<div style="width: 100%;height: auto;" class="huodZt">
+				<table class="table" style="padding:20px;">
+							<tbody>
+								<tr>
+									<th style="padding:20px 10px;color: #757DDD;border:none" colspan="5">活动名称1</th>
+									<th style="padding:23px 0 20px 3%;color: #f00;border: none;" align="right">已发布</th>
+								</tr>
+								<tr>
+									<td>活动编号：010266</td>
+									<td>归属业务：移动</td>
+									<td>归属场景：存量营销</td>
+									<td>目标用户数：2341</td>
+									<td>波次：一日2次</td>
+									<td>
+										<a href="../NewactStep/NewactStepHDpg.html" style="text-decoration: none;"><div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #51BB56;color: #fff;border-radius: 5px;cursor: pointer;">查看</div></a>
+									</td>
+								</tr>
+
+								<tr>
+									<td colspan="1" style="border: none;">创建时间：2016-12-26</td>
+									<td colspan="4" style="border: none;">策划人：张三</td>
+									<td style="border: none;">
+										<a href="../NewactStep/NewActStepActlx.html" style="text-decoration: none;"><div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #53C0E0;color: #fff;border-radius: 5px;cursor: pointer;">复制</div></a>
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="margin-top:5px">
+		<div class="col-lg-12 col-md-12 col-xs-12" style="padding: 5px;">
+			<div style="width: 100%;height: auto;" class="huodZt">
+				<table class="table" style="padding:20px;">
+							<tbody>
+								<tr>
+									<th style="padding:20px 10px;color: #757DDD;border:none" colspan="5">活动名称2</th>
+									<th style="padding:23px 0 20px 3%;color: #f00;border: none;" align="right">已发布</th>
+								</tr>
+								<tr>
+									<td>活动编号：010266</td>
+									<td>归属业务：移动</td>
+									<td>归属场景：存量营销</td>
+									<td>目标用户数：2341</td>
+									<td>波次：一日2次</td>
+									<td>
+										<a href="../NewactStep/NewactStepHDpg.html" style="text-decoration: none;"><div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #51BB56;color: #fff;border-radius: 5px;cursor: pointer;">查看</div></a>
+									</td>
+								</tr>
+
+								<tr>
+									<td colspan="1" style="border: none;">创建时间：2016-12-26</td>
+									<td colspan="4" style="border: none;">策划人：张三</td>
+									<td style="border: none;">
+										<a href="../NewactStep/NewActStepActlx.html" style="text-decoration: none;"><div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #53C0E0;color: #fff;border-radius: 5px;cursor: pointer;">复制</div></a>
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="margin-top:5px">
+		<div class="col-lg-12 col-md-12 col-xs-12" style="padding: 5px;">
+			<div style="width: 100%;height: auto;" class="huodZt">
+				<table class="table" style="padding:20px;">
+							<tbody>
+								<tr>
+									<th style="padding:20px 10px;color: #757DDD;border:none" colspan="5">活动名称3</th>
+									<th style="padding:23px 0 20px 3%;color: #f00;border: none;" align="right">已发布</th>
+								</tr>
+								<tr>
+									<td>活动编号：010266</td>
+									<td>归属业务：移动</td>
+									<td>归属场景：存量营销</td>
+									<td>目标用户数：2341</td>
+									<td>波次：一日2次</td>
+									<td>
+										<a href="../NewactStep/NewactStepHDpg.html" style="text-decoration: none;"><div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #51BB56;color: #fff;border-radius: 5px;cursor: pointer;">查看</div></a>
+									</td>
+								</tr>
+
+								<tr>
+									<td colspan="1" style="border: none;">创建时间：2016-12-26</td>
+									<td colspan="4" style="border: none;">策划人：张三</td>
+									<td style="border: none;">
+										<a href="../NewactStep/NewActStepActlx.html" style="text-decoration: none;"><div style="width:100px;height: 30px;line-height: 30px;text-align: center;background: #53C0E0;color: #fff;border-radius: 5px;cursor: pointer;">复制</div></a>
+									</td>
+								</tr>
+
+							</tbody>
+						</table>
+			</div>
+		</div>
+	</div>
+	<div class="row" style="padding: 0;margin-top: 10px;">
+		<div class="col-lg-12 col-md-12 col-xs-12">
+			<div class="fenye" style="margin-top:0">
+ 	    		<div class="fenye_left">共<font color="#4489C5">21</font>条记录，1/5页</div>
+ 	    		<ul>
+ 	    			<li>1</li>
+ 	    			<li>2</li>
+ 	    			<li>3</li>
+ 	    			<li>4</li>
+ 	    			<li>5</li>
+ 	    		</ul>
+ 	    		<div class="fenye_right">
+ 	    			<div style="float: left;margin-right: 10px;white-space: auto;height: 90%;border: 0px solid red;line-height: 25px;">到第</div>&nbsp;<input type="text" style="width: 25px;height: 25px;outline: none;float: left;margin-right: 10px;text-align: center;line-height: 25px;" value="1" /> &nbsp;<div style="float: left;width: 50px; height: 90%;background: #737BDE;color: #fff;text-align: center;line-height: 25px;cursor: pointer;">前往</div>
+ 	    		</div>
+ 	    	</div>
+		</div>
+	</div>
+</div>
+	 	
+    <!--业务活动转模板-->
+    <div class="modal fade mymodal_bus" data-backdrop='static'>
+    	<div class="modal-dialog modal-lg">
+    		<div class="modal-content">
+    			<div class="modal-header"  style="background: #F8F8F8;">
+    				<button class="close" data-dismiss="modal" style="margin-top:-10px">&times;</button>
+    			</div>
+    			<div class="modal-body" style="background: #F8F8F8;">
+    				<div class="container-fluid" style="background: #fff;">
+    					<div class="row">
+    						<div class="col-lg-12 col-md-12 col-xs-12">
+    							<div style="width: 100%;height: auto;border: 0px solid red;">
+    								<table class="table">
+    									<thead>
+    										<tr>
+    											<th>选择活动
+    											      <div class="checkbox" style="border: 0px solid red;margin: 4px 0 0 0;">
+													    <label>
+													      <input id="chactsel" name="checkall" style="cursor: pointer;" type="checkbox">(全选)
+													    </label>
+													  </div>
+    											</th>
+    											<th>活动名称</th>
+    											<th>活动编号</th>
+    											<th>归属业务</th>
+    											<th>归属场景</th>
+    											<th>目标用户数</th>
+    											<th>波次</th>
+    											<th>创建时间</th>
+    											<th>策划人</th>
+    											<th>模板类型</th>
+    										</tr>
+    									</thead>
+    									<tbody>
+    										<tr>
+    											<td align="center"><input class="select" name="act" style="cursor: pointer;" type="checkbox" /></td>
+    											<td>活动名称1</td>
+    											<td>010266</td>
+    											<td>移动</td>
+    											<td>存量营销</td>
+    											<td>2341</td>
+    											<td>一日2次</td>
+    											<td>2016-12-26</td>
+    											<td>张三</td>
+    											<td style="padding-top: 2px;">
+    												<form role="form" style="width: 95%;float: left;margin-top:0px;">
+													  <div class="form-group">
+													    <select id="sceneshow" class="form-control">
+													      <option value="ll">自用</option>
+													      <option value="kd">公用</option>
+													    </select>
+													    </select>
+													  </div>
+													</form>
+    											</td>
+    										</tr>
+    										<tr>
+    											<td align="center"><input class="select" name="act" style="cursor: pointer;" type="checkbox" /></td>
+    											<td>活动名称2</td>
+    											<td>010266</td>
+    											<td>移动</td>
+    											<td>存量营销</td>
+    											<td>2341</td>
+    											<td>一日2次</td>
+    											<td>2016-12-26</td>
+    											<td>张三</td>
+    											<td style="padding-top: 2px;">
+    												<form role="form" style="width: 95%;float: left;margin-top:0px;">
+													  <div class="form-group">
+													    <select id="sceneshow" class="form-control">
+													      <option value="ll">自用</option>
+													      <option value="kd">公用</option>
+													    </select>
+													    </select>
+													  </div>
+													</form>
+    											</td>
+    										</tr>
+    										<tr>
+    											<td align="center"><input class="select" name="act" style="cursor: pointer;" type="checkbox" /></td>
+    											<td>活动名称3</td>
+    											<td>010266</td>
+    											<td>移动</td>
+    											<td>存量营销</td>
+    											<td>2341</td>
+    											<td>一日2次</td>
+    											<td>2016-12-26</td>
+    											<td>张三</td>
+    											<td style="padding-top: 2px;">
+    												<form role="form" style="width: 95%;float: left;margin-top:0px;">
+													  <div class="form-group">
+													    <select id="sceneshow" class="form-control">
+													      <option value="ll">自用</option>
+													      <option value="kd">公用</option>
+													    </select>
+													    </select>
+													  </div>
+													</form>
+    											</td>
+    										</tr>
+    									</tbody>
+    								</table>
+    							</div>
+    						</div>
+    					</div>
+    				</div>
+    			</div>
+    			<div class="modal-footer" style="background: #F8F8F8;">
+    				<div class="container-fluid">
+    					<div class="row">
+    						<div class="col-lg-5 col-md-5 col-xs-5"></div>
+    						<div class="col-lg-1 col-md-1 col-xs-1">
+    							<button class="btn btn-success" data-dismiss="modal">确定</button>
+    						</div>
+    						<div class="col-lg-1 col-md-1 col-xs-1">
+    							<button class="btn btn-info" data-dismiss="modal">关闭</button>
+    						</div>
+    						<div class="col-lg-5 col-md-5 col-xs-5"></div>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    	</div>
+    </div>
+</body>
+</html>
+<script type="text/javascript">
+//	$(function(){
+//		$("#chactsel").click(function(){
+//			
+//			if($("#chactsel").attr("checked",true)){
+//				alert("sss");
+//			}
+			
+			
+			 //var len=$(".select").length;
+			 //$(".select").addClass("checked");
+			// $(".select").eq(len).addClass("checked");
+			//for(var i=0;i<len;i++){
+			//	$(".select")[i].checked=$("#chactsel").checked;
+			//}
+//		});
+//	});
+
+   var ck=document.getElementsByClassName("select");//选取被勾的对象
+	   var len=ck.length;
+	   var xz=document.getElementById("chactsel");  //选择按钮
+        xz.onclick=cl;
+
+       function cl(){
+		      
+		            for(var i=0; i<len;i++){
+						ck[i].checked=xz.checked;
+						}
+
+				 }
+//$(function () {
+//	
+//	$("#chactsel").click(function(){
+//		$("input[class='act']").each(function(i,n){
+//			$(n).checked=this.checked;
+//		});
+//	});
+//    });       
+</script>

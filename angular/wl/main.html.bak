@@ -1,0 +1,66 @@
+<style>
+	.checkInfo_name,.checkInfo_card{width: 50%;float: left;padding: 20px;}
+	.checkInfo_name label,.checkInfo_card label,.checkInfo_acc label{width: auto;float: left;display: block;margin: 5px 10px 0 0;}
+	.checkInfo_name div,.checkInfo_card div,.checkInfo_acc div{height: auto;display: block;overflow: hidden;}
+	.checkInfo_acc{width:70%;float:left;padding:20px;}
+	.checkInfo_btn{width:29%;float:left;text-align:center;padding:20px}
+</style>
+<div id="middle">
+	<!--<div class="container">
+		<p id="logo"></p>
+		<ul id="nav">
+			<li>
+				<a ui-sref="userInfo">业务发展</a>
+				<span></span>
+			</li>
+			<li ui-sref-active="active">
+				<a ui-sref="userInfo">用户洞察</a>
+				<span></span>
+			</li>
+			<li>
+				<a ui-sref="userInfo">产品视图</a>
+				<span></span>
+			</li>
+			<li>
+				<a ui-sref="userInfo">套餐分析</a>
+				<span></span>
+			</li>
+			<li>
+				<a ui-sref="userInfo">渠道分析</a>
+				<span></span>
+			</li>
+			<li>
+				<a ui-sref="userInfo">终端图谱</a>
+				<span></span>
+			</li>
+		</ul>
+	</div>-->
+	<form class="form-inline">
+		<div class="checkInfo_name">
+			<label>客户姓名 :</label>
+			<div>
+				<input type="text" class="form-control" style="width: 100%;" placeholder="请输入客户姓名" required="required" />
+			</div>
+		</div>
+		<div class="checkInfo_card">
+			<label>客户证件 :</label>
+			<div>
+				<select class="form-control" style="width:25%">
+					<option>营业执照</option>
+					<option>省份证</option>
+				</select>
+				<input type="text" style="width:70%" class="form-control" placeholder="请输入营业执照" />
+			</div>
+		</div>
+		<div class="checkInfo_acc">
+			<label>客户账号 :</label>
+			<div>
+				<input type="text" style="width:100%" class="form-control" placeholder="请输入客户账号" />
+			</div>
+		</div>
+		<div class="checkInfo_btn">
+			<button class="btn btn-success btn-lg">查询</button>
+		</div>
+	</form>
+</div>
+<div ui-view></div>
