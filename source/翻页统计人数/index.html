@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>人数统计翻页特效插件</title>
+<link rel="stylesheet" href="style/style.css" media="screen" type="text/css" />
+</head>
+<body>
+
+<!--<div class="tj_top"></div>
+<div class="tj_tit"></div>-->
+
+<div class="dataStatistics" onclick="jj()" style="padding:0 10px">
+</div>
+
+<script type="text/javascript" src='js/jquery.js'></script>
+<script type="text/javascript" src="js/jquery.dataStatistics.js"></script>
+<script type="text/javascript">
+$(function(){
+	gg("410987");
+});
+function jj(){
+	alert("aa");
+}
+function gg(val){
+	var n=val;
+	for(var i=0;i<n.length;i++){
+		$('.dataStatistics').append("<div class=\"digit_set\"></div>");
+	}
+	$('.dataStatistics').dataStatistics({min:100,max:1500,time:30000,len:n.length,N:parseInt(n)});
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>11111</title>
+		<meta charset="utf-8">
+		<link href="css/font-awesome.min.css" rel="stylesheet">
+	</head>
+	<body>
+		<a href="#">
+  <i class="fa fa-trash-o fa-lg"></i> Delete</a>
+  	<i class="fa  fa-angle-double-down fa-lg"></i> fa-lg
+	</body>
+</html>

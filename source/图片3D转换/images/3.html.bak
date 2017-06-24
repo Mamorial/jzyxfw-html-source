@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>666</title>
+		<style type="text/css">
+			div{
+			border:50px solid #000;
+			border-radius:100px;
+			position:absolute;
+			margin:200px auto;
+			transform-style:preserve-3d;
+			animation:myt 5s infinite linear;
+			}
+			@keyframes myt{
+			from {left:0px;transform:rotateX(0deg);}
+			to {left:400px;transform:rotateX(90deg);}
+			}
+		</style>
+	</head>
+	<body>
+		<div><img src="01.jpg" width="100px" height="100px"></div>
+	</body>
+</html>

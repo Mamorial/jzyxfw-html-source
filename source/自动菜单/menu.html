@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>自动菜单</title>
+<style>
+*{ margin:0px; padding:0px;}
+ul,li{ list-style:none;}
+#menu{ width:500px; border:#666 1px solid; height:40px; margin-top:50px;}
+#menu li{
+	float:left;width:100px; line-height:40px; text-align:center;
+	}
+#menu li:first-child{
+	background:#999;
+	}	
+#content{
+	width:500px;
+	height:300px;
+	border:#666 1px solid;
+	}
+.con{
+	width:500px;
+	height:300px;
+	float:left;
+	display:none;
+	}
+.con:first-child{ display:block;}	
+</style>
+</head>
+<body>
+<div id="menu">     <!--    菜单部分      -->
+<ul>
+<li>图片</li>
+<li>专栏</li>
+<li>热点</li>
+<li>综艺</li>
+<li>综艺1</li>
+</ul>
+</div>
+<div id="content">
+<div class="con">车辆遇故障司机躺超车道修车 新郎被绑屁股放鞭炮
+这种鱼1斤3000元或永久禁捕 消防兵捉3.4米眼镜蛇
+空印案为何让朱元璋大开杀戒 泰国灯泡奶茶妹走红
+卡戴珊姐妹都是时尚收割机 50岁周海媚大圆脸抢镜</div>
+<div class="con">22222</div>
+<div class="con">33333</div>
+<div class="con">44444</div>
+<div class="con">55555</div>
+</div>
+</body>
+<script>
+var menu=document.getElementById("menu");
+var li=menu.getElementsByTagName("li");
+var content=document.getElementById("content");
+var con=content.getElementsByClassName("con");
+var len=li.length;
+for(var i=0;i<len;i++){
+	 li[i].id=i;   //给每一个元素下标赋一值
+	 con[i].id=i;	
+	  li[i].onmouseover=function(){
+		     change(this.id);		  
+		  } 
+	}
+	   function change(m){
+		     //alert(m);
+		     for(var j=0;j<len;j++){
+				 con[j].style.display="none";
+				 li[j].style.background="none";
+				 }	 
+		     con[m].style.display="block";
+			 li[m].style.background="#999";		   
+		   }
+</script>
+</html>

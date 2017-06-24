@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>图片移动</title>
+	<meta charset="utf-8">
+	<style>
+	.cd{width:500px;height:375px;margin:100px auto;position:relative;overflow:hidden;}
+	.im{width:2000px;height:375px;position:relative;overflow:hidden;}
+	.yd{width:500px;height:30px;bottom:0px;left:0px;background:rgba(100,100,100,0.3);position:absolute;}
+	span{
+		width:16px;
+		height:16px;
+		border-radius:50%;
+		background:rgba(200,200,200,0.5);
+		display:block;
+		position:absolute;
+		top:5px;
+	}
+	.yd1{left:210px;background:rgba(255,0,0,0.3);}
+	.yd2{left:233px;}
+	.yd3{left:256px;}
+	.yd4{left:279px;}
+	</style>
+<script src="js/jquery.js"></script>
+	<script type="text/javascript">
+		var im,aa;
+		var sp=0;
+		var sum=0;
+		$(function(){
+			im=$('.im');
+			aa=$('.aa');
+			aa.each(function(i){
+				$(aa[i]).mouseover(function(){
+					sp=i;
+					ch(i);
+					clearInterval(tt);
+				});
+				$(aa[i]).mouseleave(function(){
+					tt=setInterval(tab,2000);
+				});
+			});
+			$(".yd").mouseover(function(){
+				aa.animate({'top':5},'fast');
+			});
+			$(".yd").mouseleave(function(){
+				aa.animate({'top':30},'slow');
+			});
+		});
+		var tt=setInterval(tab,2000);
+		function tab(){
+			sp++;
+			if(sp>=4){sp=0;}
+			ch(sp);
+			}
+			function ch(n){
+				var sum=n*(-500);
+				im.animate({'marginLeft':sum},'slow');
+				aa.css({'background':'rgba(255,255,255,0.3)'});
+				$(aa[n]).css({'background':'rgba(255,0,0,0.3)'})
+			} 
+	</script>
+</head>
+<body>
+<div class="cd">
+	<div class="im">
+		<img src="images/qinglong.jpg"><img src="images/baihu.jpg"><img src="images/xuanwu.jpg"><img src="images/zhuque.jpg">
+	</div>
+	<div class="yd">
+		<span class="yd1 aa"></span>
+		<span class="yd2 aa"></span>
+		<span class="yd3 aa"></span>
+		<span class="yd4 aa"></span>
+	</div>
+</div>
+</body>
+</html>

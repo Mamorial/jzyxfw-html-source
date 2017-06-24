@@ -1,0 +1,44 @@
+<html>
+	<head>
+		<title>666</title>
+		<style type="text/css">
+			.one{
+			width:100px;
+			height:100px;
+			float:left;
+		  background:red;
+		  position:relative;
+			transform:rotate(30deg);	
+			margin:100px 0 0 500px;
+			animation:myp 5s infinite alternate;
+			
+			}
+			.two{
+			width:100px;
+			height:100px;
+			float:left;
+			background:white;
+			position:absolute;
+			transform:rotate(30deg);
+			margin:100px 0 0 700px;
+			animation:myt 1s infinite linear 2s;	
+			}
+			@keyframes myp{
+			0% {background:red; left:0px; top:0px;}
+			25% {background:blue; left:200px; top:0px;}
+			50% {background:green; left:200px; top:200px;}
+			75% {background:yellow left:0px; top:200px;}
+			100% {background:black; left:0px; top:0px;}
+				
+			}
+			@keyframes myt{
+			from {background:white;}
+			to {background:blue;}	
+			}
+		</style>
+	</head>
+	<body>
+		<div class="one">	</div>
+		<div class="two"></div>
+	</body>
+</html>
